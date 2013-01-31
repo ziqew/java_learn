@@ -1,0 +1,18 @@
+<?page title="Super Application"?>
+<window xmlns="http://www.zkoss.org/2005/zul"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd" title="Main" border="normal" width="100%">
+<tabbox width="400px">
+	<tabs>
+		<tab label="Tab 1" image="/img/folder.gif" />
+		<tab label="Tab 2" image="/img/folder.gif" closable="true" />
+		<tab label="Tab 3" image="/img/folder.gif">
+		</tab>
+	</tabs>
+	<tabpanels>
+		<tabpanel>This is panel 1</tabpanel>
+		<tabpanel>This is panel 2</tabpanel>
+		<tabpanel>This is panel 3</tabpanel>
+	</tabpanels>
+</tabbox>
+</window>
