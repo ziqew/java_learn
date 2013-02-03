@@ -1,0 +1,460 @@
+<zk>
+	<window id="ContributionFormWin">
+
+		<!-- 
+			apply="com._3bpp.assetmanager.uploadhandler.controller.AMSelectionController,com._3bpp.assetmanager.uploadhandler.controller.AMUploadController">
+			
+			<zscript>
+			<![CDATA[
+	import com._3bpp.assetmanager.uploadhandler.model.AMListboxRenderer;
+	AMListboxRenderer amLboxRender = new AMListboxRenderer();
+]]>
+			</zscript>
+		-->
+
+		<panel border="normal" width="100%">
+			<panelchildren>
+
+				<borderlayout height="500px" width="100%">
+					<center border="none" autoscroll="true">
+						<div>
+
+
+							<vbox width="100%">
+
+
+								<label value=" ASSET CONTRIBUTION "
+									style="color:gray;font-size:20px" />
+								<label value="all fields are mandatory"
+									style="color:red;font-size:10px" />
+
+
+								<grid id="AssetContVboxGrid"
+									sclass="AssetContVboxGrid">
+									<columns>
+										<column width="20%" />
+										<column width="70%" />
+										<column width="10%" />
+									</columns>
+
+									<rows id="AssetContRows">
+
+										<row sclass="blue"
+											id="AssetContRowAssetName">
+											<hbox>
+												<label id="l"
+													value="Asset Name " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<textbox id="AssetName"
+												width="90%" style="margin:0px" maxlength="50"
+												constraint="/^[a-zA-Z0-9,' '.]+$/,no empty"
+												tooltiptext="Enter Asset Title">
+											</textbox>
+											<image
+												src="/AMContribution/Icons/NewAsset16.png"
+												tooltip="toolTitle" />
+										</row>
+
+										<row>
+											<hbox>
+												<label id="new1"
+													value="Asset Location " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<vbox width="100%">
+												<combobox mold="rounded"
+													autodrop="true" width="100%" tooltiptext="Select Location"
+													id="LocationLst" readonly="true"
+													constraint="/^[a-zA-Z0-9,' '.]+$/">
+													<attribute name="onSelect">
+	{
+		if (!self.getItems().isEmpty()) {
+			String Location = self.getSelectedItem().getLabel();
+			//alert(Location);
+			if (Location.equals("Other"))
+				OtherLocationTxt.setVisible(true);
+			else
+				OtherLocationTxt.setVisible(false);
+		}
+	}
+</attribute>
+													<comboitem
+														label="Pune" />
+													<comboitem
+														label="Mumbai" />
+													<comboitem
+														label="Chennai" />
+													<comboitem
+														label="Other" />
+												</combobox>
+												<textbox
+													id="OtherLocationTxt" constraint="/^[a-zA-Z,' '.]+$/"
+													width="50%" visible="false" />
+											</vbox>
+											<image
+												src="/AMContribution/Icons/pin16.png"
+												tooltip="toolLocation" />
+										</row>
+
+
+										<row>
+											<hbox>
+												<label
+													value="Asset Owner" />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<textbox id="AssetOwner"
+												width="90%" maxlength="50"
+												constraint="/^[a-zA-Z0-9,' '.]+$/,no empty"
+												tooltiptext="Enter Asset Owner" />
+											<image
+												src="/AMContribution/Icons/user16.png" tooltip="ownerPopup" />
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="Asset Class " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<combobox id="AssetClassLst"
+												width="30%" mold="rounded" autodrop="true"
+												tooltiptext="Select Asset Class" readonly="true"
+												constraint="no empty">
+												<comboitem
+													label="ReUsable" />
+												<comboitem
+													label="Knowledge Asset" />
+												<comboitem
+													label="Transaction Document" />
+												<comboitem
+													label="Reference Link" />
+											</combobox>
+											<image
+												src="/AMContribution/Icons/assetClass16.png"
+												tooltip="assetclassPop" />
+										</row>
+										<row valign="top">
+											<hbox>
+												<label
+													value="Brief Description  " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<textbox
+												id="BriefDescription" multiline="true" style="margin:0px"
+												maxlength="100" constraint="no empty" width="90%"
+												height="50px" tooltiptext="Enter Description" />
+											<image
+												src="/AMContribution/Icons/assetDetails16.png"
+												tooltip="descriptionPopup" />
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="Taxonomy Details " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+
+											<hbox>
+												<button
+													label="Add Taxonomy" id="AddTaxonomy" onClick=""
+													width="125px" tooltiptext="Add Taxonomy Details">
+													<attribute name="onClick">
+	{
+		final Window win = (Window) Executions.createComponents("AMTaxonomySelection.zul", null, null);
+
+		win.doModal();
+	}
+</attribute>
+												</button>
+												<space></space>
+												<image id="taxAddStatus"
+													visible="false" src="/AMContribution/Icons/accept.png" />
+											</hbox>
+											<image
+												src="/AMContribution/Icons/sitemap16.png"
+												tooltip="AddTaxonomyPopup" />
+
+										</row>
+										<row>
+											<label></label>
+											<div align="left"
+												width="90%">
+												<panel visible="false"
+													id="SelectedTaxonomyLst">
+													<panelchildren>
+														<label>
+															Selected
+															Taxonomy
+															Mapping
+														</label>
+														<listbox
+															id="TaxonomyDetailsLst" multiple="true" mold="paging"
+															pageSize="3" style="border:0px;text-align:left;">
+															<listhead>
+																<listheader
+																	label="Asset Type" align="left" />
+																<listheader
+																	label="Asset Category" />
+																<listheader
+																	label="Asset Sub-Category" />
+															</listhead>
+															<listitem />
+														</listbox>
+
+													</panelchildren>
+												</panel>
+											</div>
+											<label></label>
+										</row>
+
+
+										<row>
+											<hbox>
+												<label
+													value="Technology Details " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+
+											<hbox>
+												<button
+													label="Add Technologies" id="AddTechnologyBtn"
+													width="125px" tooltiptext="Add Technologies Details">
+													<attribute name="onClick">
+	{
+		final Window win = (Window) Executions.createComponents("AMTechnologySelection.zul", null, null);
+		win.doModal();
+	}
+</attribute>
+												</button>
+												<space></space>
+												<image
+													id="techAddStatus" visible="false"
+													src="/AMContribution/Icons/accept.png" />
+
+											</hbox>
+											<image
+												src="/AMContribution/Icons/tech16.png" tooltip="addTechPop" />
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="User Restriction " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<combobox mold="rounded"
+												autodrop="true" id="UserRestictionLst" width="30%"
+												readonly="true" tooltiptext="Select Restriction">
+												<comboitem
+													label="Public" />
+												<comboitem
+													label="Restricted" />
+											</combobox>
+											<image
+												src="/AMContribution/Icons/userRes16.png"
+												tooltip="userResPop" />
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="Keywords " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<textbox id="KeyWords"
+												width="90%" maxlength="50"
+												constraint="/^[a-zA-Z0-9,' '.]+$/,no empty"
+												tooltiptext="Enter keyword for search" />
+											<image
+												src="/AMContribution/Icons/keyword16.png" tooltip="keyPop" />
+
+
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="Effort Spent In Creation " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<vbox>
+												<hbox>
+													<intbox
+														id="SpentHours" maxlength="5"
+														constraint="no negative,no zero"
+														tooltiptext="Enter effort spent in creation in per person hours" />
+													<label
+														value="In Person Hours" />
+												</hbox>
+											</vbox>
+											<image
+												src="/AMContribution/Icons/history16.png"
+												tooltip="efforthrPop" />
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="Expected Effort Saving" />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<vbox>
+												<hbox>
+													<intbox
+														id="ExpectedHours" maxlength="5"
+														constraint="no negative,no zero"
+														tooltiptext="Enter expected spent in creation in per person hours" />
+													<label
+														value="In Person Hours" />
+												</hbox>
+											</vbox>
+											<image
+												src="/AMContribution/Icons/history-add216.png"
+												tooltip="expectedhrPop" />
+										</row>
+										<row valign="top">
+											<hbox>
+												<label
+													value="Asset Attachment " />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<vbox width="100%">
+												<hbox>
+													<button
+														id="AttachFileBtn" label="Attach Document"
+														tooltiptext="Click to Attach Documents"
+														upload="true,maxsize=300" />
+
+													<button
+														id="UploadFileBtn" label="Upload"
+														tooltiptext="Click to Upload selected Files" />
+
+													<button
+														id="RescanBtn" label="Re-scan" disabled="true">
+													</button>
+
+
+												</hbox>
+												<div id="UploadDiv"
+													visible="true">
+
+													<listbox
+														id="FileNamesLst" multiple="true" checkmark="true"
+														itemRenderer="${amLboxRender}" mold="paging"
+														pageSize="3">
+														<attribute name="onSelect">
+	{
+		if (FileNamesLst.getSelectedCount() == 0) {
+			UploadFileBtn.setDisabled(true);
+		} else {
+			UploadFileBtn.setDisabled(false);
+		}
+	}
+</attribute>
+														<listhead>
+															<listheader
+																width="15%" style="border : 0px" />
+															<listheader
+																label="File Names" width="50%" style="border : 0px" />
+															<listheader
+																label="Status" width="15%" style="border : 0px" />
+															<listheader
+																width="15%" style="border : 0px" />
+														</listhead>
+													</listbox>
+												</div>
+											</vbox>
+											<image
+												src="/AMContribution/Icons/attach16.png"
+												tooltip="attachPop" />
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="Pre-Requisite Skills " width="250px" />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<textbox
+												id="PreRequisiteSkills" maxlength="50"
+												constraint="/^[a-zA-Z0-9,' '.]*$/,no empty" width="90%"
+												tooltiptext="Enter Pre-Requisite Skills " />
+											<image
+												src="/AMContribution/Icons/star16.png" tooltip="skillPop" />
+										</row>
+										<row>
+											<hbox>
+												<label
+													value="Target Audience " width="250px" />
+												<label value="*"
+													style="color:red;font-size:10px" />
+											</hbox>
+											<textbox id="TargetAudience"
+												maxlength="50" constraint="/^[a-zA-Z0-9,' '.]*$/,no empty"
+												width="90%" tooltiptext="" />
+											<image
+												src="/AMContribution/Icons/audience16.png"
+												tooltip="targetPop" />
+										</row>
+										<!-- 
+											<row>
+											<label value="" />
+											<hbox>
+											<button
+											id="ContributionSubmitBtn" label="Submit" width="70px" />
+											<button id="CancelBtn"
+											label="Reset" width="70px" onClick="" />
+											</hbox>
+											<label />
+											</row>
+										-->
+									</rows>
+								</grid>
+
+							</vbox>
+
+
+						</div>
+					</center>
+
+					<east collapsible="true" splittable="true">
+						<!-- 
+							<splitter id="s2" collapse="after" />
+							<vbox>
+						-->
+						<label value=" Help  "
+							style="color:gray;font-size:30px" />
+
+						<!--  </vbox>  -->
+
+					</east>
+
+					<south>
+						<div>
+							<label value="" />
+							<hbox>
+								<button id="ContributionSubmitBtn1"
+									label="Submit" width="70px" />
+								<button id="CancelBtn1" label="Reset"
+									width="70px" onClick="" />
+							</hbox>
+							<label />
+						</div>
+					</south>
+
+				</borderlayout>
+
+			</panelchildren>
+		</panel>
+
+	</window>
+</zk>

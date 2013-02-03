@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="windows-1251"?>
+
+<zk>
+	<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+	<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="busIncidentsByDoWWindow" ?>
+	<window id="busIncidentsByDoWWindow" border="normal"
+		apply="${busIncidentsChartController}" width="500px" height="345px"
+		closable="true" sizable="true" left="20%" top="30px"
+		xmlns:a="http://www.zkoss.org/2005/zk/annotation">
+
+		<zscript>
+	int stringToInt(String str) {
+		int j = str.lastIndexOf("px");
+		if (j > 0) {
+			final String num = str.substring(0, j);
+			return Integer.parseInt(num);
+		}
+
+		j = str.lastIndexOf("pt");
+		if (j > 0) {
+			final String num = str.substring(0, j);
+			return (int) (Integer.parseInt(num) * 1.3333);
+		}
+
+		j = str.lastIndexOf("em");
+		if (j > 0) {
+			final String num = str.substring(0, j);
+			return (int) (Integer.parseInt(num) * 13.3333);
+		}
+		return Integer.parseInt(str);
+	}
+</zscript>
+
+		<!--  this is what you really need...it calls the defined stringToInt() above  -->
+		<attribute name="onSize">
+	//  50 and 95 are my own fudge factors...adjust as necessary
+	int newWidth = stringToInt(self.width) - 50;
+	int newHeight = stringToInt(self.height) - 95;
+	//alert(newWidth + " : "+ newHeight );
+	chart.setWidth(String.valueOf(newWidth));
+	chart.setHeight(String.valueOf(newHeight));
+</attribute>
+
+		<zscript>
+        <![CDATA[
+	//@IMPORT
+	import java.util.Calendar;
+]]>
+        </zscript>
+
+		<!-- you don't need this, but it shows how I prepopulate a list box with some years...  -->
+		<zscript>
+        <![CDATA[
+	Calendar rightNow = Calendar.getInstance();
+	int currentYear = rightNow.get(Calendar.YEAR);
+	int prevYear = -1;
+	System.out.println("current year: " + currentYear);
+	ArrayList data = new ArrayList();
+	data.add("- Select -");
+	for (int j = currentYear; j >= 2008; --j) {
+		prevYear = j + 1;
+		data.add(String.valueOf(j) + "-" + String.valueOf(prevYear));
+	}
+	ListModel strset = new SimpleListModel(data);
+]]>
+        </zscript>
+
+		<caption>
+			<label
+				style="display: block; text-align: center; font-weight: bold; font-size: 16px;">
+				Bus Incidents By Day of Week
+			</label>
+		</caption>
+
+		<borderlayout>
+			<north>
+				<hbox>
+					School Year:
+					<listbox id="schoolYearListbox" width="100px"
+						model="${strset}" mold="select" />
+					<radiogroup id="chartTypeRadio">
+						<radio label="Pie" value="pie" />
+						<radio label="Bar" value="bar" selected="true" />
+					</radiogroup>
+				</hbox>
+			</north>
+			<center>
+				<!--  I set a variable in my composer's doAfterCompose(...) named win$composer to support this  -->
+
+				<chart id="chart" width="450px" height="250px"
+					type="bar" threeD="true" fgAlpha="128"
+					model="@{win$controller.countByDayOfWeekModel}"
+					showLegend="false">
+				</chart>
+			</center>
+			<south>
+				<hbox>
+					<button id="refreshButton" label="Refresh" />
+					<checkbox label="3D Chart" checked="true"
+						onCheck="chart.setThreeD(self.isChecked())" />
+					<checkbox label="Legend" checked="false"
+						onCheck="chart.setShowLegend(self.isChecked())" />
+					<checkbox label="Tooltip" checked="true"
+						onCheck="chart.setShowTooltiptext(self.isChecked())" />
+				</hbox>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

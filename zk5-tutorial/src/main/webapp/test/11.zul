@@ -1,0 +1,66 @@
+<zk>
+	<style>
+		.menutabs.z-tab .z-tab-text { color: red; cursor: pointer; font-family: arial,sans-serif; font-size: 12px;
+		font-size-adjust: none; font-weight : bold; padding: 4px 14px; white-space: nowrap; }
+
+		.mainmenu.z-tabbox.z-tab.z-tab-hm { background-image:none; background-color: #d9eef7; background-position :
+		center; background-repeat : repeat; height:36px; }
+
+		.mainmenu.z-tabbox .z-tab .z-tab-hm:hover { background-image:none; background-color: #007ead;
+		background-position : center; background-repeat : repeat-X; height:36px; padding:none; margin:none; }
+
+		.mainmenu.z-tabbox .z-tab .z-tab-hl { background-image:none; background-color: #d9eef7; background-position :
+		left ; background-repeat : repeat; height:36px; }
+
+		.mainmenu.z-tabbox .z-tab .z-tab-hl:hover { background-image:none; background-color: #007ead;
+		background-position : left ; background-repeat : repeat; height:36px; padding:none; margin:none; }
+
+		.mainmenu.z-tabbox .z-tab .z-tab-hr { background-image:none; background-color: #d9eef7; background-position :
+		right ; background-repeat : repeat; height:36px; }
+
+		.mainmenu.z-tabbox .z-tab .z-tab-hr:hover { background-image:none; background-color: #007ead;
+		background-position : right ; background-repeat : repeat; height:36px; }
+
+		.z-tabs-header { height: 32px; margin: 0; overflow: hidden; position: relative; height: 32px; }
+
+		.z-toolbar .z-toolbarbutton-cnt { color: #000000; font-family: Tahoma,verdana; font-size: 1em; font-weight:
+		normal; padding: 2px 10px 2px 10px; position: relative; border-left: 1px solid #dddddd; border-right: 1px solid
+		#eeeeee; border-top: 1px solid #e0e0e0; }
+
+		.z-toolbar { background: none; background-color: #cff791; height: 18px; }
+
+		.z-toolbarbutton-over .z-toolbarbutton-cnt { background-image:none; background-color: #cff791; }
+
+		.z-toolbarbutton-select .z-toolbarbutton-cnt { background-image:none; background-color: red; }
+
+	</style>
+	<tabbox width="100%" sclass="mainmenu">
+		<tabs id="tabs">
+			<tab label="Our Product" sclass="menutabs"></tab>
+			<tab label="Live Demo" sclass="menutabs"></tab>
+			<tab label="Online Documentation" sclass="menutabs"></tab>
+		</tabs>
+		<tabpanels>
+			<tabpanel>
+				<toolbar width="794px">
+					<toolbarbutton label="Product 1"></toolbarbutton>
+					<toolbarbutton label="Product 2"></toolbarbutton>
+					<toolbarbutton label="Product 3"></toolbarbutton>
+				</toolbar>
+			</tabpanel>
+
+			<tabpanel>
+				<toolbar width="800px">
+					<toolbarbutton label="Documentation 1"></toolbarbutton>
+					<toolbarbutton label="Documentation 2"></toolbarbutton>
+					<toolbarbutton label="Documentation 3"></toolbarbutton>
+					<toolbarbutton label="Documentation 4"></toolbarbutton>
+					<toolbarbutton label="Documentation 5"></toolbarbutton>
+				</toolbar>
+			</tabpanel>
+		</tabpanels>
+
+	</tabbox>
+
+	<separator height="30px"></separator>
+</zk>

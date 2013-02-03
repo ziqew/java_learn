@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowArticleMain" apply="${articleMainCtrl}"
+		border="none" width="100%">
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					<toolbarbutton id="btnRefresh"
+						image="/images/icons/refresh2_yellow_16x16.gif"
+						tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px">
+						<space />
+						<checkbox id="checkbox_ArticleList_ShowAll"
+							checked="true"
+							label="${c:l('checkbox_ArticleList_ShowAll.label')}" />
+						<space />
+
+						<label
+							value="${c:l('label_ArticleList_ArticleID.value')}"
+							style="padding-right: 3px" />
+						<textbox id="tb_Article_ArticleID"
+							width="120px" />
+						<button id="button_ArticleList_SearchArticleID"
+							sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+							tooltiptext="${c:l('button_ArticleList_SearchArticleID.tooltiptext')}" />
+						<space width="20px" />
+
+						<label
+							value="${c:l('label_ArticleList_Name.value')}"
+							style="padding-right: 3px" />
+						<textbox id="tb_Article_Name" width="120px" />
+						<button id="button_ArticleList_SearchName"
+							sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+							tooltiptext="${c:l('button_ArticleList_SearchName.tooltiptext')}" />
+						<space width="20px" />
+
+					</hbox>
+				</toolbar>
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					<button id="btnPrint" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnPrint.tooltiptext')}" />
+					<separator bar="true" orient="vertical" />
+					<button id="btnFirst" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnFirst.tooltiptext')}" />
+					<button id="btnPrevious" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnPrevious.tooltiptext')}" />
+					<button id="btnNext" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnNext.tooltiptext')}" />
+					<button id="btnLast" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnLast.tooltiptext')}" />
+					<separator bar="true" orient="vertical" />
+					<button id="btnNew" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnNew.tooltiptext')}" />
+					<button id="btnEdit" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnEdit.tooltiptext')}" />
+					<button id="btnDelete" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnDelete.tooltiptext')}" />
+					<button id="btnSave" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnSave.tooltiptext')}" />
+					<button id="btnCancel" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnCancel.tooltiptext')}" />
+				</toolbar>
+			</hbox>
+		</div>
+
+		<!-- Tabbox Container -->
+		<tabbox id="tabbox_ArticleMain">
+			<tabs>
+				<tab id="tabArticleList" label="${c:l('common.List')}"
+					image="/images/icons/properties.gif" />
+				<tab id="tabArticleDetail"
+					label="${c:l('common.Details')}" image="/images/icons/table.gif" />
+			</tabs>
+
+			<tabpanels>
+				<!-- TabPanel LIST / LISTE -->
+				<tabpanel id="tabPanelArticleList" height="100%"
+					style="border: none; padding: 0px; " />
+
+				<!-- TabPanel DETAILS / DETAILS -->
+				<tabpanel id="tabPanelArticleDetail" height="100%"
+					style="border: none; padding: 0px; " />
+			</tabpanels>
+		</tabbox>
+
+
+	</window>
+</zk>
+

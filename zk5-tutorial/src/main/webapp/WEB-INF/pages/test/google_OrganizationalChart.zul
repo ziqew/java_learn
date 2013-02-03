@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowTestOrgaChart" title="Google OrganizationalChart"
+		closable="true"
+		apply="de.forsthaus.webui.testControllers.TestGoogleOrganizationalChartCtrl"
+		border="normal" width="600px" height="500px">
+
+		<script type="text/javascript"
+			src="http://www.google.com/jsapi">
+		</script>
+
+		<h:script type="text/javascript">
+			google.load('visualization', '1', {packages: ['orgchart']});
+		</h:script>
+
+		<h:script type="text/javascript">
+			function drawVisualization() { // Create and populate the
+			data table. var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Name'); data.addColumn('string',
+			'Manager'); data.addColumn('string', 'ToolTip');
+			data.addRows(5); data.setCell(0, 0, 'Mike'); data.setCell(0,
+			2, 'The President'); data.setCell(1, 0, 'Jim', 'Jim
+			<h:br />
+			<h:font color="red">
+
+				Vice President
+
+			</h:font>
+			'); data.setCell(1, 1, 'Mike'); data.setCell(2, 0, 'Alice');
+			data.setCell(2, 1, 'Mike'); data.setCell(3, 0, 'Bob');
+			data.setCell(3, 1, 'Jim'); data.setCell(3, 2, 'Bob Sponge');
+			data.setCell(4, 0, 'Carol'); data.setCell(4, 1, 'Bob');
+
+			// Create and draw the visualization. new
+			google.visualization.OrgChart(document.getElementById('visualization')).
+			draw(data, {allowHtml: true}); }
+
+
+
+			google.setOnLoadCallback(drawVisualization);
+		</h:script>
+
+		<button id="btnChart" />
+		<div>
+
+			<html>
+				<attribute name="content">
+
+					<div id="visualization"
+						style="width: 300px;
+				height: 300px;">
+					</div>
+
+				</attribute>
+			</html>
+
+
+		</div>
+
+	</window>
+
+</zk>

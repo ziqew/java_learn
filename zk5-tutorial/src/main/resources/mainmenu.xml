@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:XMLRootMenu xmlns:ns2="http://www.daibutsu.de/zk/menu">
+
+	<!-- ######################################################### -->
+	<!-- #################### possible Tags ###################### -->
+	<!-- ######################################################### -->
+	<!-- menu:           a parent menu that have child nodes.      -->
+	<!-- menuItem:       the menu item.                            -->
+	<!-- zulNavigation:  the path and name of the zul-file.        -->
+	<!-- iconName:       the path and name to an icon.             -->
+	<!-- rightName:      if it's declared, than the rightname must -->
+	<!--                 be the same as in the securityContext for -->
+	<!--                 creating this menuitem.                   -->
+	<!-- open:           (true/false opens a menu at creation time -->
+	<!-- ######################################################### -->
+
+	<!-- DON'T CHANGE THE ID FOR the Dashboard menu entry -->
+	<!-- it's used in the mainMenuCtrl.java  -->
+	<menuItem id="menu_Item_Home" zulNavigation="/WEB-INF/pages/dashboard.zul"
+		iconName="/images/icons/console_view.gif" />
+	<!-- Guestbook -->
+	<menuItem id="menu_Item_Guestbook" zulNavigation="/WEB-INF/pages/guestbook/guestBookList.zul"
+		iconName="/images/icons/create_doc_16x16.gif" />
+	<!-- Calendar -->
+	<menuItem id="menu_Item_Calendar" zulNavigation="/WEB-INF/pages/calendar/calendar.zul"
+		iconName="/images/icons/calendar1_16x16.gif" />
+	<!-- Spreadsheet -->
+	<!--
+		closed, until the spreadsheet jar's are in the maven repo <menuItem
+		id="menu_Item_SpreadSheet"
+		zulNavigation="/WEB-INF/pages/spreadsheet/spreadsheet.zul"
+		iconName="/images/icons/spreadsheet_16x16.png" />
+	-->
+
+	<!-- ReadMe MenuTree -->
+	<menu id="menu_Category_ReadMe" rightName="" open="true">
+		<!-- Documentation -->
+		<menuItem id="menu_Item_Documentation" zulNavigation="/WEB-INF/pages/documentation/documentation.zul"
+			iconName="/images/icons/icon-pdf_16x16.png" />
+		<!-- Blog -->
+		<menuItem id="menu_Item_Blog" zulNavigation="/WEB-INF/pages/blog/blog.zul"
+			iconName="/images/icons/wpmini-blue_16x16.png" />
+		<!-- get the codes -->
+		<menuItem id="menu_Item_Codes" zulNavigation="/WEB-INF/pages/codes/codes.zul"
+			iconName="/images/icons/cardbox1_16x16.gif" />
+	</menu>
+
+	<!-- OfficeData MenuTree -->
+	<menu id="menu_Category_OfficeData" rightName="menuCat_OfficeData">
+		<menuItem id="menu_Item_Customers" zulNavigation="/WEB-INF/pages/customer/customerList.zul"
+			iconName="/images/icons/view.gif" rightName="menuItem_OfficeData_Customers" />
+		<menuItem id="menu_Item_Orders" zulNavigation="/WEB-INF/pages/order/orderList.zul"
+			iconName="/images/icons/view.gif" rightName="menuItem_OfficeData_Orders" />
+	</menu>
+
+	<!-- BaseData MenuTree -->
+	<menu id="menu_Category_MainData" rightName="menuCat_MainData">
+		<menuItem id="menu_Item_Articles" zulNavigation="/WEB-INF/pages/article/articleMain.zul"
+			iconName="/images/icons/index_16x16.gif" rightName="menuItem_MainData_ArticleItems" />
+		<menuItem id="menu_Item_Branches" zulNavigation="/WEB-INF/pages/branch/branchMain.zul"
+			iconName="/images/icons/index_16x16.gif" rightName="menuItem_MainData_Branch" />
+		<menuItem id="menu_Item_Offices" zulNavigation="/WEB-INF/pages/office/officeMain.zul"
+			iconName="/images/icons/index_16x16.gif" rightName="menuItem_MainData_Office" />
+	</menu>
+
+	<!-- Administration MenuTree -->
+	<menu id="menu_Category_Administration" rightName="menuCat_Administration">
+		<menuItem id="menu_Item_Users" iconName="/images/icons/user_group_16x16.png"
+			zulNavigation="/WEB-INF/pages/sec_user/userList.zul" rightName="menuItem_Administration_Users" />
+		<menu id="menu_Category_UserRights" rightName="menuCat_UserRights">
+			<menuItem id="menu_Item_UserRoles" zulNavigation="/WEB-INF/pages/sec_userrole/secUserrole.zul"
+				iconName="/images/icons/exdDatabaseView_16x16.gif" rightName="menuItem_Administration_UserRoles" />
+			<menuItem id="menu_Item_Roles" zulNavigation="/WEB-INF/pages/sec_role/secRoleList.zul"
+				iconName="/images/icons/exdDatabaseView_16x16.gif" rightName="menuItem_Administration_Roles" />
+			<menuItem id="menu_Item_RoleGroups" zulNavigation="/WEB-INF/pages/sec_rolegroup/secRolegroup.zul"
+				iconName="/images/icons/exdDatabaseView_16x16.gif" rightName="menuItem_Administration_RoleGroups" />
+			<menuItem id="menu_Item_Groups" zulNavigation="/WEB-INF/pages/sec_group/secGroupList.zul"
+				iconName="/images/icons/exdDatabaseView_16x16.gif" rightName="menuItem_Administration_Groups" />
+			<menuItem id="menu_Item_GroupRights"
+				zulNavigation="/WEB-INF/pages/sec_groupright/secGroupright.zul"
+				iconName="/images/icons/exdDatabaseView_16x16.gif" rightName="menuItem_Administration_GroupRights" />
+			<menuItem id="menu_Item_Rights" zulNavigation="/WEB-INF/pages/sec_right/secRightList.zul"
+				iconName="/images/icons/exdDatabaseView_16x16.gif" rightName="menuItem_Administration_Rights" />
+		</menu>
+		<menuItem id="menu_Item_LoginsLog"
+			zulNavigation="/WEB-INF/pages/sec_loginlog/secLoginLogMain.zul"
+			iconName="/images/icons/method_16x16.gif" rightName="menuItem_Administration_LoginsLog" />
+		<menuItem id="menu_Item_HibernateStatistics" zulNavigation="/WEB-INF/pages/debug/HibernateStatistics.zul"
+			iconName="/images/icons/method_16x16.gif" rightName="menuItem_Administration_HibernateStats" />
+	</menu>
+
+
+
+</ns2:XMLRootMenu>

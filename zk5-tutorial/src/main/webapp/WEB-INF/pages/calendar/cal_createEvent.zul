@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+	<window width="400px" title="Create Event" border="none"
+		id="createEventWindow" apply="${createEventCtrl}" mode="modal"
+		visible="false" closable="true">
+
+		<grid sclass="GridLayoutNoBorder" fixedLayout="true"
+			style="border:0px">
+			<columns>
+				<column width="100px" />
+				<column />
+			</columns>
+			<rows>
+				<row>
+					BeginDate:
+					<div>
+						<datebox id="ppbegin" />
+						<listbox mold="select" id="ppbt">
+							<!-- 
+								onCreate="self.setSelectedIndex(0)">
+							-->
+							<listitem />
+						</listbox>
+					</div>
+				</row>
+				<row>
+					EndDate:
+					<div>
+						<datebox id="ppend" />
+						<listbox mold="select" id="ppet">
+							<!-- 
+								onCreate="self.setSelectedIndex(0)">
+							-->
+							<listitem />
+						</listbox>
+						All Day:
+						<checkbox id="ppallDay"
+							onCheck='ppbt.visible = !self.checked;ppet.visible = !self.checked' />
+					</div>
+				</row>
+				<row>
+					Color:
+					<combobox id="ppcolor" readonly="true"
+						style="color:#D96666;font-weight: bold;"
+						onCreate="self.selectedIndex = 0">
+						<attribute name="onSelect">
+	switch (self.getSelectedIndex()) {
+	case 0:
+		self.style = "color:#D96666;font-weight: bold;";
+		break;
+	case 1:
+		self.style = "color:#668CD9;font-weight: bold;";
+		break;
+	case 2:
+		self.style = "color:#4CB052;font-weight: bold;";
+		break;
+	case 3:
+		self.style = "color:#BFBF4D;font-weight: bold;";
+		break;
+	case 4:
+		self.style = "color:#B373B3;font-weight: bold;";
+		break;
+	}
+</attribute>
+						<comboitem sclass="red" label="Red"
+							value="#A32929,#D96666" />
+						<comboitem sclass="blue" label="Blue"
+							value="#3467CE,#668CD9" />
+						<comboitem sclass="green" label="Green"
+							value="#0D7813,#4CB052" />
+						<comboitem sclass="khaki" label="Khaki"
+							value="#88880E,#BFBF4D" />
+						<comboitem sclass="purple" label="Purple"
+							value="#7A367A,#B373B3" />
+					</combobox>
+				</row>
+				<row>
+					Subject:
+					<textbox id="txtb_title" width="200px" />
+				</row>
+				<row>
+					Content:
+					<textbox multiline="true" rows="3" width="200px"
+						id="ppcnt" />
+				</row>
+				<row>
+					Unmodifiable:
+					<checkbox id="pplocked" />
+				</row>
+
+			</rows>
+		</grid>
+
+		<separator bar="true" />
+		<hlayout hflex="1">
+			<button id="btnOK" mold="os" label="OK" />
+			<button id="btnCancel" mold="os" label="Cancel" />
+		</hlayout>
+	</window>
+</zk>

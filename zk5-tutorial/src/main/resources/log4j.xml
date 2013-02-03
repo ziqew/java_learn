@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+
+	<appender name="STDOUT" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<param name="Threshold" value="ALL" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-6p [%t] %c{1} M[%M] --> %m\n" />
+			<!--
+				param name="ConversionPattern" value="%d{ISO8601} %-6p [%t] %c{1}
+				M[%M] - %m\n" /
+			-->
+		</layout>
+		<filter class="org.apache.log4j.varia.LevelRangeFilter">
+			<param name="LevelMax" value="WARN" />
+		</filter>
+	</appender>
+
+	<appender name="STDERR" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.err" />
+		<param name="Threshold" value="ERROR" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-6p [%t] %c{1} M[%M] --> %m\n" />
+		</layout>
+	</appender>
+
+	<appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="./out.log.txt" />
+		<param name="MaxFileSize" value="5MB" />
+		<param name="MaxBackupIndex" value="2" />
+		<param name="Threshold" value="ALL" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{ISO8601} %-6p [%t] %c{1} M[%M] --> %m\n" />
+		</layout>
+	</appender>
+
+	<category name="org.apache">
+		<priority value="INFO" />
+	</category>
+	<category name="org.hibernate">
+		<priority value="WARN" />
+	</category>
+	<category name="net.sf.ehcache">
+		<priority value="ERROR" />
+	</category>
+
+	<category name="org.xml">
+		<priority value="INFO" />
+	</category>
+	<category name="org.apache">
+		<priority value="INFO" />
+	</category>
+	<category name="httpclient.wire">
+		<priority value="INFO" />
+	</category>
+	<category name="org.hibernate.proxy">
+		<priority value="FATAL" />
+	</category>
+
+	<category name="org.springframework.beans.factory">
+		<priority value="INFO" />
+	</category>
+	<category name="org.springframework">
+		<priority value="INFO" />
+	</category>
+
+
+
+	<root>
+		<level value="ALL" />
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="STDERR" />
+		<!-- appender-ref ref="FILE" /-->
+	</root>
+</log4j:configuration>

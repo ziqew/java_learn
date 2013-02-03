@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+	<!-- ====================================================== -->
+	<!--         Define schemas for transactions                -->
+	<!-- ====================================================== -->
+	<tx:advice id="serviceTxAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- ====================================================== -->
+	<!--         Define Aspect pointcuts and advisors           -->
+	<!--               for the transaction scopes.              -->
+	<!-- ====================================================== -->
+	<!--   We need such an properly configured transcaction     -->
+	<!-- management too if we using Hibernate sessions directly.-->
+	<!-- Our PagedListWrapper classes are using the             -->
+	<!-- Hibernate-Generic-Dao framework who calls a session    -->
+	<!-- method like:                                           -->
+	<!--
+		sessionFactory.getCurrentSession().createQuery("FROM User")
+		.setMaxResults(10).setFirstResult(10).list();
+	-->
+	<!-- for getting paged data.                                -->
+	<!-- Without that declaration we became an error like:      -->
+	<!--
+		org.hibernate.HibernateException: No Hibernate Session bound to
+		thread, and configuration does not allow creation of non-transactional
+		one here
+	-->
+	<!-- HibernateTemplate handles this on its own, but when    -->
+	<!-- using Hibernate sessions directly, declare a           -->
+	<!-- TransactionManager                                     -->
+	<!-- ====================================================== -->
+	<aop:config>
+		<aop:pointcut id="guiServiceMethods"
+			expression="execution(* de.forsthaus.gui.service.*.*(..))" />
+		<aop:pointcut id="serviceMethods"
+			expression="execution(* de.forsthaus.backend.service.*.*(..))" />
+		<aop:pointcut id="daoMethods"
+			expression="execution(* de.forsthaus.backend.dao.*.*(..))" />
+
+		<aop:advisor advice-ref="serviceTxAdvice" pointcut-ref="guiServiceMethods" />
+		<aop:advisor advice-ref="serviceTxAdvice" pointcut-ref="serviceMethods" />
+		<!--
+			<aop:advisor advice-ref="serviceTxAdvice" pointcut-ref="daoMethods"
+			/>
+		-->
+	</aop:config>
+
+
+	<!-- ====================================================== -->
+	<!--    Provides exception translation from Hibernate to    -->
+	<!--          Spring vendor independent exceptions          -->
+	<!--           means Spring DataAccessExceptions            -->
+	<!-- Works together with Annotated DAOImpl classes like:    -->
+	<!-- @Repository                                            -->
+	<!-- public class UserDAOImpl extends BasisDAO<SecUser>     -->
+	<!--             implements UserDAO                         -->
+	<!--	                                                    -->
+	<!--   try {                                                -->
+	<!--	  Service.save(entity);                             -->
+	<!--   } catch (DataAccessException e) {                    -->
+	<!--	  System.out.println( e.getMostSpecificCause().toString() ); -->
+	<!--   }                                                    -->
+	<!--                                                        -->
+	<!-- ====================================================== -->
+	<bean
+		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+
+	<!-- ====================================================== -->
+	<!--             Define the transaction manager             -->
+	<!--    A PlatformTransactionManager is still required      -->
+	<!-- ====================================================== -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+
+	<!-- ====================================================== -->
+	<!--        Define the property placeholder configurer      -->
+	<!-- ====================================================== -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+
+</beans>

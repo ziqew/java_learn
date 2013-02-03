@@ -1,0 +1,16 @@
+<?page title="ZK examples : Activating autosort for Tree"?>
+
+<window id="rootwindow" title="Hello autosort!" border="normal"
+	width="200px"
+	apply="de.forsthaus.webui.testControllers.AutoSortTreeCtrl">
+
+	<tree id="tree">
+		<custom-attributes org.zkoss.zul.tree.autoSort="true" />
+		<treecols>
+
+			<treecol id="col" sort="auto" sortDirection="ascending" />
+		</treecols>
+		<treechildren />
+	</tree>
+
+</window>

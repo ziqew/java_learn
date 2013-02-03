@@ -1,0 +1,40 @@
+<!-- http://www.zkoss.org/forum/listComment/18466-Wanted-Sliding-container -->
+
+<zk xmlns:c="client">
+	<script type="text/javascript"
+		src="js/easyslider1.7/js/easySlider1.7.js">
+	</script>
+	<script type="text/javascript">
+		zk.afterMount(function() { jq("$slider").easySlider({ auto:
+		true, continuous: true, numeric: true }); });
+	</script>
+	<style src="js/easyslider1.7/css/screen.css" media="screen" />
+
+	<div id="slider">
+		<n:ul xmlns:n="native" style="padding:0;margin:0">
+			<n:li>
+				<image
+					src="/images/slider/zksample2_dashboard_400x230.jpg" />
+			</n:li>
+			<n:li>
+				<image
+					src="/images/slider/zksample2_loginslog_400x230.jpg" />
+			</n:li>
+			<n:li>
+				<image
+					src="/images/slider/zksample2_calendar_400x230.jpg" />
+			</n:li>
+			<n:li>
+				<image src="/images/slider/zksampl2_chart_400x230.jpg" />
+			</n:li>
+			<n:li>
+				<image
+					src="/images/slider/zksample2_many_modal_windows_400x230.jpg" />
+			</n:li>
+			<n:li>
+				<image
+					src="/images/slider/zksample2_report_400x230.jpg" />
+			</n:li>
+		</n:ul>
+	</div>
+</zk>

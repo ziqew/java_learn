@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="secLoginlogListWindow" apply="${secLoginlogListCtrl}" border="none" width="100%">
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start" style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp" image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					<toolbarbutton id="btnRefresh" image="/images/icons/refresh2_yellow_16x16.gif"
+						tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center" style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px">
+						<space />
+						<checkbox id="checkbox_SecLoginlogList_ShowAll" label="${c:l('common.Show.All')}" />
+						<separator bar="true" orient="vertical" />
+						<checkbox id="checkbox_SecLoginlogList_ShowOnlySuccess" label="${c:l('common.Show.Success')}" />
+						<separator bar="true" orient="vertical" />
+						<checkbox id="checkbox_SecLoginlogList_ShowOnlyFailed" label="${c:l('common.Show.Failed')}" />
+						<separator bar="true" orient="vertical" />
+
+
+						<bandbox id="bandbox_SecLoginlogList_PeriodSearch" width="1px"
+							tooltiptext="${c:l('bandbox_SecLoginlogList_PeriodSearch.tooltiptext')}">
+							<bandpopup id="bpop_SecLoginlogList_PeriodSearch" width="360px" height="90px">
+								<panel id="panel_SecLoginlogList_PeriodBandboxPanel"
+									title="${c:l('panel_SecLoginlogList_PeriodBandboxPanel.title')}" />
+
+								<vbox>
+									<hbox width="100%" style="padding: 0px">
+
+										<grid sclass="GridLayoutNoBorder" fixedLayout="false" width="100%">
+											<columns>
+												<column width="120px" />
+												<column width="140px" />
+												<column width="50px" />
+												<column width="40px" />
+											</columns>
+											<rows>
+												<row>
+													<label id="label_SecLoginlogList_DateFrom"
+														value="${c:l('label_SecLoginlogList_DateFrom.value')}" />
+													<hbox>
+														<datebox id="dbox_LoginLog_DateFrom" width="100%" />
+													</hbox>
+													<button id="button_SecLoginlogList_bb_SearchDate"
+														sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+														tooltiptext="${c:l('button_SecLoginlogList_bb_SearchDate.tooltiptext')}" />
+													<button id="button_SecLoginlogList_bb_SearchClose"
+														sclass="oT_ButtonWithIcon" image="/images/icons/stop.gif"
+														tooltiptext="${c:l('button_SecLoginlogList_bb_SearchClose.tooltiptext')}" />
+												</row>
+												<row>
+													<label id="label_SecLoginlogList_DateTo"
+														value="${c:l('label_SecLoginlogList_DateTo.value')}" />
+													<hbox>
+														<datebox id="dbox_LoginLog_DateTo" width="100%" />
+													</hbox>
+												</row>
+
+											</rows>
+										</grid>
+
+									</hbox>
+								</vbox>
+							</bandpopup>
+						</bandbox>
+
+						<space width="20px" />
+						<label id="label_SecLoginlogList_DatePeriod"
+							value="${c:l('label_SecLoginlogList_DatePeriod.value')}" />
+
+
+						<separator bar="true" orient="vertical" />
+						<space width="10px" />
+
+						<label id="label_SecLoginlogList_LoginName"
+							value="${c:l('label_SecLoginlogList_LoginName.value')}" />
+						<textbox id="tb_SecUserlog_LoginName" width="100px" />
+						<button id="button_SecLoginlogList_SearchLoginName" sclass="oT_ButtonWithIcon"
+							image="/images/icons/search.gif" tooltiptext="${c:l('button_SecLoginlogList_SearchLoginName.tooltiptext')}" />
+						<separator bar="true" orient="vertical" />
+						<checkbox id="checkbox_SecLoginlogList_ServerPush"
+							label="${c:l('checkbox_SecLoginlogList_ServerPush.label')}" />
+
+					</hbox>
+				</toolbar>
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end" style="float:right; border-style: none;">
+					<button id="button_SecLoginlogList_PrintLoginList" sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_print2_16x16.gif" hoverImage="/images/icons/print.gif"
+						tooltiptext="${c:l('button_SecLoginlogList_PrintLoginList.tooltiptext')}" />
+					<separator bar="true" orient="vertical" />
+					<button id="button_SecLoginlogList_DeleteLocalIPs" sclass="oT_ButtonWithIcon"
+						image="/images/icons/method_16x16.gif" tooltiptext="${c:l('button_SecLoginlogList_DeleteLocalIPs.tooltiptext')}" />
+					<button id="button_SecLoginlogList_ImportIPToCountryCSV" sclass="oT_ButtonWithIcon"
+						image="/images/icons/import_16x16.gif"
+						tooltiptext="${c:l('button_SecLoginlogList_ImportIPToCountryCSV.tooltiptext')}" />
+					<button id="button_SecLoginlogList_UpdateGeoData" sclass="oT_ButtonWithIcon"
+						image="/images/icons/debug_16x16.gif" tooltiptext="${c:l('button_SecLoginlogList_UpdateGeoData.tooltiptext')}" />
+				</toolbar>
+			</hbox>
+		</div>
+
+		<borderlayout id="borderLayout_SecUserlogList">
+
+			<north border="none" height="26px">
+				<paging id="paging_SecUserLogList" />
+			</north>
+
+			<center border="none">
+
+				<listbox id="listBoxSecUserlog"
+					style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+					vflex="true" width="100%" multiple="false">
+					<listhead sizable="true">
+						<listheader id="listheader_SecLoginlogList_lglLogtime" sclass="FDListBoxHeader1"
+							label="${c:l('listheader_SecLoginlogList_lglLogtime.label')}" sort="auto" image="/images/icons/date_16x16.gif" />
+						<listheader id="listheader_SecLoginlogList_lglLoginname" sclass="FDListBoxHeader1"
+							image="/images/icons/create_doc.gif" label="${c:l('listheader_SecLoginlogList_lglLoginname.label')}" sort="auto"
+							width="120px" />
+						<listheader id="listheader_SecLoginlogList_lglStatusid" sclass="FDListBoxHeader1"
+							image="/images/icons/edittsk_tsk1.gif" label="${c:l('listheader_SecLoginlogList_lglStatusid.label')}" sort="auto"
+							width="100px" />
+						<listheader id="listheader_SecLoginlogList_lglIp" sclass="FDListBoxHeader1"
+							label="${c:l('listheader_SecLoginlogList_lglIp.label')}" image="/images/icons/monitorView.gif" sort="auto" />
+						<listheader id="listheader_SecLoginlogList_CountryCode2" sclass="FDListBoxHeader1"
+							image="/images/icons/web.gif" sort="auto" width="240px"
+							label="${c:l('listheader_SecLoginlogList_CountryCode2.label')}" />
+						<listheader id="listheader_SecLoginlogList_lglSessionid" sclass="FDListBoxHeader1"
+							image="/images/icons/exdDataPerspective.gif" label="${c:l('listheader_SecLoginlogList_lglSessionid.label')}"
+							sort="auto" />
+					</listhead>
+				</listbox>
+
+			</center>
+
+			<south border="none" />
+
+		</borderlayout>
+	</window>
+
+</zk>
+<!-- url(${c:encodeURL('~./zul/img/button/bandbtn.gif')}) -->
+
+<!-- 
+	<style dynamic="true">
+	.mydatebox .z-datebox-img { background:
+	transparent
+	url(${c:encodeURL('/images/icons/datebox.png')})
+	no-repeat 0 0; border: 1px solid #C0C0C0 ;
+	vertical-align: top: cursor: pointer: width:
+	22px; height: 22px ;}
+	</style>
+-->

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+
+<!-- http://emrpms.blogspot.in/2012/11/zk-vertical-menu-css.html -->
+<!-- http://www.zkoss.org/forum/listComment/21043-Vertical-Menu-Look-and-Feel-ZK-is-Great-Enjoy  -->
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<style>
+		.z-groupbox-3d-cnt { border: 0px solid transparent; padding: 0px; background:url('../test/images/tab-mid.jpg')
+		repeat-y scroll 0 0 transparent; float: left; min-height: 401px;}
+
+		.z-toolbarbutton-cnt { background:url('../test/images/tab-nav.gif') repeat-y scroll 0 0 transparent; color:
+		#FFFFFF; float: left; font-size: 13px; font-family: arial, sans-serif; height: 20px; margin-right: 0; padding:
+		8px 0 5px 20px; position: relative; text-decoration: none; width: 187px; z-index: 1;}
+
+		.z-toolbarbutton { cursor: pointer; display: table-row-group;}
+
+		.z-toolbarbutton-over .z-toolbarbutton-cnt { background:url('../test/images/tab-hov.gif') no-repeat scroll 0 0
+		transparent; color: #FFFFFF; text-decoration: none; }
+
+		.tabtop { background:url('../test/images/tab-top.jpg') no-repeat scroll 0 0 transparent; float: left; height:
+		64px; width: 990px; }
+
+		tr.z-vbox-sep { height: 0; }
+
+	</style>
+
+	<window border="nonel" title="vertical menu" closable="true" mode="overlapped" style="background-color: white;">
+		<separator />
+		<vbox>
+			<div class="tabtop"></div>
+			<groupbox width="200px" mold="3d">
+				<vbox>
+					<toolbarbutton id="General" label="General" />
+					<toolbarbutton id="Domain" label="Domain" />
+					<toolbarbutton id="Support" label="Support" />
+					<toolbarbutton id="Payment" label="Payment" />
+				</vbox>
+			</groupbox>
+		</vbox>
+	</window>
+</zk>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?page title="event"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<zscript><![CDATA[
+	import java.util.Date;
+	import java.text.SimpleDateFormat;
+	import de.forsthaus.backend.model.SecLoginlog;
+	import de.forsthaus.backend.service.LoginLoggingService;
+	import org.zkoss.zkplus.spring.SpringUtil;
+	//fetch all allEvents from database
+	LoginLoggingService sv = (LoginLoggingService) SpringUtil.getBean("loginLoggingService");
+	List allEvents = sv.getAllLogs();
+]]></zscript>
+
+	<window>
+		<button label="${each}" forEach="apple, orange">
+			<zscript>
+	self.parent.appendChild(new Label("" + each));
+</zscript>
+		</button>
+	</window>
+
+
+	<listbox id="lbxEvents">
+		<listhead>
+			<listheader label="Title" width="200px" />
+			<listheader label="Date" width="100px" />
+		</listhead>
+		<listitem forEach="${allEvents}" value="${each}">
+			<listcell label="${each.lglIp}" />
+
+			<zscript >
+	String datestr = new SimpleDateFormat("yyyy/MM/dd").format(self.value.lglLogtime);
+</zscript>
+
+			<listcell label="${datestr}" />
+		</listitem>
+	</listbox>
+</zk>

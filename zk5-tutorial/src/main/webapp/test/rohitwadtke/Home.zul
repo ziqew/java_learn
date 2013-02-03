@@ -1,0 +1,523 @@
+<window id="home">
+	<hlayout>
+		<hbox>
+			<panel>
+				<panelchildren>
+					<image src="/Images/world.png" height="300px"
+						width="300px" />
+				</panelchildren>
+			</panel>
+
+
+			<panel>
+				<panelchildren>
+					<vbox height="300px" width="400px">
+						<space />
+						<hbox>
+							"
+							<label value="Reuse rather than Rebuild"
+								sclass="myStyle" />
+							"
+						</hbox>
+						<space />
+						Mission: To capture the collective knowledge and
+						practices among the organisation and publish
+						this knowledge widely
+						<space />
+						Asset Manager Dashboard
+						<label value="*Total number of assets = 2545" />
+						<label value="*Most reused asset = Oracle " />
+						<label value="*Maximum assets = MFG/DU5020" />
+
+
+					</vbox>
+				</panelchildren>
+			</panel>
+
+			<panel>
+				<panelchildren>
+					<vbox>
+
+						<hbox>
+							<tree height="300px">
+								<treecols>
+									<treecol label="Browse By" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Domain" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="SDLC" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="Process" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="Testing" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell
+												label="Technologies" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+
+								</treechildren>
+							</tree>
+						</hbox>
+					</vbox>
+
+				</panelchildren>
+			</panel>
+		</hbox>
+	</hlayout>
+
+	<hlayout>
+		<hbox>
+			<panel>
+				<panelchildren>
+					<image src="/Images/world.png" height="300px"
+						width="300px" />
+				</panelchildren>
+			</panel>
+
+
+			<panel>
+				<panelchildren>
+					<vbox height="300px" width="400px">
+						<space />
+						<hbox>
+							"
+							<label value="Reuse rather than Rebuild"
+								sclass="myStyle" />
+							"
+						</hbox>
+						<space />
+						Mission: To capture the collective knowledge and
+						practices among the organisation and publish
+						this knowledge widely
+						<space />
+						Asset Manager Dashboard
+						<label value="*Total number of assets = 2545" />
+						<label value="*Most reused asset = Oracle " />
+						<label value="*Maximum assets = MFG/DU5020" />
+
+
+					</vbox>
+				</panelchildren>
+			</panel>
+
+			<panel>
+				<panelchildren>
+					<vbox>
+
+						<hbox>
+							<tree height="300px">
+								<treecols>
+									<treecol label="Browse By" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Domain" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="SDLC" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="Process" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="Testing" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell
+												label="Technologies" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+
+								</treechildren>
+							</tree>
+						</hbox>
+					</vbox>
+
+				</panelchildren>
+			</panel>
+		</hbox>
+	</hlayout>
+
+	<hlayout>
+		<hbox>
+			<panel>
+				<panelchildren>
+					<image src="/Images/world.png" height="300px"
+						width="300px" />
+				</panelchildren>
+			</panel>
+
+
+			<panel>
+				<panelchildren>
+					<vbox height="300px" width="400px">
+						<space />
+						<hbox>
+							"
+							<label value="Reuse rather than Rebuild"
+								sclass="myStyle" />
+							"
+						</hbox>
+						<space />
+						Mission: To capture the collective knowledge and
+						practices among the organisation and publish
+						this knowledge widely
+						<space />
+						Asset Manager Dashboard
+						<label value="*Total number of assets = 2545" />
+						<label value="*Most reused asset = Oracle " />
+						<label value="*Maximum assets = MFG/DU5020" />
+
+
+					</vbox>
+				</panelchildren>
+			</panel>
+
+			<panel>
+				<panelchildren>
+					<vbox>
+
+						<hbox>
+							<tree height="300px">
+								<treecols>
+									<treecol label="Browse By" />
+								</treecols>
+								<treechildren>
+									<treeitem>
+										<treerow>
+											<treecell label="Domain" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="SDLC" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="Process" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell label="Testing" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+									<treeitem>
+										<treerow>
+											<treecell
+												label="Technologies" />
+										</treerow>
+										<treechildren>
+											<treeitem>
+												<treerow>
+													<treecell label="A" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="B" />
+												</treerow>
+											</treeitem>
+											<treeitem>
+												<treerow>
+													<treecell label="C" />
+												</treerow>
+											</treeitem>
+										</treechildren>
+									</treeitem>
+
+
+								</treechildren>
+							</tree>
+						</hbox>
+					</vbox>
+
+				</panelchildren>
+			</panel>
+		</hbox>
+	</hlayout>
+
+	<separator></separator>
+	<div align="center">
+
+	</div>
+
+</window>

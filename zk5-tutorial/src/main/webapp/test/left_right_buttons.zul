@@ -1,0 +1,17 @@
+<!-- http://www.zkoss.org/forum/listComment/15299 -->
+<zk>
+	<window width="300px" height="100px">
+
+		<div width="100%">
+			<hbox width="100%">
+				<div align="left">
+					<button label="back" />
+				</div>
+				<div align="right">
+					<button label="forth" />
+				</div>
+			</hbox>
+		</div>
+
+	</window>
+</zk>

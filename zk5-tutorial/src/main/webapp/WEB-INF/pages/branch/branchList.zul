@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Namespace dependent DataBinding Initiator.          -->
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./windowBranchList" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowBranchList" apply="${branchListCtrl}"
+		border="none" width="100%">
+
+		<borderlayout id="borderLayout_branchList">
+
+			<!-- PAGING COMPONENT -->
+			<north border="none" height="26px">
+				<paging id="pagingBranchList" />
+			</north>
+
+			<center border="none">
+
+				<!-- DATABINDED LISTBOX -->
+				<listbox id="listBoxBranch"
+					style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+					model="@{controller.branches}"
+					selectedItem="@{controller.selectedBranche}" vflex="true"
+					tooltiptext="${c:l('listbox.tooltiptext')}" width="100%"
+					height="100%" multiple="false">
+					<listhead sizable="true">
+						<listheader id="listheader_BranchText"
+							sclass="FDListBoxHeader1"
+							image="/images/icons/create_doc_16x16.gif"
+							label="${c:l('common.Description')}" sort="auto" width="100%" />
+					</listhead>
+
+					<listitem self="@{each='branche'}"
+						value="@{branche}"
+						forward="onDoubleClick=onDoubleClickedBranchItem">
+
+						<listcell label="@{branche.braBezeichnung}"
+							style="padding-left: 5px" />
+					</listitem>
+
+				</listbox>
+
+			</center>
+
+		</borderlayout>
+
+	</window>
+</zk>

@@ -1,0 +1,114 @@
+<?page id="indexPage" title=" ZKoss sample application" contentType="text/html;charset=UTF-8" cacheable="false" 
+	language="xul/html" zscriptLanguage="Java"?>
+
+<!-- 	
+	<?meta content="text/html; charset=UTF-8" 	pageEncoding="UTF-8"?>
+-->
+
+<?meta name="description" content="A bigger sample application for the ZKoss framework. Uses other frameworks like Spring, Spring-Security, Hibernate, JasperReports, Generic-Hibernate-DAO. Works with a H2 Database who is started and demo-data filled by applications deploy on a tomcat." ?>
+<?meta name="keywords" content="Zk Sample, zksample2, ZKoss, ZK, RIA, Ajax, Framework, Ajax framework, Java, JSF, Open Source, Web Development, Web, forsthaus, zk-web.de" ?>
+<?meta name="keywords" lang="de" content="Zk Beispiel, zksample2, ZKoss, RIA, ZK, Ajax, Framework, Ajax framekwork, Java, JSF, Open Source, Web Entwicklung, forsthaus, zk-web.de" ?>
+<?meta name="keywords" lang="en-us" content="Zk Sample, zksample2, ZKoss, ZK, RIA, Ajax, Framework, Ajax framework, Java, JSF, Open Source, Web Development, Web, forsthaus, zk-web.de" ?>
+<?meta name="keywords" lang="en" content="Zk Sample, zksample2, ZKoss, ZK, RIA, Ajax, Framework, Ajax framework, Java, JSF, Open Source, Web Development, Web, forsthaus, zk-web.de" ?>
+
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="startWindow" border="none" width="100%" height="100%" use="de.forsthaus.webui.InitApplicationCtrl">
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0 padding on right and left */
+			<!-- background image -->
+			background-image: url('/images/templates/test/Grey_T_R.jpg'); background-repeat:repeat-x; }
+
+			.z-loading { top: 50% !important; left: 45% !important; align: center; vertical-align: middle; }
+			.z-groupbox-hl, .z-groupbox-hr, .z-groupbox-hm { background-color: #000000 }
+
+			.zksample2-header { background:url('/images/ZKHeader_2x38.png') background-repeat: repeat-x; float: left;
+			height: 38px;width: 990px; }
+		</style>
+
+
+
+		<borderlayout width="100%" height="100%">
+			<north id="bl_north" border="none" style="background-color: #EBEBEB" vflex="1" hflex="1">
+
+				<div style="background-color: #EBEBEB; padding-top: 10px; padding-left: 10px">
+
+
+					<hbox align="stretch" pack="stretch" width="100%">
+
+
+						<cell width="50%" style="padding: 0px;" hflex="1">
+
+							<hbox hflex="1">
+								<vlayout>
+									<label width="100%" style="font-size: 18px"
+										value="ZK sample application.  ( NEW!!! Updated to ZK 5.0.11 )" />
+									<space height="10px" bar="false" />
+									<label width="100%" style="font-size: 12px" multiline="true"
+										value="Zksample2 is a demo application with full access to the source code. It shows the integration of the zk AJAX web framework with several common used frameworks for database access, middle ware, security and reporting. Read more after loggin in." />
+									<space height="10px" bar="false" />
+
+									<hbox>
+										<button id="btn_zkoss" style="border: 0px" image="/images/zkpowered_60x60.png"
+											href="http://www.zkoss.org" target="_blank" tooltiptext="Go to the zk framework site" />
+										<button style="border: 0px" width="88" height="31"
+											image="http://sourceforge.net/sflogo.php?group_id=297404" href="http://sourceforge.net/projects/zksample2/"
+											target="_blank" />
+										<!-- 
+											<image src="/images/icons/santa32a.gif" />
+										-->
+
+										<space width="20px" bar="false" />
+
+										<div style="background-color: #EBEBEB; padding: 10px">
+											<button id="btn_ii" label="Log in" image="/images/icons/properties.gif"
+												href="/pages/index.zul" tooltiptext="Go to the sample application" width="100px" />
+
+											<label value="admin/admin" />
+										</div>
+
+									</hbox>
+
+								</vlayout>
+							</hbox>
+
+						</cell>
+
+						<cell width="50%" style="padding: 0px;">
+
+							<panel height="231px">
+								<panelchildren style="background-color: #EBEBEB">
+
+									<include src="/slider.zul" />
+
+								</panelchildren>
+
+							</panel>
+
+						</cell>
+					</hbox>
+
+				</div>
+			</north>
+
+			<center id="bl_center" border="none" style="background-color: #EBEBEB" flex="true" />
+
+			<south id="bl_south" border="none" style="background-color: #EBEBEB" height="32px" />
+
+		</borderlayout>
+
+	</window>
+</zk>
+
+
+<!-- 
+	style="background-image:url(${c:encodeURL('/images/sample.jpg')}) "
+	style="background-image:url(${c:encodeURL('/images/sample.jpg')  }); border: 'none'; background-repeat:no-repeat; "
+-->

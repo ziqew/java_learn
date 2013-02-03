@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="window_customerDialog" title="${c:l('window_customerDialog.title')}" border="none"
+		apply="${customerDialogCtrl}" closable="true" width="800px" height="580px" sizable="true">
+
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start" style="float:left; border-style: none;">
+
+					<toolbarbutton id="btnHelp" image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center" style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px"></hbox>
+				</toolbar>
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end" style="float:right; border-style: none;">
+					<button id="btnNew" sclass="oT_ButtonWithIcon" />
+					<button id="btnEdit" sclass="oT_ButtonWithIcon" />
+					<button id="btnDelete" sclass="oT_ButtonWithIcon" />
+					<button id="btnSave" sclass="oT_ButtonWithIcon" />
+					<button id="btnCancel" sclass="oT_ButtonWithIcon" />
+					<button id="btnClose" sclass="oT_ButtonWithIcon" />
+				</toolbar>
+			</hbox>
+		</div>
+
+		<borderlayout id="borderlayoutCustomer">
+			<north border="none"></north>
+
+			<center border="none">
+				<div id="divCenterCustomer">
+
+					<tabbox id="tabBoxCustomer" width="100%">
+						<tabs>
+							<tab id="tabCustomerDialogAddress" label="${c:l('tabCustomerDialogAddress.label')}" />
+							<tab id="tabCustomerDialogChart" label="${c:l('tabCustomerDialogChart.label')}" />
+							<tab id="tabCustomerDialogOrders" label="${c:l('tabCustomerDialogOrders.label')}" />
+							<tab id="tabCustomerDialogMemos" label="${c:l('tabCustomerDialogMemos.label')}" />
+						</tabs>
+						<tabpanels>
+
+							<!-- Tab Address -->
+							<tabpanel id="tabPanelCustomerAddress" height="100%" style="border: 0px; padding: 0px">
+
+								<hbox align="stretch" pack="stretch" sclass="FDCenterNoBorder" width="100%"
+									style="padding: 3px;">
+
+									<!-- Left CONTENT AREA -->
+									<!-- simulates a columnLayout -->
+									<cell width="50%">
+										<vbox align="stretch" pack="stretch" width="100%" style="padding: 3px;">
+											<div>
+
+												<panel id="panel_CustomerDialog_Address" border="none">
+													<panelchildren>
+
+														<groupbox id="gb_address" mold="3d" closable="false">
+															<caption image="/images/icons/view.gif"
+																label="${c:l('panel_CustomerDialog_Address.title')}" />
+
+															<grid sclass="GridPlain">
+																<columns>
+																	<column align="right" width="150px" />
+																	<column width="100%" />
+																</columns>
+																<rows>
+																	<row>
+																		<hbox>
+																			<label
+																				value="${c:l('label_CustomerDialog_kunNr.value')}" />
+																			<label value="*"
+																				style="color:red;font-size:10px" />
+																		</hbox>
+
+																		<textbox id="kunNr" hflex="1" />
+																	</row>
+																	<row>
+																		<separator bar="true"></separator>
+																		<separator bar="true"></separator>
+																	</row>
+																	<row>
+																		<hbox>
+																			<label
+																				value="${c:l('label_CustomerDialog_kunMatchcode.value')}" />
+																			<label value="*"
+																				style="color:red;font-size:10px" />
+																		</hbox>
+
+																		<textbox id="kunMatchcode" hflex="1" />
+																	</row>
+																	<row>
+																		<separator bar="true"></separator>
+																		<separator bar="true"></separator>
+																	</row>
+																	<row>
+																		<hbox>
+																			<label
+																				value="${c:l('label_CustomerDialog_kunName1.value')}" />
+																			<label value="*"
+																				style="color:red;font-size:10px" />
+																		</hbox>
+
+																		<textbox id="kunName1" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_kunName2"
+																			value="${c:l('label_CustomerDialog_kunName2.value')}" />
+																		<textbox id="kunName2" hflex="1" />
+																	</row>
+																	<row>
+																		<hbox>
+																			<label
+																				value="${c:l('label_CustomerDialog_kunOrt.value')}" />
+																			<label value="*"
+																				style="color:red;font-size:10px" />
+																		</hbox>
+
+																		<textbox id="kunOrt" hflex="1" />
+																	</row>
+
+																	<row>
+																		<hbox>
+																			<label
+																				value="${c:l('label_CustomerDialog_kunBranche.value')}" />
+																			<label value="*"
+																				style="color:red;font-size:10px" />
+																		</hbox>
+
+																		<grid
+																			sclass="GridPlainOneTextboxAndButtonRow">
+																			<columns>
+																				<column width="100%" />
+																				<column align="right" width="100px" />
+																			</columns>
+																			<rows>
+
+																				<row>
+																					<textbox id="kunBranche" hflex="1" />
+
+																					<hbox>
+																						<space width="5px" />
+																						<button
+																							id="btnSearchBranchSimple" disabled="true" width="28px"
+																							image="/images/icons/btn_search2_16x16.gif"
+																							tooltiptext="${c:l('btnSimpleSearchListBoxBranch.tooltiptext')}" />
+																						<button
+																							id="btnSearchBranchAdvanced" disabled="true" width="28px"
+																							image="/images/icons/btn_search2_16x16.gif"
+																							tooltiptext="${c:l('btnAdvancedSearchListBoxBranch.tooltiptext')}" />
+																						<button
+																							id="btnSearchBranchExtended" disabled="true" width="28px"
+																							image="/images/icons/btn_search2_16x16.gif"
+																							tooltiptext="${c:l('btnExtendedSearchListBoxBranch.tooltiptext')}" />
+
+																					</hbox>
+																				</row>
+
+																			</rows>
+																		</grid>
+
+																	</row>
+																</rows>
+															</grid>
+														</groupbox>
+													</panelchildren>
+												</panel>
+												<panel id="panel_CustomerDialog_Addition" border="none">
+													<panelchildren>
+
+														<groupbox id="gb_Addition" mold="3d" closable="false">
+															<caption image="/images/icons/table.gif"
+																label="${c:l('panel_CustomerDialog_Addition.title')}" />
+
+															<grid sclass="GridPlain">
+																<columns>
+																	<column align="right" width="150px" />
+																	<column width="100%" />
+																</columns>
+																<rows>
+																	<row>
+																		<label id="label_CustomerDialog_kunMahnsperre"
+																			value="${c:l('label_CustomerDialog_kunMahnsperre.value')}" />
+																		<checkbox id="kunMahnsperre" />
+																	</row>
+																</rows>
+															</grid>
+														</groupbox>
+													</panelchildren>
+												</panel>
+												<panel id="panel_CustomerDialog_Phone" border="none">
+													<panelchildren>
+
+														<groupbox id="gb_Phone" mold="3d" closable="false">
+															<caption image="/images/icons/telephone_16x16.png"
+																label="${c:l('panel_CustomerDialog_Phone.title')}" />
+
+															<grid sclass="GridPlain">
+																<columns>
+																	<column align="right" width="150px" />
+																	<column width="100%" />
+																</columns>
+																<rows>
+																	<row>
+																		<label id="label_CustomerDialog_kunPhone1"
+																			value="${c:l('label_CustomerDialog_kunPhone1.value')}" />
+																		<textbox value="not used in example" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_kunPhone2"
+																			value="${c:l('label_CustomerDialog_kunPhone2.value')}" />
+																		<textbox value="not used in example" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_kunMobile"
+																			value="${c:l('label_CustomerDialog_kunMobile.value')}" />
+																		<textbox value="not used in example" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_kunFax1"
+																			value="${c:l('label_CustomerDialog_kunFax1.value')}" />
+																		<textbox value="not used in example" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_kunFax2"
+																			value="${c:l('label_CustomerDialog_kunFax2.value')}" />
+																		<textbox value="not used in example" hflex="1" />
+																	</row>
+																</rows>
+															</grid>
+														</groupbox>
+													</panelchildren>
+												</panel>
+
+											</div>
+										</vbox>
+									</cell>
+
+									<!-- Right AREA -->
+									<cell width="50%">
+										<vbox align="stretch" pack="stretch" width="100%" style="padding: 3px;">
+											<div>
+
+												<panel id=" panel_CustomerDialog_PayConditions " border="none">
+													<panelchildren>
+
+														<groupbox id="gb_PayConditions" mold="3d" closable="false">
+															<caption image="/images/icons/money_16x16.png"
+																label="${c:l('panel_CustomerDialog_PayConditions.title')}" />
+
+															<grid sclass="GridPlain">
+																<columns>
+																	<column align="right" width="150px" />
+																	<column width="100%" />
+																</columns>
+																<rows>
+																	<row>
+																		<label id="label_CustomerDialog_kunPayCondition"
+																			value="${c:l('label_CustomerDialog_kunPayCondition.value')}" />
+																		<listbox mold="select" rows="1" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_kunBonitaet"
+																			value="${c:l('label_CustomerDialog_kunBonitaet.value')}" />
+																		<intbox id="intbox_CustomerDialog_kunBonitaet"
+																			width="50px" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_AmountLastYear"
+																			value="${c:l('label_CustomerDialog_AmountLastYear.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																	<row>
+																		<label
+																			id="label_CustomerDialog_AmountCurrentYear"
+																			value="${c:l('label_CustomerDialog_AmountCurrentYear.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																	<row>
+																		<label
+																			id="label_CustomerDialog_AmountCurrentMonth"
+																			value="${c:l('label_CustomerDialog_AmountCurrentMonth.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																	<row>
+																		<label
+																			id="label_CustomerDialog_AmountLastInvoice"
+																			value="${c:l('label_CustomerDialog_AmountLastInvoice.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																</rows>
+															</grid>
+														</groupbox>
+													</panelchildren>
+												</panel>
+
+												<panel id="panel_CustomerDialog_Addition2" border="none">
+													<panelchildren>
+
+														<groupbox id="gb_Addition2" mold="3d" closable="false">
+															<caption image="/images/icons/text_signature_16x16.png"
+																label="${c:l('panel_CustomerDialog_Addition2.title')}" />
+
+															<grid sclass="GridPlain">
+																<columns>
+																	<column align="right" width="150px" />
+																	<column width="100%" />
+																</columns>
+																<rows>
+																	<row>
+																		<label id="label_CustomerDialog_Addition1"
+																			value="${c:l('label_CustomerDialog_Addition1.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_Addition2"
+																			value="${c:l('label_CustomerDialog_Addition2.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_Addition3"
+																			value="${c:l('label_CustomerDialog_Addition3.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_Addition4"
+																			value="${c:l('label_CustomerDialog_Addition4.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																	<row>
+																		<label id="label_CustomerDialog_Addition5"
+																			value="${c:l('label_CustomerDialog_Addition5.value')}" />
+																		<textbox value="not used at time" hflex="1" />
+																	</row>
+																</rows>
+															</grid>
+														</groupbox>
+													</panelchildren>
+												</panel>
+
+											</div>
+										</vbox>
+									</cell>
+								</hbox>
+
+							</tabpanel>
+
+							<tabpanel id="tabPanelCustomerDialogChart" height="100%"
+								style="border: 0px; padding: 0px">
+							</tabpanel>
+
+							<tabpanel id="tabPanelCustomerOrders" height="100%" style="border: 0px; padding: 0px" />
+
+							<tabpanel id="tabPanelCustomerMemos" height="100%" style="border: 0px; padding: 0px">
+								not used yet
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+
+				</div>
+			</center>
+
+		</borderlayout>
+
+
+	</window>
+</zk>
+
+<!-- 
+	Panel style="margin-bottom:5px"
+-->

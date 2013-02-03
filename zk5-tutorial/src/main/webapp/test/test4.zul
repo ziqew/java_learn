@@ -1,0 +1,173 @@
+<?page id="indexPage" title="Testseite" cacheable="false" 
+	language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+<?meta content="text/html; charset=UTF-8" 	pageEncoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+
+	<portallayout>
+		<portalchildren style="padding: 5px" width="50%">
+			<panel height="400px" title="Panel1" border="normal"
+				collapsible="true" closable="true" maximizable="true"
+				style="margin-bottom:10px">
+				<panelchildren>
+
+					<borderlayout height="380px">
+
+						<center border="0">
+							<listbox vflex="true">
+								<listhead sizable="true">
+									<listheader label="listheader" />
+								</listhead>
+								<listitem label="item1" />
+								<listitem label="item2" />
+								<listitem label="item3" />
+								<listitem label="item4" />
+								<listitem label="item5" />
+								<listitem label="item6" />
+								<listitem label="item7" />
+								<listitem label="item8" />
+								<listitem label="item9" />
+								<listitem label="item10" />
+								<listitem label="item1" />
+								<listitem label="item2" />
+								<listitem label="item3" />
+								<listitem label="item4" />
+								<listitem label="item5" />
+								<listitem label="item6" />
+								<listitem label="item7" />
+								<listitem label="item8" />
+								<listitem label="item9" />
+								<listitem label="item10" />
+							</listbox>
+						</center>
+					</borderlayout>
+
+				</panelchildren>
+			</panel>
+		</portalchildren>
+		<portalchildren style="padding: 5px" width="50%">
+
+
+			<panel height="400px" title="Panel2" border="normal"
+				collapsible="true" closable="true" maximizable="true"
+				style="margin-bottom:10px">
+				<panelchildren>
+
+
+					<listbox vflex="true">
+						<listhead sizable="true">
+							<listheader label="problem with scrolling"
+								width="50%" />
+							<listheader label="problem with scrolling"
+								width="50%" />
+						</listhead>
+						<listitem>
+							<listcell>
+								<panel title="test title 1"
+									style="max-height:250px ; max-width:250px;  overflow:auto ; position:relative ;">
+									<panelchildren>
+
+										<borderlayout height="200px"
+											width="100%">
+											<center id="Center"
+												flex="true">
+
+												<flash
+													src="http://www.zkoss.org/Steps/learn.swf" width="400"
+													height="350" />
+											</center>
+										</borderlayout>
+
+									</panelchildren>
+								</panel>
+
+							</listcell>
+
+							<listcell>
+
+								<panel title="test title 2">
+									<panelchildren>
+
+										<flash
+											src="http://www.zkoss.org/Steps/learn.swf" width="400"
+											height="350" />
+
+									</panelchildren>
+								</panel>
+
+							</listcell>
+
+						</listitem>
+					</listbox>
+
+
+				</panelchildren>
+			</panel>
+
+		</portalchildren>
+	</portallayout>
+
+
+	<window title="Menuitem With Text Only" border="normal">
+
+		<style>
+			.z-menu-popup-cnt .z-menu .z-menu-img
+			{background-position:center center; border:20px; height:16px;
+			margin-right:9px; padding:30px; vertical-align:left;
+			width:16px;}
+		</style>
+
+		<label value="Click on me" context="editPopup" />
+		<menupopup id="editPopup" >
+			<menuitem label="Message" image="/images/icons/index.gif" />
+			<menuseparator />
+			<menuitem label="Message 2" />
+			<menuitem label="Message item 3" />
+		</menupopup>
+	</window>
+
+</zk>
+
+<!-- 
+	image="/images/icons/index.gif"
+	border:10px; height:0px;
+	margin-right:0px; padding:0; vertical-align:top; width:0px;
+	
+	
+	<portalchildren style="padding: 5px" width="50%">
+	<panel height="200px" title="Panel1" border="normal"
+	collapsible="true" closable="true" maximizable="true"
+	style="margin-bottom:10px">
+	<panelchildren>
+	
+	<borderlayout height="300px" width="200px">
+	<center border="normal">
+	
+	<listbox height="100%" width="100%">
+	<listhead>
+	<listheader
+	label="problem with scrolling" width="100%" />
+	</listhead>
+	<listitem>
+	<listcell>
+	<flash
+	src="http://www.zkoss.org/Steps/learn.swf" width="400"
+	height="350" />
+	</listcell>
+	</listitem>
+	</listbox>
+	
+	</center>
+	</borderlayout>
+	
+	</panelchildren>
+	</panel>
+	</portalchildren>
+-->

@@ -1,0 +1,52 @@
+Ilsestrasse 5
+Haupstrasse 234
+Fritz-Werner-Ring 15
+Schlossallee 34
+Seefelder Strasse 45
+Seefelder Weg 33
+Schlossplatz 23
+Heinrich-Meier Str. 23
+Max-Weber-Platz 23
+Goethestr. 2
+Hauptstrasse 552
+Kaiser-Joseph-Sr. 13
+Bahnhofsplatz 4
+Hauptstrasse 1
+Hauptstrasse 34
+Hauptstrasse 624
+Belchenblick 65a
+Werderstrasse 34
+Werderstrasse 76
+Ufer Weg 13
+Am vorderen Ende 23a
+Am hinteren Ende 12
+Platz der Wünsche 35
+Roter Platz 345
+Lessingstrasse 87
+Nussbaumboden 23
+Luther Platz 2
+Am Maisfeld 52
+Werner-Siemens Ring 63
+Magdeburger Ring 263
+Weilertal Str. 72
+Bismackstrasse 23
+Bismarckallee 64
+Im Trübwinkel 23
+Königsplatz 21
+Winterthal 23
+Lessingstr. 71
+Theaterplatz 45
+Am vorderen Tore 82
+Ulmer Weg 2
+Konstanzer Str. 23
+Zum Uferblick 46
+Chausseestr. 66
+Elisenstr. 71
+Johanniter Weg 35
+Max-Unruh-Platz 63
+Semmelweisstr. 34
+Semmelschwarzstr. 73
+Schwarzwälder Weg 63
+Schwarzwaldstr. 81
+
+

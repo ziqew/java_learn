@@ -1,0 +1,79 @@
+<?page id="indexPage" title="Testseite" cacheable="false" 
+	language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+<?meta content="text/html; charset=UTF-8" 	pageEncoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="win" title="window 6" width="500px" height="300px"
+		closable="true">
+
+		<div>
+			<menubar>
+				<menu label="Menu 1">
+					<menupopup>
+						<menuitem label="New" />
+						<menuitem label="Close" />
+						<menu label="Open">
+							<menupopup>
+								<menuitem label="File" />
+								<menuitem label="Picture" />
+							</menupopup>
+						</menu>
+						<menuitem label="abbruch" />
+					</menupopup>
+				</menu>
+
+				<menu label="Menu 2">
+					<menupopup>
+						<menuitem label="khkjhk" />
+					</menupopup>
+
+				</menu>
+
+				<menu label="Menu 3"></menu>
+
+				<menuitem label="Menu 4"></menuitem>
+
+				<menuitem label="Menu 5"></menuitem>
+
+				<menuitem label="Menu 6"></menuitem>
+
+
+			</menubar>
+		</div>
+
+		<div>
+			<listbox id="listBoxId" vflex="true" width="99.5%"
+				height="100%" multiple="false">
+				<listhead sizable="true">
+					<listheader id="listheader_Branch_Description"
+						image="/images/icons/sequence.gif"
+						label="${c:l('listheader_Branch_Description.label')}" sort="auto"
+						width="70%" />
+					<listheader id="listheader_Branch_No"
+						image="/images/icons/builder.gif"
+						label="${c:l('listheader_Branch_No.label')}" sort="auto"
+						width="30%" />
+				</listhead>
+				<listitem label="item1" />
+				<listitem label="item2" />
+				<listitem label="item3" />
+				<listitem label="item4" />
+				<listitem label="item5" />
+				<listitem label="item6" />
+				<listitem label="item7" />
+			</listbox>
+
+			<paging id="pagingId" pageSize="5" totalSize="100"
+				detailed="true" />
+		</div>
+
+
+	</window>
+</zk>

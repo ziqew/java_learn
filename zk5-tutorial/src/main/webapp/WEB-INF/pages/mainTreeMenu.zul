@@ -1,0 +1,29 @@
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="mainMenuWindow" border="none" use="de.forsthaus.common.menu.MainMenuCtrl">
+
+		<style>.z-groupbox-body { background-color : white}</style>
+
+		<borderlayout height="100%" style="border: 0px;  background-color: #D6DCDE;">
+			<north height="100%" style="border: 0px;  background-color: #D6DCDE;" flex="true">
+
+
+				<panel border="normal" style="background-color: white; overflow:auto" height="100%">
+					<caption style="color: #000000; font-weight: bold;" label="${c:l('menuTitle')}" />
+					<panelchildren id="panelChildren_menu">
+
+					</panelchildren>
+				</panel>
+			</north>
+
+			<center style="border: 0px;  background-color: #D6DCDE;" />
+
+		</borderlayout>
+	</window>
+
+
+
+</zk>

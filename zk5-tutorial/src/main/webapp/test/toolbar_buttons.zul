@@ -1,0 +1,22 @@
+<zk>
+
+	<window border="none">
+
+		<groupbox mold="3d" closable="false">
+			<caption label="title" style="padding: 0px;">
+				<div style="padding: 0px">
+					<hbox pack="stretch" width="100%">
+						<toolbar id="toolbar" style="float:right; border-style: none;">
+
+							<button label="tt" />
+							<button label="dd" />
+
+						</toolbar>
+					</hbox>
+				</div>
+			</caption>
+		</groupbox>
+
+	</window>
+
+</zk>

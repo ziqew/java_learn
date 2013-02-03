@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="userListWindow" apply="${userListCtrl}" border="none"
+		width="100%">
+
+		<panel id="panel_UserList"
+			title="${c:l('panel_UserList.title')}" border="none" />
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					<toolbarbutton id="btnRefresh"
+						image="/images/icons/refresh2_yellow_16x16.gif"
+						tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+					<separator orient="vertical" />
+
+				</toolbar>
+
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox id="hbox_UserList_SearchUsers" align="center"
+						style="padding: 2px">
+						<space />
+						<checkbox id="checkbox_UserList_ShowAll"
+							label="${c:l('common.Show.All')}" />
+						<separator bar="true" orient="vertical" />
+
+						<label id="label_UserList_usrLoginname"
+							value="${c:l('label_UserList_usrLoginname.value')}" />
+						<textbox id="tb_SecUser_Loginname"
+							width="100px" />
+						<button id="button_UserList_SearchLoginname"
+							sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+							tooltiptext="${c:l('button_UserList_SearchLoginname.tooltiptext')}" />
+						<separator bar="true" orient="vertical" />
+
+						<label id="label_UserList_usrLastname"
+							value="${c:l('label_UserList_usrLastname.value')}" />
+						<textbox id="tb_SecUser_Lastname" width="100px" />
+						<button id="button_UserList_SearchLastname"
+							sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+							tooltiptext="${c:l('button_UserList_SearchLastname.tooltiptext')}" />
+						<separator bar="true" orient="vertical" />
+
+						<label id="label_UserList_usrEmail"
+							value="${c:l('label_UserList_usrEmail.value')}" />
+						<textbox id="tb_SecUser_Email" width="100px" />
+						<button id="button_UserList_SearchEmail"
+							sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+							tooltiptext="${c:l('button_UserList_SearchEmail.tooltiptext')}" />
+
+					</hbox>
+				</toolbar>
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					<button id="button_UserList_PrintUserList"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_print2_16x16.gif"
+						tooltiptext="${c:l('button_UserList_PrintUserList.tooltiptext')}" />
+					<button id="button_UserList_NewUser"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_new2_16x16.gif"
+						tooltiptext="${c:l('button_UserList_NewUser.tooltiptext')}" />
+				</toolbar>
+			</hbox>
+		</div>
+
+
+		<borderlayout id="borderLayout_secUserList">
+
+			<north border="none" height="26px">
+				<paging id="paging_UserList" />
+			</north>
+
+			<center border="none">
+
+				<listbox id="listBoxUser"
+					style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+					vflex="true" width="100%" height="100%"
+					tooltiptext="${c:l('listbox.tooltiptext')}" multiple="false">
+					<listhead sizable="true">
+						<listheader
+							id="listheader_UserList_usrLoginname" sclass="FDListBoxHeader1"
+							image="/images/icons/create_doc.gif" sort="auto" width="20%"
+							label="${c:l('common.Loginname')}" />
+						<listheader id="listheader_UserList_usrLastname"
+							sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+							sort="auto" width="15%" label="${c:l('common.Lastname')}" />
+						<listheader id="listheader_UserList_usrEmail"
+							sclass="FDListBoxHeader1" image="/images/icons/mail16x16.gif"
+							sort="auto" width="20%" label="${c:l('common.Email')}" />
+						<listheader id="listheader_UserList_usrEnabled"
+							sclass="FDListBoxHeader1">
+							<label id="label_lh_UserList_usrEnabled"
+								value="${c:l('label_lh_UserList_usrEnabled.value')}" width="85%"
+								sclass="word-wrap" multiline="true" />
+						</listheader>
+						<listheader
+							id="listheader_UserList_usrAccountnonexpired"
+							sclass="FDListBoxHeader1" sort="auto">
+							<label
+								id="label_lh_UserList_usrAccountnonexpired"
+								value="${c:l('label_lh_UserList_usrAccountnonexpired.value')}"
+								width="85%" sclass="word-wrap" multiline="true" />
+						</listheader>
+						<listheader
+							id="listheader_UserList_usrCredentialsnonexpired"
+							sclass="FDListBoxHeader1" sort="auto">
+							<label
+								id="label_lh_UserList_usrCredentialsnonexpired"
+								value="${c:l('label_lh_UserList_usrCredentialsnonexpired.value')}"
+								width="85%" sclass="word-wrap" multiline="true" />
+						</listheader>
+						<listheader
+							id="listheader_UserList_usrAccountnonlocked"
+							sclass="FDListBoxHeader1" sort="auto">
+							<label
+								id="label_lh_UserList_usrAccountnonlocked"
+								value="${c:l('label_lh_UserList_usrAccountnonlocked.value')}"
+								width="85%" sclass="word-wrap" multiline="true" />
+						</listheader>
+					</listhead>
+				</listbox>
+
+			</center>
+			<south border="none" />
+
+		</borderlayout>
+
+	</window>
+</zk>
+
+<!-- value="Account &#10;&#13; none&#10;&#13; expired" width="85%" -->

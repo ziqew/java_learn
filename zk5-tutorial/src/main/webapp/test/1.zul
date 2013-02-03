@@ -1,0 +1,23 @@
+<tabbox id="tb" height="300px">
+	<tabs id="tabs">
+		<tab id="A" label="Tab A" selected='true' />
+		<tab id="B" label="Tab B" onSelect='tabPanelC.getChildren().clear()' />
+		<tab id="C" label="Tab C" onSelect='tabPanelB.getChildren().clear()' />
+	</tabs>
+	<tabpanels>
+		<tabpanel>
+			<label id="labelA" />
+			<timer id="timerA" delay="3000" onTimer="labelA.setValue(new Date().toString())" />
+		</tabpanel>
+
+		<tabpanel id="tabPanelB" fulfill='B.onSelect'>
+			<label id="labelB" />
+			<timer id="timerB" delay="3000" onTimer="labelB.setValue(new Date().toString())" />
+		</tabpanel>
+
+		<tabpanel id="tabPanelC" fulfill='C.onSelect'>
+			<label id="labelC" />
+			<timer id="timerC" delay="3000" onTimer="labelC.setValue(new Date().toString())" />
+		</tabpanel>
+	</tabpanels>
+</tabbox>

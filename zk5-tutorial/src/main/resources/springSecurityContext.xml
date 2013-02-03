@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+	<!-- Spring namespace-based configuration -->
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	       http://www.springframework.org/schema/aop   
+		   http://www.springframework.org/schema/aop/spring-aop-3.0.xsd                        
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<!-- ====================================================== -->
+	<!--      For catching the @Secured annotation methods      -->
+	<!--                we use our own mechanism.               -->
+	<!--      Look in GFCBaseCtrl.java onEvent() method.        -->
+	<!-- ====================================================== -->
+
+	<!-- Enable the @Secured annotation to secure service layer methods -->
+	<global-method-security secured-annotations="enabled" />
+
+	<http auto-config="true">
+
+		<!-- ====================================================== -->
+		<!--       If we have our own LoginPage. So we must         -->
+		<!--         tell Spring the name and the place.            -->
+		<!--          In our case we take the same page             -->
+		<!--         for a error message by a failure.              -->
+		<!--      Further the page after a successfully login.      -->
+		<!-- ====================================================== -->
+		<form-login login-page="/zkloginDialog.zul"
+			authentication-failure-url="/zkloginDialog.zul?login_error=1"
+			default-target-url="/pages/index.zul" />
+
+		<!-- ====================================================== -->
+		<!--        Tell Spring where it goes after logout.         -->
+		<!--              logout-url is a action url.               -->
+		<!-- ====================================================== -->
+		<logout logout-url="/j_spring_logout" logout-success-url="/index.zul" />
+
+		<!-- ====================================================== -->
+		<!--      Define the pages that are to be intercepted       -->
+		<!--       It is parsed from top to bottom. Means that      -->
+		<!--      the most specific pattern is standing on TOP      -->
+		<!--            and the CATCH ALL is on BOTTOM!             -->
+		<!-- ====================================================== -->
+		<intercept-url pattern="/pages/**" access="IS_AUTHENTICATED_REMEMBERED" />
+		<intercept-url pattern="/WEB-INF/pages/**" access="IS_AUTHENTICATED_REMEMBERED" />
+
+		<!-- ====================================================== -->
+		<!--      The root page is accessible by everyone but       -->
+		<!--           internally spring makes a login and          -->
+		<!--            this user becames a UserDetails             -->
+		<!--       (in there are the ip-address and others)         -->
+		<!-- ====================================================== -->
+		<intercept-url pattern="/**" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+
+		<!-- ====================================================== -->
+		<!--                 Per user one session !!                -->
+		<!--               In DEMO mode we set it to 5              -->
+		<!-- ====================================================== -->
+		<!-- v2.x	<concurrent-session-control max-sessions="5" /> -->
+		<session-management>
+			<concurrency-control max-sessions="5" />
+		</session-management>
+
+	</http>
+
+	<!-- ====================================================== -->
+	<!--     We define the kind of authentification with a      -->
+	<!--           so called authentication-provider            -->
+	<!--        We use the DAO authenticationProvider.          -->
+	<!--     We coded out a custom UserDetailServiceImpl.       -->
+	<!--     So we have our users stored in a DB we use         -->
+	<!--     our own user-service class and point to her.       -->
+	<!-- ====================================================== -->
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="myUserDetailsService">
+			<!--  The password encoder is additonally for     -->
+			<!--   simulating  a one-time-password mechanism  -->
+			<password-encoder ref="passwordEncoder">
+				<salt-source user-property="token" />
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- ====================================================== -->
+	<!--           The Implementation of the Interface          -->
+	<!--           UserDetailService for the logged in          -->
+	<!--                    user and his rights                 -->
+	<!-- ====================================================== -->
+	<beans:bean id="myUserDetailsService" class="de.forsthaus.policy.model.PolicyManager">
+		<beans:property name="userService" ref="userService" />
+	</beans:bean>
+
+	<!-- ====================================================== -->
+	<!--          The Password Encoder who works in the         -->
+	<!--             one-time-password mechanism.               -->
+	<!-- ====================================================== -->
+	<beans:bean id="passwordEncoder" class="de.forsthaus.policy.PasswordEncoderImpl">
+	</beans:bean>
+
+	<!-- ====================================================== -->
+	<!--         Here, only for showing in the console          -->
+	<!--               that we can catches the events.          -->
+	<!-- ====================================================== -->
+	<!--	<zksp:zk-event login-template-close-delay="5">-->
+	<!--		<zksp:intercept-event path="//**/btn_*" event="onClick"-->
+	<!--			access="IS_AUTHENTICATED_REMEMBERED" />-->
+	<!--		<zksp:intercept-event path="/**" event="onClick"-->
+	<!--			access="IS_AUTHENTICATED_ANONYMOUSLY" />-->
+<!---->
+	<!--
+		<zksp:intercept-event path="//**/window_BranchesList/listBoxBranch"
+	-->
+	<!--			event="onClick" access="IS_AUTHENTICATED_ANONYMOUSLY" />-->
+	<!--
+		<zksp:intercept-event path="//**/window_BranchesList/listBoxBranch"
+	-->
+	<!--			event="onDoubleClick" access="IS_AUTHENTICATED_REMEMBERED" />-->
+	<!--	</zksp:zk-event>-->
+
+
+	<!-- ====================================================== -->
+	<!--       This ASPECT calls automatically the method       -->
+	<!--      'loginLogging' which is for writing a log for     -->
+	<!--        all successfully and failed logins, if a        -->
+	<!--         method is called that handles the              -->
+	<!--                     Authentication.                    -->
+	<!-- ====================================================== -->
+	<beans:bean id="LoginLoggingPolicyService"
+		class="de.forsthaus.policy.LoginLoggingPolicyService" scope="session">
+		<beans:property name="guiLoginLoggingPolicService" ref="guiLoginLoggingPolicService" />
+	</beans:bean>
+
+	<aop:config>
+		<aop:aspect id="LoginLoggingAspect" ref="LoginLoggingPolicyService">
+			<aop:pointcut id="authPointcut"
+				expression="execution(public org.springframework.security.core.Authentication org.springframework.security.authentication.AuthenticationProvider.authenticate(org.springframework.security.core.Authentication))" />
+			<aop:around pointcut-ref="authPointcut" method="loginLogging" />
+		</aop:aspect>
+	</aop:config>
+
+</beans:beans>
+
+

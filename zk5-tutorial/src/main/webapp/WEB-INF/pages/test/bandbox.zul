@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="orderListWindow"
+		use="de.forsthaus.webui.order.OrderListCtrl" border="none"
+		width="100%">
+
+
+		<bandbox id="bbox_Loginlog_DateSearch" sclass="mybandbox"
+			width="50px" tooltiptext="List logfile by date">
+			<bandpopup id="bpop_Loginlog_DateSearch" width="300px"
+				height="250px">
+				<panel title="search for dates" />
+
+				<vbox>
+					<hbox width="100%">
+
+						<grid fixedLayout="true" style="border:0px"
+							width="100%">
+							<columns>
+								<column width="100px" />
+								<column width="80px" />
+								<column width="80px" />
+								<column width="40px" />
+							</columns>
+							<rows>
+								<row>
+									<label id="lbl_LoginLog_DateFrom"
+										value="from date:" />
+									<textbox id="tb_LoginLog_DateFrom"
+										width="99%" />
+									<button id="bt_LoginLog_SearchDate"
+										tooltiptext="search list for date area"
+										image="/images/icons/search.gif" label="search" />
+									<button id="bt_LoginLog_SearchClose"
+										tooltiptext="close this window"
+										image="/images/icons/stop.gif" />
+								</row>
+								<row>
+									<label id="lbl_LoginLog_DateTo"
+										value="to date:" />
+									<textbox id="tb_LoginLog_DateTo"
+										width="99%" />
+								</row>
+
+							</rows>
+						</grid>
+
+					</hbox>
+				</vbox>
+			</bandpopup>
+		</bandbox>
+
+
+
+	</window>
+</zk>

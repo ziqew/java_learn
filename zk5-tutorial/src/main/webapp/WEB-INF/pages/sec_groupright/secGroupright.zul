@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="secGroupRightWindow" border="none"
+		apply="${secGrouprightCtrl}" width="100%" height="100%">
+
+		<panel id="panel_SecGroupRight"
+			title="${c:l('panel_SecGroupRight.title')}" border="none" />
+
+
+		<borderlayout id="borderlayoutSecGroupRight" height="100%">
+
+			<north border="none" margins="0,0,0,0">
+
+				<div sclass="z-toolbar" style="padding:0">
+					<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+						width="100%">
+
+						<!-- COMMON BUTTONS -->
+						<toolbar align="start"
+							style="float:left; border-style: none;">
+							<toolbarbutton id="btnHelp"
+								image="/images/icons/light_16x16.gif"
+								tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+							<toolbarbutton id="btnRefresh"
+								image="/images/icons/refresh2_yellow_16x16.gif"
+								tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+							<separator orient="vertical" />
+						</toolbar>
+
+						<!-- SEARCH AREA -->
+						<toolbar align="center"
+							style="float:left; border-style: none;">
+							<hbox align="center" style="padding: 2px">
+
+							</hbox>
+						</toolbar>
+
+						<!-- CRUD BUTTONS -->
+						<toolbar align="end"
+							style="float:right; border-style: none;">
+							<button id="btnSave"
+								sclass="oT_ButtonWithIcon"
+								image="/images/icons/btn_save2_16x16.gif"
+								tooltiptext="${c:l('btnSave.tooltiptext')}" />
+						</toolbar>
+					</hbox>
+				</div>
+			</north>
+
+			<center border="none">
+
+				<hbox align="stretch" pack="stretch" width="100%">
+
+					<cell width="30%">
+
+						<panel id="panel_SecGroupRight_Groups"
+							title="${c:l('panel_SecGroupRight_Groups.title')}"
+							style="margin-bottom:5px" border="none">
+							<panelchildren>
+
+								<borderlayout
+									id="borderLayout_Groups">
+									<center autoscroll="true"
+										border="none">
+										<div>
+
+											<paging
+												id="paging_ListBoxSecGroup" />
+											<listbox
+												id="listBoxSecGroup" multiple="false" hflex="1" vflex="1">
+												<listhead
+													sizable="true">
+													<listheader
+														id="listheader_SecGroupRight_grpShortdescription"
+														sclass="FDListBoxHeader1"
+														image="/images/icons/create_doc.gif" sort="auto"
+														width="100%"
+														label="${c:l('listheader_SecGroupRight_grpShortdescription.label')}" />
+												</listhead>
+											</listbox>
+										</div>
+									</center>
+								</borderlayout>
+
+							</panelchildren>
+						</panel>
+					</cell>
+
+					<cell width="70%">
+
+						<panel id="panel_SecGroupRight_GrantedRights"
+							style="margin-bottom:5px" border="none">
+							<panelchildren>
+
+								<tabbox
+									id="tabbox_SecGroupRight_Details" width="100%" height="100%">
+									<tabs>
+										<tab
+											id="tab_SecGroupRight_AllRights"
+											label="${c:l('tab_SecGroupRight_AllRights.label')}" />
+										<tab
+											id="tab_SecGroupRight_Details"
+											label="${c:l('tab_SecGroupRight_Details.label')}" />
+									</tabs>
+
+									<tabpanels>
+
+										<!-- Tab All -->
+										<tabpanel
+											style="border: 0px; padding: 0px">
+
+											<div sclass="z-toolbar"
+												style="padding:0">
+												<hbox pack="stretch"
+													sclass="hboxRemoveWhiteStrips" width="100%">
+
+													<!-- COMMON BUTTONS -->
+													<toolbar
+														align="start" style="float:left; border-style: none;">
+														<checkbox
+															id="checkbox_SecGroupRight_All" height="25px"
+															label="${c:l('checkbox_SecGroupRight_All.label')}" />
+														<checkbox
+															id="checkbox_SecGroupRight_Pages"
+															label="${c:l('checkbox_SecGroupRight_Pages.label')}" />
+														<checkbox
+															id="checkbox_SecGroupRight_Tabs"
+															label="${c:l('checkbox_SecGroupRight_Tabs.label')}" />
+														<checkbox
+															id="checkbox_SecGroupRight_MenuCat"
+															label="${c:l('checkbox_SecGroupRight_MenuCat.label')}" />
+														<checkbox
+															id="checkbox_SecGroupRight_MenuItems"
+															label="${c:l('checkbox_SecGroupRight_MenuItems.label')}" />
+														<checkbox
+															id="checkbox_SecGroupRight_Methods"
+															label="${c:l('checkbox_SecGroupRight_Methods.label')}" />
+														<checkbox
+															id="checkbox_SecGroupRight_Domain"
+															label="${c:l('checkbox_SecGroupRight_Domain.label')}" />
+														<checkbox
+															id="checkbox_SecGroupRight_Components"
+															label="${c:l('checkbox_SecGroupRight_Components.label')}" />
+
+													</toolbar>
+
+													<!-- SEARCH AREA -->
+													<toolbar
+														align="center" style="float:left; border-style: none;">
+														<hbox
+															align="center" style="padding: 2px">
+
+														</hbox>
+													</toolbar>
+
+													<!-- CRUD BUTTONS -->
+													<toolbar align="end"
+														style="float:right; border-style: none;">
+													</toolbar>
+												</hbox>
+											</div>
+
+											<borderlayout
+												id="borderLayout_Rights">
+												<center
+													autoscroll="true" border="none">
+													<div>
+														<paging
+															id="paging_ListBoxSecGroupRight" pageSize="15" />
+														<listbox
+															id="listBoxSecGroupRight" multiple="false" hflex="1"
+															vflex="1">
+															<listhead
+																sizable="true">
+																<listheader
+																	id="listheader_SecGroupRight_GrantedRight"
+																	sclass="FDListBoxHeader1"
+																	image="/images/icons/exdDialogAction1.gif" sort="none"
+																	width="20%"
+																	label="${c:l('listheader_SecGroupRight_GrantedRight.label')}" />
+																<listheader
+																	id="listheader_SecGroupRight_RightName"
+																	sclass="FDListBoxHeader1"
+																	image="/images/icons/create_doc.gif" sort="auto"
+																	width="60%"
+																	label="${c:l('listheader_SecGroupRight_RightName.label')}" />
+																<listheader
+																	id="listheader_SecGroupRight_Type"
+																	sclass="FDListBoxHeader1"
+																	image="/images/icons/exdDataPerspective.gif"
+																	sort="auto" width="20%"
+																	label="${c:l('listheader_SecGroupRight_Type.label')}" />
+															</listhead>
+														</listbox>
+													</div>
+												</center>
+											</borderlayout>
+
+										</tabpanel>
+
+										<!-- Tab Details -->
+										<tabpanel
+											style="border: 0px; padding: 0px">
+											<toolbar>
+												<button
+													id="button_GroupRight_NewGroupRight"
+													sclass="oT_ButtonWithIcon"
+													image="/images/icons/page_detail.gif"
+													tooltiptext="${c:l('button_GroupRight_NewGroupRight.tooltiptext')}" />
+												<space />
+												<space />
+											</toolbar>
+											<borderlayout
+												id="borderLayout_Rights_TabDetails">
+												<center
+													autoscroll="true" border="none">
+													<div>
+														<paging
+															id="paging_ListBoxSecGroupRight_Details" pageSize="15" />
+														<listbox
+															id="listBoxSecGroupRight_Details" multiple="false"
+															hflex="1" vflex="1">
+															<listhead
+																sizable="true">
+																<listheader
+																	id="listheader_SecGroupRight_Details_GrantedRight"
+																	sclass="FDListBoxHeader1"
+																	image="/images/icons/exdDialogAction1.gif" sort="none"
+																	width="20%"
+																	label="${c:l('listheader_SecGroupRight_GrantedRight.label')}" />
+																<listheader
+																	id="listheader_SecGroupRight_Details_RightName"
+																	sclass="FDListBoxHeader1"
+																	image="/images/icons/create_doc.gif" sort="auto"
+																	width="60%"
+																	label="${c:l('listheader_SecGroupRight_RightName.label')}" />
+																<listheader
+																	id="listheader_SecGroupRight_Details_Type"
+																	sclass="FDListBoxHeader1"
+																	image="/images/icons/exdDataPerspective.gif"
+																	sort="auto" width="20%"
+																	label="${c:l('listheader_SecGroupRight_Type.label')}" />
+															</listhead>
+														</listbox>
+													</div>
+												</center>
+											</borderlayout>
+
+										</tabpanel>
+
+
+									</tabpanels>
+								</tabbox>
+
+							</panelchildren>
+						</panel>
+
+					</cell>
+				</hbox>
+
+			</center>
+
+		</borderlayout>
+
+	</window>
+</zk>
+
+

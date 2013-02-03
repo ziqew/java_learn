@@ -1,0 +1,161 @@
+<?page id="indexPage" title="Testseite" cacheable="false" 
+	language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+<?meta content="text/html; charset=UTF-8" 	pageEncoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+<style dynamic="true">
+.myWin {
+background:blue;
+overflow:auto;
+}
+</style>
+
+<window id="win" title="Win" border="normal" width="900px" height="500px"
+ sclass="myWin" />
+
+	<window id="win2" title="window 1" width="600px" height="300px" >
+
+		<zscript>
+	void do1() {
+		alert("do1");
+	}
+	void do2() {
+		alert("do2");
+	}
+	void onClick_dtbData_scadenza(Datebox db) {
+		System.out.println("Click");
+
+	}
+	void onDrop_dtbData_iscrizione(Datebox db) {
+		System.out.println("Drop");
+	}
+</zscript>
+
+		<hbox>
+			<datebox id="dtbData_iscrizione"
+				onDrop="onDrop_dtbData_iscrizione(self)" draggable="true"
+				droppable="true" />
+			<datebox id="dtbData_scadenza" onClick="do2()"
+				onChange="do1()" />
+			<datebox id="dtbData_pagamento" />
+		</hbox>
+
+
+
+
+	</window>
+
+	<window title="window for dropping" width="200px" height="200px"
+		droppable="true">
+		<panel width="100%" height="100%" border="normal"
+			droppable="true">
+			<panelchildren droppable="true">
+
+				<label id="lblOrario" width="33%" />
+				<timer id="timer" delay="1000" repeats="true">
+					<attribute name="onTimer">
+	java.util.Calendar calendar1 = new GregorianCalendar();
+	String orario1;
+	int ore1 = calendar1.get(java.util.Calendar.HOUR);
+	int min1 = calendar1.get(java.util.Calendar.MINUTE);
+	int sec1 = calendar1.get(java.util.Calendar.SECOND);
+	int gg1 = calendar1.get(java.util.Calendar.DAY_OF_MONTH);
+	int mm1 = calendar1.get(java.util.Calendar.MONTH);
+	int aa1 = calendar1.get(java.util.Calendar.YEAR);
+	if (calendar1.get(java.util.Calendar.AM_PM) == 0)
+		orario1 = "A.M.";
+	else
+		orario1 = "P.M.";
+	lblOrario.setValue(gg1 + "/" + mm1 + "/" + aa1 + " " + ore1 + ":" + min1 + ":" + sec1 + " " + orario1);
+</attribute>
+				</timer>
+
+				<separator />
+
+
+				<label id="lbl2" width="33%" />
+				<timer id="timer2" delay="1000" repeats="true">
+					<attribute name="onTimer">
+	java.util.Calendar calendar = new GregorianCalendar();
+	String str_hour;
+	String str_minute;
+	String str_second;
+	String str_day;
+	String str_month;
+	int hour = calendar.get(java.util.Calendar.HOUR);
+	int min = calendar.get(java.util.Calendar.MINUTE);
+	int sec = calendar.get(java.util.Calendar.SECOND);
+	int day = calendar.get(java.util.Calendar.DAY_OF_MONTH);
+	int month = calendar.get(java.util.Calendar.MONTH);
+	int aa = calendar.get(java.util.Calendar.YEAR);
+	if (calendar.get(java.util.Calendar.AM_PM) == 1)
+		hour = 12 + hour;
+
+	if (String.valueOf(hour).length() == 1)
+		str_hour = "0" + hour;
+	else
+		str_hour = String.valueOf(hour);
+
+	if (String.valueOf(min).length() == 1)
+		str_minute = "0" + min;
+	else
+		str_minute = String.valueOf(min);
+
+	if (String.valueOf(sec).length() == 1)
+		str_second = "0" + sec;
+	else
+		str_second = String.valueOf(sec);
+
+	if (String.valueOf(day).length() == 1)
+		str_day = "0" + day;
+	else
+		str_day = String.valueOf(day);
+
+	if (String.valueOf(month).length() == 1)
+		str_month = "0" + month;
+	else
+		str_month = String.valueOf(month);
+
+	lbl2.setValue(str_day + "." + str_month + "." + aa + " | " + str_hour + ":" + str_minute + ":" + str_second + " ");
+</attribute>
+				</timer>
+
+
+			</panelchildren>
+		</panel>
+
+
+	</window>
+
+	<window border="normal" width="100px" style="overflow:visible"
+		contentStyle="overflow:visible">
+
+		<combobox width="80%">
+			<comboitem value="1" label="One" />
+			<comboitem value="2" label="Two" />
+			<comboitem value="3" label="Three" />
+		</combobox>
+		<div style="background-color: Orange">Test</div>
+
+	</window>
+
+	<window border="normal" width="200px" style="overflow:visible"
+		contentStyle="overflow:visible">
+
+		<combobox width="80%">
+			<comboitem value="1" label="One" />
+			<comboitem value="2" label="Two" />
+			<comboitem value="3" label="Three" />
+		</combobox>
+		<div style="background-color: Orange">Test</div>
+
+	</window>
+
+
+</zk>

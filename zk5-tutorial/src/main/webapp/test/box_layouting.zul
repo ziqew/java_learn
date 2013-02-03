@@ -1,0 +1,83 @@
+<?page title="Box Debug" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <window title="Box Layouting" border="normal"
+        apply="de.forsthaus.webui.testControllers.TestBoxLayoutingCtrl">
+        <caption>
+            <toolbarbutton label="Refresh"/>
+        </caption>
+        <hbox style="margin: 5px 5px 5px 5px;" align="center">
+            <label value="Align:" />
+            <listbox id="alignValue" mold="select" rows="1" width="100px"
+                forward="onSelect=onAssignLayout">
+                <listitem label="Null" value="null" selected="true" />
+                <listitem label="Start" value="start" />
+                <listitem label="Center" value="center" />
+                <listitem label="End" value="end" />
+                <listitem label="Stretch" value="stretch" />
+            </listbox>
+            <space />
+            <label value="Pack:" />
+            <listbox id="packValue" mold="select" rows="1" width="100px"
+                forward="onSelect=onAssignLayout">
+                <listitem label="Null" value="null" selected="true" />
+                <listitem label="Start" value="start" />
+                <listitem label="Center" value="center" />
+                <listitem label="End" value="end" />
+                <listitem label="Stretch" value="stretch" />
+            </listbox>
+            <space />
+            <label value="V-Flex:" />
+            <listbox id="vflexValue" mold="select" rows="1" width="100px"
+                forward="onSelect=onAssignLayout">
+                <listitem label="False" value="false" selected="true" />
+                <listitem label="True" value="start" />
+            </listbox>
+            <space />
+            <label value="H-Flex:" />
+            <listbox id="hflexValue" mold="select" rows="1" width="100px"
+                forward="onSelect=onAssignLayout">
+                <listitem label="False" value="false" selected="true" />
+                <listitem label="True" value="start" />
+            </listbox>
+            <space />
+            <button label="100% Width" forward="onClick=onFullPercentWidth" />
+            <button label="100% Height" forward="onClick=onFullPercentHeight" />
+            <button label="Reset Width &amp; Height"
+                forward="onClick=onResetWidthAndHeight" />
+        </hbox>
+        <groupbox>
+            <caption label="Children Options" />
+            <button label="Reset" forward="onClick=onClearChildren" />
+            <space />
+            <button label="Label" forward="onClick=onAddLabelChild" />
+            <button label="Textbox" forward="onClick=onAddTextboxChild" />
+            <button label="Button" forward="onClick=onAddButtonChild" />
+            <button label="Box" forward="onClick=onAddBoxChild" />
+            <button label="Window" forward="onClick=onAddWindowChild" />
+        </groupbox>
+        <hbox width="100%">
+            <cell width="50%" height="500px">
+                <groupbox mold="3d" width="100%" height="500px">
+                    <caption label="V-Box">
+                        <toolbarbutton label="Refresh"
+                            forward="onClick=onVboxRefresh" />
+                    </caption>
+                    <vbox id="vbox" width="100%" height="100%" align="start"
+                        pack="start"
+                        style="padding: 10px 10px 10px 10px; border: 1px solid grey" />
+                </groupbox>
+            </cell>
+            <cell width="50%" height="500px">
+                <groupbox mold="3d" width="100%" height="500px">
+                    <caption label="H-Box">
+                        <toolbarbutton label="Refresh"
+                            forward="onClick=onHboxRefresh" />
+                    </caption>
+                    <hbox id="hbox" width="100%" height="100%" align="start"
+                        pack="start"
+                        style="padding: 10px 10px 10px 10px; border: 1px solid grey" />
+                </groupbox>
+            </cell>
+        </hbox>
+    </window>
+</zk>

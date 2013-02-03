@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="customerSearchWindow"
+		title="${c:l('customerSearchWindow.title')}" border="none"
+		apply="${customerSearchCtrl}" closable="true" width="400px"
+		height="284px" sizable="true">
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0
+			padding on right and left */ }
+		</style>
+
+		<borderlayout>
+			<north></north>
+			<center flex="true">
+
+				<panel>
+					<panelchildren style="padding: 5px">
+						<grid sclass="GridLayoutNoBorder"
+							fixedLayout="true"
+							style="border:0px; padding-left:5px; padding-right:5px;">
+							<columns>
+								<column width="130px" />
+								<column width="50px" />
+								<column width="100%" />
+							</columns>
+							<rows>
+								<row>
+									<label
+										id="label_CustomerSearch_kunNr"
+										value="${c:l('label_CustomerSearch_kunNr.value')}" />
+									<listbox id="sortOperator_kunNr"
+										width="43px" mold="select" rows="1" />
+									<textbox id="kunNr" width="150px" />
+								</row>
+								<row>
+									<separator bar="true"></separator>
+									<separator bar="true"></separator>
+								</row>
+								<row>
+									<label
+										id="label_CustomerSearch_kunMatchcode"
+										value="${c:l('label_CustomerSearch_kunMatchcode.value')}" />
+									<listbox
+										id="sortOperator_kunMatchcode" width="43px" mold="select"
+										rows="1" />
+									<textbox id="kunMatchcode"
+										width="150px" />
+								</row>
+								<row>
+									<separator bar="true"></separator>
+									<separator bar="true"></separator>
+								</row>
+								<row>
+									<label
+										id="label_CustomerSearch_kunName1"
+										value="${c:l('label_CustomerSearch_kunName1.value')}" />
+									<listbox id="sortOperator_kunName1"
+										width="43px" mold="select" rows="1" />
+									<textbox id="kunName1" width="99%" />
+								</row>
+								<row>
+									<label
+										id="label_CustomerSearch_kunName2"
+										value="${c:l('label_CustomerSearch_kunName2.value')}" />
+									<listbox id="sortOperator_kunName2"
+										width="43px" mold="select" rows="1" />
+									<textbox id="kunName2" width="99%" />
+								</row>
+								<row>
+									<label
+										id="label_CustomerSearch_kunOrt"
+										value="${c:l('label_CustomerSearch_kunOrt.value')}" />
+									<listbox id="sortOperator_kunOrt"
+										width="43px" mold="select" rows="1" />
+									<textbox id="kunOrt" width="99%" />
+								</row>
+								<row>
+									<label
+										id="label_CustomerSearch_kunBranche"
+										value="${c:l('label_CustomerSearch_kunBranche.value')}" />
+									<listbox id="sortOperator_kunBranch"
+										width="43px" mold="select" rows="1" />
+									<listbox id="kunBranche"
+										width="100%" mold="select" rows="1" />
+								</row>
+							</rows>
+						</grid>
+					</panelchildren>
+				</panel>
+			</center>
+
+			<south border="none" margins="1,0,0,0" size="30px"
+				splittable="false">
+				<div id="divSouthCustomer" align="left" width="100%">
+					<grid>
+						<rows>
+							<row valign="middle">
+								<hbox align="start">
+									<button id="btnSearch" height="20"
+										label="${c:l('btnSearch.label')}"
+										tooltiptext="${c:l('btnSearch.tooltiptext')}" />
+									<button id="btnClose" height="20"
+										label="${c:l('btnClose.label')}"
+										tooltiptext="${c:l('btnClose.tooltiptext')}" />
+									<label
+										id="labelCustomerSearchResult" />
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</div>
+			</south>
+
+		</borderlayout>
+	</window>
+</zk>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+	<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+	<window
+		title="Error ${requestScope['javax.servlet.error.status_code']}"
+		width="450px" border="normal" mode="modal">
+		<vbox>
+			<separator />
+			<separator />
+
+			<div sclass="z-messagebox" width="100%">
+				<label multiline="true"
+					value="${requestScope['javax.servlet.error.message']}"
+					sclass="word-wrap" width="100%" />
+			</div>
+
+			<separator />
+			<hbox style="margin-left:auto; margin-right:auto">
+				<button label="Continue" onClick="spaceOwner.detach()" />
+				<button label="Reload"
+					onClick="Executions.sendRedirect(null)" />
+			</hbox>
+		</vbox>
+
+		<!-- optional: record the error for improving the app -->
+		<zscript>
+	org.zkoss.util.logging.Log.lookup("Fatal").error(
+			requestScope.get("javax.servlet.error.exception"));
+</zscript>
+	</window>
+
+</zk>

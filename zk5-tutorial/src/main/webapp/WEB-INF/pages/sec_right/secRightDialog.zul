@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="secRightDialogWindow"
+		title="${c:l('secRightDialogWindow.title')}" border="none"
+		apply="${secRightDialogCtrl}" closable="true" width="470px"
+		height="155px">
+
+		<borderlayout id="borderlayoutSecRight">
+
+			<north border="none" margins="0,0,0,0">
+
+				<div sclass="z-toolbar" style="padding:0">
+					<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+						width="100%">
+
+						<!-- COMMON BUTTONS -->
+						<toolbar align="start"
+							style="float:left; border-style: none;">
+							<toolbarbutton id="btnHelp"
+								image="/images/icons/light_16x16.gif"
+								tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+						</toolbar>
+
+						<!-- SEARCH AREA -->
+						<toolbar align="center"
+							style="float:left; border-style: none;">
+							<hbox align="center" style="padding: 2px">
+
+							</hbox>
+						</toolbar>
+
+						<!-- CRUD BUTTONS -->
+						<toolbar align="end"
+							style="float:right; border-style: none;">
+							<button id="btnNew"
+								sclass="oT_ButtonWithIcon" />
+							<button id="btnEdit"
+								sclass="oT_ButtonWithIcon" />
+							<button id="btnDelete"
+								sclass="oT_ButtonWithIcon" />
+							<button id="btnSave"
+								sclass="oT_ButtonWithIcon" />
+							<button id="btnCancel"
+								sclass="oT_ButtonWithIcon" />
+							<button id="btnClose"
+								sclass="oT_ButtonWithIcon" />
+						</toolbar>
+					</hbox>
+				</div>
+
+			</north>
+
+			<center border="none" margins="0,0,0,0">
+				<div id="divCenterSecRight">
+					<vlayout>
+
+						<space height="3px" />
+
+						<grid sclass="GridPlain">
+							<columns>
+								<column align="right" width="130px" />
+								<column width="100%" />
+							</columns>
+							<rows>
+								<row>
+									<hbox>
+										<label
+											value="${c:l('label_SecRightDialog_rigName.value')}" />
+										<label value="*"
+											style="color:red;font-size:10px" />
+									</hbox>
+
+									<textbox id="rigName" hflex="1" />
+								</row>
+								<row>
+									<separator bar="true"></separator>
+									<separator bar="true"></separator>
+								</row>
+								<row>
+									<label
+										value="${c:l('label_SecRightDialog_rigType.value')}" />
+									<listbox id="rigType" mold="select"
+										rows="1" hflex="1" />
+								</row>
+
+							</rows>
+						</grid>
+
+					</vlayout>
+				</div>
+			</center>
+
+		</borderlayout>
+
+
+	</window>
+</zk>
+
+

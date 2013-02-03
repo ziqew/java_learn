@@ -1,0 +1,65 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winTest" ?>
+
+<window id="winTest">
+
+	<zscript><![CDATA[
+	//prepare the example person object
+	class Person {
+		private String firstName;
+		private String lastName;
+		private String fullName;
+
+		public Person() {
+		}
+
+		public void setFirstName(String firstName) {
+			firstName = firstName;
+		}
+
+		public String getFirstName() {
+			return firstName;
+		}
+
+		public void setLastName(String lastName) {
+			lastName = lastName;
+		}
+
+		public String getLastName() {
+			return lastName;
+		}
+
+		public void setFullName(String fullName) {
+			fullName = fullName;
+		}
+
+		public String getFullName() {
+			return fullName;
+		}
+	}
+	Person person = new Person();
+	person.setFirstName("Tom");
+	person.setLastName("Hanks");
+	person.setFullName("Tom Hanks");
+	alert("hallo: " + person.getFullName());
+]]>
+</zscript>
+
+	<grid width="400px">
+		<rows>
+			<row>
+				First Name:
+				<textbox value="@{person.firstName}" />
+			</row>
+			<row>
+				Last Name:
+				<textbox value="@{person.lastName}" />
+			</row>
+			<row>
+				Full Name:
+				<label value="@{person.fullName}" />
+			</row>
+		</rows>
+	</grid>
+
+	<button label="Set Name" onClick="doCreatePerson()" />
+</window>

@@ -1,0 +1,46 @@
+<zk>
+	<listbox width="500px">
+		<listhead>
+			<listheader label="Operation" width="200px" />
+			<listheader label="Contants" sort="auto" />
+		</listhead>
+		<listitem tooltip="msg1">
+			<listcell label=" Mouse hover - tooltip " />
+			<listcell>
+				<hbox>
+					<vbox>
+						<label
+							value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas quis porttitor purus." />
+					</vbox>
+				</hbox>
+			</listcell>
+		</listitem>
+		<listitem popup="msg2">
+			<listcell label="Click - popup" />
+			<listcell>
+				<hbox>
+					<vbox>
+						<label
+							value="Quisque accumsan dignissim iaculis. Curabitur semper metus sit amet elit pulvinar malesuada. Etiam ac enim leo." />
+					</vbox>
+				</hbox>
+			</listcell>
+		</listitem>
+	</listbox>
+	<popup id="msg1" width="300px">
+		<vbox>
+			<label value="Popup message #1" style="font-weight:bold;" />
+			<toolbarbutton label="Instructions, etc..." />
+			<image src="http://www.zkoss.org/zkdemo/img/msn1.gif" />
+			<button label="close" onClick="msg1.close();" />
+		</vbox>
+	</popup>
+	<popup id="msg2" width="300px">
+		<vbox>
+			<label value="Popup message #2" style="font-weight:bold;" />
+			<toolbarbutton label="Instructions, etc..." />
+			<image src="http://www.zkoss.org/zkdemo/img/msn1.gif" />
+			<button label="close" onClick="msg2.close();" />
+		</vbox>
+	</popup>
+</zk>

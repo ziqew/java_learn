@@ -1,0 +1,77 @@
+<?page id="loginZul" title="LOGIN"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<style>
+		.z-window-embedded-header { color:white; font-size:50px} body {
+		padding: 0 0; /* 0 padding on top and bottom and 0 padding on
+		right and left */ background-color:#EBEBEB; } .z-groupbox-hl,
+		.z-groupbox-header {color: #000000; font-weight: bold; }
+		.z-window-overlapped-cnt, .z-window-overlapped-hm,
+		.z-window-overlapped-cnt-noborder { background-image:none;
+		background-color:#EBEBEB; }
+	</style>
+
+	<window id="winCbos" title="CBOS" style="text-align:center;"
+		width="100%" border="normal">
+
+		<panel style="background-color: #EBEBEB">
+			<panelchildren>lkhjkhhhuih</panelchildren>
+		</panel>
+	</window>
+
+	<window title="" width="350px" border="none" mode="modal">
+		<panel title="" border="none">
+			<panelchildren style="background-color: #FFFFFF">
+
+				<groupbox mold="3d">
+					<caption label="Login" style="font-weight: bold;">
+						<button id="button_ZKLoginDialog_Close"
+							image="/images/icons/stop.gif"
+							tooltiptext="${c:l('button_ZKLoginDialog_Close.tooltiptext')}" />
+					</caption>
+
+					<grid fixedLayout="true" style="border:0px">
+						<columns>
+							<column width="40%" />
+							<column width="60%" />
+						</columns>
+						<rows>
+
+							<row>
+								<label id="label_ZKLoginDialog_user"
+									value="${c:l('label_ZKLoginDialog_user.value')}" />
+								<textbox id="u" name="j_username"
+									width="99%" />
+							</row>
+							<row>
+								<label id="label_ZKLoginDialog_pwd"
+									value="${c:l('label_ZKLoginDialog_pwd.value')}" />
+								<textbox id="p" type="password"
+									name="j_password" width="99%" />
+							</row>
+
+							<row spans="2">
+								<hbox>
+									<h:input type="submit"
+										value="Login" />
+									<h:input type="reset" value="Reset" />
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+
+
+
+				</groupbox>
+			</panelchildren>
+		</panel>
+	</window>
+
+</zk>

@@ -1,0 +1,15 @@
+<!-- ============================================  -->
+<!-- http://www.zkoss.org/forum/listComment/16754  -->
+<!-- ============================================  -->
+<?page title="html test"?>
+<zk>
+	<window id="htmlWindow" apply="de.forsthaus.example.HtmlTest"
+		title="html test" border="normal" width="600px" height="500px">
+		<vlayout>
+			<separator height="40px" />
+
+			<div id="div" />
+
+		</vlayout>
+	</window>
+</zk>

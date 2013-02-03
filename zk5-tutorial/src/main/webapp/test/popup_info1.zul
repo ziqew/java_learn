@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<style>
+		.FDCenterNoBorder { border: none; background-color: #D6DCDE; }
+		.outerGroupBox .z-groupbox-cnt {padding: 0px;}
+
+		.GridPlain tr.z-row td.z-row-inner,.GridPlain tr.z-row
+		.z-cell,div.z-grid.GridPlain,.GridPlain tr.z-grid-odd
+		td.z-row-inner,.GridPlain tr.z-grid-odd .z-cell,.GridPlain
+		tr.z-grid-odd,.GridPlain tr.z-row-over>td.z-row-inner { border:
+		none; overflow: hidden; zoom: 1; background: white none repeat
+		scroll 0 0; border-top: none; border-top-style: none;
+		border-top-width: 0px; padding-top: 1px; padding-left: 1px;
+		padding-right: 1px; padding-bottom: 1px; border-left: none;
+		border-right: none; border-bottom: none; border-bottom-style:
+		none; border-bottom-width: 0px; }
+	</style>
+
+	<window id="popUpWin" border="none" width="630px" height="180px">
+
+		<groupbox mold="3d" closable="false" sclass="outerGroupBox"
+			contentStyle="background-color : white">
+			<caption label="Interrogation Details"
+				style="font-weight: normal;">
+				<div align="left" height="15px">
+					<label value="click for more details..."
+						style="color: red;">
+					</label>
+				</div>
+				<button id="btn_Close" image="/images/icons/stop.gif"
+					onClick="popUpWin.onClose()" tooltiptext="Close me" />
+			</caption>
+
+			<hbox align="stretch" pack="stretch"
+				sclass="FDCenterNoBorder" width="100%">
+
+				<!-- Left CONTENT AREA -->
+				<cell width="210px">
+					<div>
+
+						<groupbox mold="3d" closable="false"
+							contentStyle="background-color: white;" height="128px">
+							<caption image="/images/icons/view.gif"
+								label="User" />
+
+							<grid sclass="GridPlain" fixedLayout="true"
+								style="border:0px; padding-left:2px; padding-right:2px;">
+								<columns>
+									<column width="50%" />
+									<column width="50%" />
+								</columns>
+								<rows>
+									<row>
+										<label id="lbl_1"
+											value="User ID:" />
+										<div align="right">
+											<label id="txtb_1"
+												value="109.112.17..." style=" color: red;" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_2"
+											value="Country:" />
+										<div align="right">
+											<label id="txtb_2"
+												value="Hong Kong Sar" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_3" value="City:" />
+										<div align="right">
+											<label id="txtb_3"
+												value="Hong Kong" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_4"
+											value="Unique codes:" />
+										<div align="right">
+											<label id="txtb_4"
+												value="2" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_5"
+											value="Marked codes:" />
+										<div align="right">
+											<label id="txtb_5"
+												value="0" />
+										</div>
+									</row>
+
+								</rows>
+							</grid>
+						</groupbox>
+
+					</div>
+				</cell>
+
+				<!-- Center CONTENT AREA -->
+				<cell width="210px">
+					<div>
+
+
+						<groupbox mold="3d" closable="false"
+							contentStyle="background-color: white;" height="128px">
+							<caption image="/images/icons/view.gif"
+								label="Product" />
+
+							<grid sclass="GridPlain" fixedLayout="true"
+								style="border:0px; padding-left:2px; padding-right:2px;">
+								<columns>
+									<column width="50%" />
+									<column width="50%" />
+								</columns>
+								<rows>
+									<row>
+										<label id="lbl_10"
+											value="Brand:" />
+										<div align="right">
+											<label id="txtb_10"
+												value="Moncler" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_11"
+											value="Collection:" />
+										<div align="right">
+											<label id="txtb_11"
+												value="-" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_12"
+											value="Name:" />
+										<div align="right">
+											<label id="txtb_12"
+												value="-" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_13"
+											value="Model/EAN:" />
+										<div align="right">
+											<label id="txtb_13"
+												value="-" />
+										</div>
+									</row>
+									<row>
+										<space />
+										<space />
+									</row>
+
+								</rows>
+							</grid>
+						</groupbox>
+
+					</div>
+				</cell>
+
+				<!-- Right CONTENT AREA -->
+				<cell width="210px">
+					<div>
+
+
+						<groupbox mold="3d" closable="false"
+							contentStyle="background-color: white;" height="128px">
+							<caption image="/images/icons/view.gif"
+								label="Code" />
+
+							<grid sclass="GridPlain" fixedLayout="true"
+								style="border:0px; padding-left:5px; padding-right:5px;">
+								<columns>
+									<column width="50%" />
+									<column width="50%" />
+								</columns>
+								<rows>
+									<row>
+										<label id="lbl_20"
+											value="CLG Code:" />
+										<div align="right">
+											<label id="txtb_20"
+												value="-" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_21"
+											value="Code Status:" />
+										<div align="right">
+											<label id="txtb_21"
+												value="Hong Kong Sar" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_22"
+											value="Interrogs.:" />
+										<div align="right">
+											<label id="txtb_22"
+												value="0" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_23"
+											value="Seller auth.?:" />
+										<div align="right">
+											<label id="txtb_23"
+												value="No" />
+										</div>
+									</row>
+									<row>
+										<label id="lbl_24"
+											value="First interrog.:" />
+										<div align="right">
+											<label id="txtb_24"
+												value="-" />
+										</div>
+									</row>
+
+								</rows>
+							</grid>
+						</groupbox>
+
+
+					</div>
+				</cell>
+
+			</hbox>
+
+		</groupbox>
+
+	</window>
+</zk>
+
+

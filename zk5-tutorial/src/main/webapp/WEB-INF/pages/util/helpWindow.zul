@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="helpWindow" apply="${helpWindowCtrl}" width="600px" height="500px" position="right,top">
+
+		<style>
+			.z-window-modal-cnt, .z-window-highlighted-cnt, .z-window-modal-cnt-noborder,
+			.z-window-highlighted-cnt-noborder, .z-window-overlapped-cnt-noborder { padding: 0px; }
+		</style>
+
+		<borderlayout id="borderlayoutHelp" height="500px">
+			<north id="borderlayoutHelpNorth" border="none" height="26px" splittable="false">
+
+				<div id="div1"
+					style="background-color: silver; background-image:url(${c:encodeURL('/images/ZKHeader_1x26.png')});  background-repeat:repeat-x; border: 'none';">
+
+
+					<hbox pack="stretch" width="100%">
+
+						<div
+							style="background-color:silver; background-image:url(${c:encodeURL('/images/ZKHeader_1x26.png')});  background-repeat:repeat-x; float:left; border: 'none'; padding-left: 5px; padding-bottom: 7px;"
+							align="left">
+							<label value="Help" style="font-size:20px; font-weight:bold; color: white" />
+						</div>
+
+						<div align="right" style="float: right">
+
+							<vbox>
+								<div align="right" style="float: right; padding: 1px;">
+									<button id="btnHelpClose" height="24px" image="/images/icons/stop.gif"
+										tooltiptext="${c:l('common.Close.Window')}" forward="onClick=onClose" />
+								</div>
+							</vbox>
+						</div>
+					</hbox>
+
+				</div>
+			</north>
+
+			<center border="none" flex="true">
+
+				<div id="divHelpCenter" style="background-color: #E1E1E1; padding: 3px;" width="100%" height="100%">
+
+					<!-- 
+						<separator style="background-color: #E1E1E1;"
+						orient="horizontal" />
+					-->
+
+					<hbox align="stretch" pack="stretch" sclass="FDCenterNoBorder" width="100%">
+
+						<!-- Left CONTENT AREA -->
+						<!-- simulates a columnLayout -->
+						<cell width="30%">
+							<vbox align="stretch" pack="stretch" width="100%">
+								<div>
+
+									<panel height="100%" style="padding-left: 3px;">
+										<panelchildren>
+											<borderlayout height="474px">
+												<center border="none" flex="true">
+													<iframe id="helpMenuIframe" width="100%" height="98%">
+
+													</iframe>
+												</center>
+											</borderlayout>
+										</panelchildren>
+									</panel>
+
+								</div>
+							</vbox>
+						</cell>
+
+						<!-- Right CONTENT AREA -->
+						<!-- simulates a columnLayout -->
+						<cell width="70%">
+							<vbox align="stretch" pack="stretch" width="100%">
+								<div>
+
+									<panel height="100%" style="padding-left: 5px;">
+										<panelchildren>
+											<borderlayout height="474px">
+												<center border="none" flex="true">
+													<iframe id="helpContentIframe" width="100%" height="98%">
+
+													</iframe>
+												</center>
+											</borderlayout>
+
+										</panelchildren>
+									</panel>
+
+								</div>
+							</vbox>
+						</cell>
+					</hbox>
+
+
+
+				</div>
+			</center>
+
+			<!-- 
+				<south border="none" height="10px" />
+			-->
+
+		</borderlayout>
+
+
+	</window>
+</zk>
+
+<!-- style="padding-left: 5px; padding-right: 5px; padding-top: 5px; padding-bottom: 5px;" -->

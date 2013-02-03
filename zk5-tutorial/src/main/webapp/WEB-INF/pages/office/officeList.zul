@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Namespace dependent DataBinding Initiator.          -->
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./windowOfficeList" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowOfficeList" apply="${officeListCtrl}"
+		border="none" width="100%">
+
+		<borderlayout id="borderLayout_officeList">
+
+			<!-- PAGING COMPONENT -->
+			<north border="none" height="26px">
+				<paging id="paging_OfficeList" />
+			</north>
+
+			<center border="none">
+
+				<listbox id="listBoxOffice"
+					style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+					model="@{controller.offices}"
+					selectedItem="@{controller.selectedOffice}" vflex="true"
+					tooltiptext="${c:l('listbox.tooltiptext')}" width="100%"
+					height="100%" multiple="false">
+					<listhead sizable="true">
+						<listheader id="listheader_OfficeList_No"
+							sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+							label="${c:l('listheader_OfficeList_No.label')}" sort="auto"
+							width="20%" />
+						<listheader id="listheader_OfficeList_Name1"
+							sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+							label="${c:l('listheader_OfficeList_Name1.label')}" sort="auto"
+							width="30%" />
+						<listheader id="listheader_OfficeList_Name2"
+							sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+							label="${c:l('listheader_OfficeList_Name2.label')}" sort="auto"
+							width="30%" />
+						<listheader id="listheader_OfficeList_City"
+							sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+							label="${c:l('listheader_OfficeList_City.label')}" sort="auto"
+							width="20%" />
+					</listhead>
+
+					<listitem self="@{each='office'}" value="@{office}"
+						forward="onDoubleClick=onDoubleClickedOfficeItem">
+
+						<listcell label="@{office.filNr}"
+							style="padding-left: 5px" />
+						<listcell label="@{office.filName1}"
+							style="padding-left: 5px" />
+						<listcell label="@{office.filName2}"
+							style="padding-left: 5px" />
+						<listcell label="@{office.filOrt}"
+							style="padding-left: 5px" />
+					</listitem>
+
+				</listbox>
+
+			</center>
+		</borderlayout>
+
+	</window>
+</zk>

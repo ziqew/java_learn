@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://www.zkoss.org/2005/zul'
+	xmlns:h='http://www.w3.org/1999/xhtml'
+	xsi:schemaLocation='http://www.zkoss.org/2005/zul WEB-INF/xsd/zul.xsd'>
+
+	<!-- ========= Pop-up window to edit selected record ============ -->
+	<window id='subEditWin'
+		apply='de.forsthaus.example.ControllerTestWinModal' width='500px'
+		border='normal' title='Edit Sub-Window'>
+
+		<label value='Movie name:' />
+		<textbox id='movieNameTxtBox' width='80%' constraint='no empty' />
+
+		<separator />
+		<h:center>
+			<button id='saveEditBtn' label='Save Record'
+				autodisable='self' />
+
+			<button id='closeSubWinBtn' label='Close Window' />
+		</h:center>
+	</window>
+	<!-- ========= End of pop-up Window ============ -->
+
+</zk>

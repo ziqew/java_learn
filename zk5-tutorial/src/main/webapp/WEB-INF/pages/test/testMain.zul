@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="windowTestMain" apply="de.forsthaus.webui.util.test.TestSamplesMainCtrl" title="Several Tests"
+		border="none" width="500px" height="300px" mode="modal" closable="true">
+
+		<grid>
+			<columns>
+				<column align="left" width="300px" />
+				<column width="100%" />
+			</columns>
+
+			<rows>
+				<row>
+					<label value="change textbox focus on ENTER" />
+					<button id="btnChangeTextboxFocus" label="show" />
+				</row>
+
+				<row>
+					<label value="vertical menu + css from Senthil" />
+					<button id="btnSenthil_vertical_menu_css" label="show" />
+				</row>
+
+			</rows>
+		</grid>
+
+
+	</window>
+</zk>

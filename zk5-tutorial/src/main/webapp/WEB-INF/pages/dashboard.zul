@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowDashboard" apply="${dashboardMainCtrl}" border="none" width="100%" hflex="1"
+		style="background-color: #EBEBEB;">
+
+		<hbox align="stretch" pack="stretch" sclass="FDCenterNoBorder" width="100%">
+
+			<!-- DASHBOARD CENTER AREA -->
+			<cell>
+				<vbox align="stretch" pack="stretch" width="100%">
+					<div id="divDashboardCenter">
+
+						<!-- Here comes the CENTER modules  -->
+						<!-- i.e. divDashboardCenter.appendChild(DashboardNewsCtrl.show());  -->
+
+					</div>
+				</vbox>
+			</cell>
+
+			<!-- DASHBOARD EAST AREA -->
+			<cell width="280px">
+				<vbox align="stretch" pack="stretch" width="100%">
+					<div id="divDashboardEast">
+
+						<!-- Here comes the EAST modules  -->
+						<!-- ie. divDashboardEast.appendChild(DashboardDatetingCtrl.show());  -->
+
+					</div>
+				</vbox>
+			</cell>
+
+		</hbox>
+
+	</window>
+</zk>
+
+

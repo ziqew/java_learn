@@ -1,0 +1,139 @@
+<?page id="indexPage" title="Testseite" cacheable="false" 
+	language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+
+<zk>
+
+	<window id="win">
+
+		<zscript>
+	public void onBtnClick() {
+		alert("fkjhfghvgfd");
+		System.out.println("hallo");
+
+	}
+	;
+</zscript>
+
+		<borderlayout height="380px">
+			<north title="North" maxsize="300" size="50%"
+				splittable="true" collapsible="true">
+				North part
+			</north>
+			<center border="0">
+				<listbox vflex="true" width="200px">
+					<listhead sizable="true">
+						<listheader label="listheader" />
+					</listhead>
+					<listitem label="item1" />
+					<listitem label="item2" />
+					<listitem label="item3" />
+					<listitem label="item4">
+						<listcell>
+							<button label="Show"
+								forward="onClick=win.onBtnClick" />
+						</listcell>
+					</listitem>
+
+
+					<listitem label="item5">
+						<listcell>
+							<button label="Show"
+								forward="onClick=onBtnClick" />
+						</listcell>
+					</listitem>
+
+					<listitem label="item6" />
+					<listitem label="item7" />
+					<listitem label="item8" />
+					<listitem label="item9" />
+					<listitem label="item10" />
+					<listitem label="item11" />
+					<listitem label="item12" />
+					<listitem label="item13" />
+					<listitem label="item14" />
+					<listitem label="item15" />
+					<listitem label="item16" />
+					<listitem label="item17" />
+					<listitem label="item18" />
+					<listitem label="item19" />
+					<listitem label="item20" />
+					<listitem
+						label="item21lkjkld kljk dklds vkjdsv kdsjvkdslvdjskvdlskvj sd" />
+					<listitem label="item22" />
+					<listitem label="item23" />
+					<listitem label="item24" />
+					<listitem label="item25" />
+					<listitem label="item26" />
+					<listitem label="item27" />
+					<listitem label="item28" />
+					<listitem label="item29" />
+					<listitem label="item30" />
+				</listbox>
+			</center>
+		</borderlayout>
+
+
+
+
+
+		<div style="overflow:auto">
+			<window style="overflow-y:auto;">
+				<borderlayout height="500px">
+					<north>
+						<tabbox mold="accordion" height="330px">
+							<tabs>
+								<tab label="Menu 1" />
+								<tab label="Menu 2" />
+								<tab label="Menu 3" />
+							</tabs>
+							<tabpanels>
+								<tabpanel>
+									<menubar orient="vertical">
+										<menuitem label="Menuitem 1" />
+										<menuitem label="Menuitem 2" />
+									</menubar>
+								</tabpanel>
+								<tabpanel>
+									<menubar orient="vertical">
+										<menuitem label="Menuitem 1" />
+										<menuitem label="Menuitem 2" />
+										<menuitem label="Menuitem 3" />
+									</menubar>
+								</tabpanel>
+								<tabpanel>
+									<menubar orient="vertical">
+										<menuitem label="Menuitem 1" />
+										<menuitem label="Menuitem 2" />
+									</menubar>
+								</tabpanel>
+							</tabpanels>
+						</tabbox>
+					</north>
+					<south size="20%">
+						<window height="30px">
+							<grid>
+								<columns>
+									<column />
+									<column />
+								</columns>
+								<rows>
+									<row>
+										<label value="Name:" />
+										<textbox />
+									</row>
+									<row>
+										<label value="Surname:" />
+										<textbox />
+									</row>
+								</rows>
+							</grid>
+						</window>
+					</south>
+				</borderlayout>
+			</window>
+		</div>
+
+	</window>
+</zk>

@@ -1,0 +1,123 @@
+<zk>
+	<zscript><![CDATA[
+	                  
+		class Product{
+			private String name;
+			private List typeList;
+			private int typeIndex = 0;
+			
+			public Product(String name, List typeList){
+				this.name = name;
+				this.typeList = typeList;
+			}			
+			public String getName(){
+				return this.name;
+			}
+			public List getTypeList(){
+				return this.typeList;
+			}
+			public int getTypeIndex(){
+				return this.typeIndex;
+			}
+			public void setTypeIndex(int typeIndex){
+				this.typeIndex = typeIndex;
+			}
+		}
+		
+		class Type{
+			private String name;
+			private List colorList;
+			private int colorIndex = 0;
+			
+			public Type(String name, List colorList){
+				this.name = name;
+				this.colorList = colorList;
+			}			
+			public String getName(){
+				return this.name;
+			}
+			public List getColorList(){
+				return this.colorList;
+			}
+			public int getColorIndex(){
+				return this.colorIndex;
+			}
+			public void setColorIndex(int colorIndex){
+				this.colorIndex = colorIndex;
+			}
+		}
+		
+		public List createColor(String c1, String c2){
+			List color = new ArrayList();
+			color.add(c1);
+			color.add(c2);
+			return color;
+		}
+		
+		List carType = new ArrayList();		
+		carType.add(new Type("Mini car", createColor("red", "blue")));		
+		carType.add(new Type("Sports car", createColor("green", "yellow")));		
+		Product car = new Product("Car", carType);	
+		
+		
+		List aircraftType = new ArrayList();
+		aircraftType.add(new Type("Jet aircraft", createColor("white", "Light Blue")));		
+		aircraftType.add(new Type("Helicopters", createColor("black", "gray")));		
+		Product aircraft = new Product("Aircraft", aircraftType);
+		
+		List products = new ArrayList();
+		products.add(car);
+		products.add(aircraft);		
+		
+		
+		Product listSelected = (Product)products.get(0);
+		Type comboSelected = (Type)listSelected.getTypeList().get(0);
+		String colorSelected = (String)comboSelected.getColorList().get(0);
+		
+	]]></zscript>
+	
+
+
+	<listbox id="lb" model="@{products}" selectedItem="@{listSelected}" width="200px">
+		<listitem self="@{each='product'}">
+			<listcell label="@{product.name}"/>
+		</listitem>
+	</listbox>
+	<combobox id="cb1" model="@{listSelected.typeList}" selectedItem="@{comboSelected}">
+		<comboitem self="@{each='type'}" label="@{type.name}"/>		
+	</combobox>
+	<combobox id="cb2" model="@{comboSelected.colorList}" selectedItem="@{colorSelected}">
+		<comboitem self="@{each='color'}" label="@{color}"/>	
+	</combobox>
+
+
+
+	<zscript><![CDATA[
+		lb.addEventListener("onSelect", new EventListener() {					
+			public void onEvent(Event event) throws Exception {
+				comboSelected = (Type)listSelected.typeList.get(listSelected.typeIndex);
+			}
+		});
+		
+		cb1.addEventListener("onInitRender", new EventListener() {			
+			public void onEvent(Event event) throws Exception {
+				cb2.setModel(new BindingListModelList(comboSelected.colorList,true));
+				colorSelected = (String)comboSelected.colorList.get(comboSelected.colorIndex);
+			}
+		});
+		
+		cb1.addEventListener("onSelect", new EventListener() {			
+			public void onEvent(Event event) throws Exception {
+				colorSelected = (String)comboSelected.colorList.get(comboSelected.colorIndex);
+				listSelected.typeIndex = cb1.selectedIndex;
+			}
+		});
+		
+		cb2.addEventListener("onSelect", new EventListener() {			
+			public void onEvent(Event event) throws Exception {
+				comboSelected.colorIndex = cb2.selectedIndex;
+			}
+		});
+
+	]]></zscript>
+</zk>

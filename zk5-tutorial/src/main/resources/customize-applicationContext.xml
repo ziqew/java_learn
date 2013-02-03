@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+
+	<!-- ====================================================== -->
+	<!-- ====================================================== -->
+	<!-- = CONFIG-FILE FOR CONNECTING TO A DATABASE = -->
+	<!-- ====================================================== -->
+	<!-- ====================================================== -->
+
+
+	<!-- ====================================================== -->
+	<!-- THIS PLACE IS FOR CONFIGURING AN JDBC CONNECTION -->
+	<!-- AND CONFIGURE IT IN FILE: jdbc.properties -->
+	<!-- ====================================================== -->
+	<!-- -->
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}" />
+		<property name="username" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</bean>
+
+	<!-- comment out this bean if you don't use the the default internally -->
+	<!-- H2 database with the automatic filled demo data by startup -->
+	<bean class="de.forsthaus.h2.My_H2_SampleDataFiller">
+		<property name="dataSource" ref="dataSource">
+		</property>
+	</bean>
+
+	<util:properties id="hibernateProperties">
+		<prop key="hibernate.dialect">${hibernate.dialect}</prop>
+		<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
+		<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+	</util:properties>
+
+
+
+	<!-- ====================================================== -->
+	<!-- THIS PLACE IS FOR CONFIGURING a Jndi CONNECTION -->
+	<!-- USE THIS FOR LET TOMCAT CONNECT TO YOUR OWN -->
+	<!-- DATABASE PER: Jndi -->
+	<!-- ====================================================== -->
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> <property name="jndiName" value="java:comp/env/jdbc/toledo" 
+		/> <property name="lookupOnStartup" value="false" /> <property name="cache" value="true" /> <property name="proxyInterface" 
+		value="javax.sql.DataSource" /> </bean> -->
+
+
+
+</beans>

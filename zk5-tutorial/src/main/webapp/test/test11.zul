@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<window>
+<style>
+.menublack.z-menu-item .z-menu-item-btn {
+	color : white; /*PRO*/
+	font-weight : bold; /*PRO*/
+	font-variant : normal; /*PRO*/
+	font-size : 12px; /*PRO*/
+}
+	 .menublack .z-menu-item-inner-l
+	,  .menublack .z-menu-item-inner-m
+	,  .menublack .z-menu-item-inner-r
+{
+	background-color : #333333; /*PRO*/
+	background-image : none; /*PRO*/
+}
+
+.menuorange.z-menu-item .z-menu-item-btn {
+	color : black; /*PRO*/
+	font-weight : bold; /*PRO*/
+	font-variant : normal; /*PRO*/
+	font-size : 12px; /*PRO*/
+}
+	 .menuorange .z-menu-item-inner-l
+	,  .menuorange .z-menu-item-inner-m
+	,  .menuorange .z-menu-item-inner-r
+{
+	background-color : orange; /*PRO*/
+	background-image : none; /*PRO*/
+}
+
+.menuwhite.z-menu-item  {
+	padding-right:0px;
+	padding-left:0px;
+}
+
+ .menuwhite.z-menu-item .z-menu-item-btn {
+	color : black; /*PRO*/
+	font-weight : bold; /*PRO*/
+	font-variant : normal; /*PRO*/
+	font-size : 12px; /*PRO*/
+}
+.menuwhite .z-menu-item-inner-l,  
+.menuwhite .z-menu-item-inner-m	,  
+.menuwhite .z-menu-item-inner-r{
+	background-color : white; /*PRO*/
+	background-image : none; /*PRO*/
+}
+
+.z-menubar-hor.menulangue {
+  	border-style: none;
+  	padding: 0px 0px 0px 0px; 
+  	background: #333333 repeat-x 0 center;
+  	background-image:none;
+}
+
+.z-menubar-hor.menulangue .z-menu-body .z-menu-inner-l,
+.z-menubar-hor.menulangue .z-menu-body .z-menu-inner-r,
+.z-menubar-hor.menulangue .z-menu-item-body .z-menu-item-inner-l,
+.z-menubar-hor.menulangue .z-menu-item-body .z-menu-item-inner-r{
+	font-size: 1px;
+	height: 30px;
+	line-height: 0px;
+	width: 0px;
+}
+</style>
+
+<menubar sclass="menulangue" height="30px" style="padding:5px">
+	<menuitem label="All" sclass="menuwhite"
+		height="30px" />
+	
+	<menuitem label="Indroduction" height="30px"
+		sclass="menuorange"  style="padding:5px"/>
+	<menuitem label="Help" height="30px"
+		sclass="menuorange" />
+	<menu src="/images/flag/fr.gif" width="50px" height="30px">
+		<menupopup>
+			<menuitem forEach="${main.flagLocale}"
+				image="/images/flag/${each}.gif"
+				forward="onClick=main.onChangeFlag" />
+		</menupopup>
+	</menu>
+</menubar>
+
+</window>

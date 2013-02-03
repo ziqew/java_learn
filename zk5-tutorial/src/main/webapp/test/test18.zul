@@ -1,0 +1,28 @@
+<?page contentType="text/html;charset=UTF-8"?>
+<zk>
+	<zscript><![CDATA[
+	import org.zkoss.zul.Constraint;
+	import org.zkoss.zk.ui.WrongValueException;
+boolean fail = false;
+     
+    Constraint con = new Constraint() {
+    	public void validate(Component comp, Object val) throws WrongValueException {
+    		
+    		if (comp instanceof Textbox) {
+    			
+    	  if (fail) {
+    	    throw new WrongValueException(comp, "fail");
+    	  }
+    		}
+    	}
+    }
+]]></zscript>
+
+	<window>
+		<button id="button_fail"
+			onClick="fail = true; textbox.getValue(); textbox.invalidate()" label="Fail" />
+		<button id="button_succeed"
+			onClick="fail = false; textbox.getValue()" label="Succeed" />
+		<textbox id="textbox" constraint="${con}" />
+	</window>
+</zk>

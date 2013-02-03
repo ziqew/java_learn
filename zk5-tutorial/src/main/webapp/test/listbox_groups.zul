@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- http://www.zkoss.org/forum/listComment/17135 -->
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Namespace dependent DataBinding Initiator.          -->
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./winListboxGroups" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="winListboxGroups"
+		apply="de.forsthaus.webui.testControllers.ListboxGroupsCtrl"
+		width="600px" height="600px">
+
+		<listbox id="groupListbox" model="@{controller.groupsmodel}"
+			selectedItem="@{controller.selected}">
+
+			<listhead>
+				<listheader label="Header1" />
+				<listheader label="Header2" />
+			</listhead>
+
+		</listbox>
+
+		<separator />
+		<hlayout>
+			<textbox value="@{controller.selected.string1}" />
+			<separator />
+			<textbox value="@{controller.selected.string2}" />
+		</hlayout>
+
+	</window>
+
+</zk>

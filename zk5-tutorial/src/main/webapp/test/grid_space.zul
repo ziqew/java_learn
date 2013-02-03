@@ -1,0 +1,16 @@
+<zk xmlns:html="http://www.w3.org/1999/xhtml">
+<grid width="350px" >
+    <columns >
+	    <column hflex="1" />
+    	<column hflex="2" />
+    </columns>
+    <rows>
+        <row>Username:<textbox id="email" hflex="1" /></row>
+        <row>Password:<textbox id="password" hflex="1" type="password" />
+    	</row>
+    </rows>
+</grid>
+</vlayout>
+<vlayout id="authenticationBox" hflex="1" />
+</vlayout>
+</zk>

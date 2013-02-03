@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<style>
+		.my-background{
+		background-image:url(http://www.forsthaus.de/aqua-button.gif);
+		no-repeat; background-size: 100%; font-size:32px; }
+	</style>
+
+	<window title="new page title" border="normal" width="400px"
+		height="400px">
+		<a sclass="my-background">My Link is here!</a>
+	</window>
+
+</zk>

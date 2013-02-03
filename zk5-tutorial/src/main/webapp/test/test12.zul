@@ -1,0 +1,66 @@
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+
+<zk>
+	<div id="divLandAreas" apply="${landAreaController}"
+		style="overflow:auto;position:relative">
+		<label id="lblNarrative"
+			value="@{divLandAreas$composer.narrative}" style="font-size:8pt" />
+		<space />
+		<checkbox id="checkAllLandAreas"
+			label="@{divLandAreas$composer.all}" style="font-size:8pt" />
+		<groupbox id="gbLandAreas"
+			contentStyle="height:130px;width:100%;overflow:auto;position:relative;font-size:8pt">
+			<!-- THIS CAUSES MY LISTBOXES TO OVERFLOW THE PAGE -->
+			<!--	 <groupbox id="gbLandAreas" contentStyle="height:40%;width:100%;overflow:auto;position:relative">-->
+			<hbox>
+				<listbox id="lbLandArea" checkmark="true"
+					multiple="true" style="font-size:8pt;border:hidden"
+					model="@{divLandAreas$composer.landAreaList}">
+					<listitem self="@{each=listitem}"
+						label="@{listitem.label}" value="@{listitem.value}"
+						style="font-size:8pt" />
+				</listbox>
+				<listbox id="lbLandArea1" checkmark="true"
+					multiple="true" style="font-size:8pt;border:hidden"
+					model="@{divLandAreas$composer.landAreaList1}">
+					<listitem self="@{each=listitem}"
+						label="@{listitem.label}" value="@{listitem.value}"
+						style="font-size:8pt" />
+				</listbox>
+				<listbox id="lbLandArea2" checkmark="true"
+					multiple="true" style="font-size:8pt;border:hidden"
+					model="@{divLandAreas$composer.landAreaList2}">
+					<listitem self="@{each=listitem}"
+						label="@{listitem.label}" value="@{listitem.value}"
+						style="font-size:8pt" />
+				</listbox>
+			</hbox>
+		</groupbox>
+		<grid fixedLayout="true"
+			style="padding-right:20px;border:none;background-color:transparent;vertical-align:bottom;height:20%">
+			<columns>
+				<column width="70%" />
+				<column width="30%" align="right" />
+			</columns>
+			<rows>
+				<row style="border:none;background-color:transparent">
+					<hbox>
+						<checkbox
+							id="cbLandArea_shouldIncludeDisposedPropertyRights" />
+						<label id="lblInclude"
+							value="@{divLandAreas$composer.include}" style="font-size:8pt" />
+					</hbox>
+					<hbox align="right">
+						<button id="landAreaUpdateBtn"
+							label="@{divLandAreas$composer.landAreaUpdateBtnUpdate}"
+							onClick="" mold="os" style="font-size:8pt" />
+						<button id="landAreaClearBtn"
+							label="@{divLandAreas$composer.landAreaClearBtnClear}" onClick=""
+							mold="os" style="font-size:8pt" />
+					</hbox>
+				</row>
+			</rows>
+		</grid>
+	</div>
+</zk>

@@ -1,0 +1,231 @@
+<?page id="indexPage" title=" ZKoss sample application" contentType="text/html;charset=UTF-8" cacheable="false" 
+	language="xul/html" zscriptLanguage="Java"?>
+<!-- 	
+	<?meta content="text/html; charset=UTF-8" 	pageEncoding="UTF-8"?>
+-->
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<script type="text/javascript">
+		<!-- Function for scrolling the text -->
+		<!-- thanks to dagarwal82; http://www.zkoss.org/forum/listComment/16011 -->
+
+
+
+
+
+
+
+
+
+
+
+		
+		<![CDATA[ function scrollTextbox(txtBox) { var txtEle = document.getElementById(txtBox); txtEle.scrollTop =
+		txtEle.scrollHeight; } ]]>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+			</script>
+
+	<window id="outerIndexWindow" apply="${indexCtrl}" border="none" width="100%" height="100%">
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0 padding on right and left */ }
+
+			.z-loading { top: 50% !important; left: 45% !important; align: center; vertical-align: middle; }
+
+			<!-- groupbox inner content area, NO padding -->
+			.myGroupBoxContentArea .z-groupbox-cnt{ background-color: white; padding: 0px }
+
+			<!-- ZK-Gritter notifications -->
+			.gritter-red .gritter-top { background-image: url(../css/zk-gritter/gritter-red.png); }<!--  -->
+			.gritter-red .gritter-item { background-image: url(../css/zk-gritter/gritter-red.png);}<!--  -->
+			.gritter-red .gritter-bottom {background-image: url(../css/zk-gritter/gritter-red.png);}<!--  -->
+
+			#gritter-notice-wrapper { position:fixed; top:40px; right:20px; width:301px; z-index:9999; }<!--  -->
+			#gritter-notice-wrapper.top-left { left: 20px; right: auto; }<!--  -->
+			#gritter-notice-wrapper.bottom-right { top: auto; left: auto; bottom: 20px; right: 20px; }<!--  -->
+			#gritter-notice-wrapper.bottom-left { top: auto; right: auto; bottom: 20px; left: 20px; }<!--  -->
+
+		</style>
+
+		<!-- HIDDEN fields for storing the current desktop height and width -->
+		<intbox id="currentDesktopHeight" visible="false" />
+		<intbox id="currentDesktopWidth" visible="false" />
+		<!-- HIDDEN field for storing the initial menu type -->
+		<checkbox id="CBtreeMenu" checked="true" visible="false" />
+
+		<borderlayout id="borderlayoutMain" height="100%">
+			<north id="borderlayoutMainNorth" border="none" height="40px" splittable="false">
+
+				<div id="div1"
+					style="background-color:silver; background-image:url(${c:encodeURL('/images/ZKHeader_2x38.png')});  background-repeat: repeat-x; border: 'none';">
+
+
+					<hbox pack="stretch" width="100%">
+
+						<div id="divNo" align="left" style="padding: 1px; ">
+							<image src="/images/zkpowered_34x34.png" />
+						</div>
+
+
+						<div align="left" style="padding: 0px;">
+							<image src="/images/ZKHeader2_176x38.jpg" />
+						</div>
+
+
+						<div align="right" style="float: right">
+
+							<hbox>
+								<!-- Monitor Background pic -->
+								<div
+									style="background-color:silver; background-image:url(${c:encodeURL('/images/ZKHeaderMonitorOnly_70x38.png')}); background-repeat:no-repeat; float:left; border: 'none'; width:70px;height:38px; "
+									align="right">
+								</div>
+
+
+								<div align="right" style="float: right">
+									<vlayout>
+
+										<div align="right" style="float: right">
+											<!-- USER-BAR. Comps are created in the Controller -->
+											<window id="winUserBar" apply="${userBarCtrl}" border="none" />
+										</div>
+
+										<div align="right" style="float: right; padding-bottom: 3px;">
+
+											<hbox pack="end">
+												<checkbox id="chkbNotifications"
+													label="${c:l('common.Notifications.Stop')}" style="color: white;" />
+												<a id="btnUserSettings" label="${c:l('common.MySettings')}"
+													style="color: white;" />
+												<space width="5px" />
+												<a id="btnAbout" label="${c:l('common.About')}" style="color: white;" />
+												<space width="5px" />
+												<a id="btnLogout" label="${c:l('btnLogout.label')}"
+													style="color: white;" />
+												<space width="8px" />
+											</hbox>
+										</div>
+
+									</vlayout>
+								</div>
+							</hbox>
+
+						</div>
+					</hbox>
+
+					<div id="divDropDownMenu">
+						<menubar id="mainMenuBar" height="25px"></menubar>
+					</div>
+				</div>
+			</north>
+
+
+			<!-- MAIN MENU AREA -->
+			<west id="west" border="none" margins="0,0,0,0" size="260px" collapsible="true"
+				style="background-color: #D6DCDE; padding: 5px" flex="true" minsize="100" splittable="true" autoscroll="false">
+				<div id="divWest">WEST</div>
+			</west>
+
+			<!-- MODULE CONTENT AREA -->
+			<center id="center" border="none" flex="true" autoscroll="true"
+				style="background-color: #D6DCDE; padding: 5px">
+				<div id="divCenter">
+
+					<panel border="normal">
+						<caption style="color: #000000; font-weight: bold;" label="${c:l('workplace')}">
+							<hbox pack="stretch" sclass="hboxRemoveWhiteStrips" width="100%">
+
+								<toolbar align="start" style="float:left; border-style: none;"></toolbar>
+
+								<toolbar align="center" style="float:left; border-style: none;"></toolbar>
+
+								<toolbar align="end" style="float:right; border-style: none;">
+									<toolbarbutton id="btnTestMain" image="/images/icons/properties.gif"
+										tooltiptext="${c:l('btnTestMain.tooltiptext')}" />
+									<toolbarbutton id="btnCloseAllTabs" image="/images/icons/stop.gif"
+										tooltiptext="${c:l('btnCloseAllTabs.tooltiptext')}" />
+								</toolbar>
+							</hbox>
+						</caption>
+						<panelchildren>
+
+							<tabbox id="tabBoxIndexCenter" width="100%" style="padding: 0px">
+								<tabs id="tabsIndexCenter"></tabs>
+								<tabpanels id="tabpanelsBoxIndexCenter"></tabpanels>
+							</tabbox>
+
+						</panelchildren>
+					</panel>
+
+				</div>
+			</center>
+
+			<!-- STATUS BAR AREA -->
+			<south id="south" border="none" height="22px" splittable="false">
+
+				<div id="divSouth" align="left" style="float: left; padding: 0px" width="100%">
+
+					<borderlayout width="100%" height="22px">
+
+						<west border="none" width="50px">
+
+							<!-- 
+								function scrolltxt(txt) { var txtEle =
+								document.getElementById(txtBox);
+								txtEle.scrollTop = txtEle.scrollHeight; }
+							-->
+
+							<!-- The MessageBar. Comps are created in the Controller -->
+							<window id="winMessageBar" apply="${messageBarCtrl}" border="none" width="50px"
+								height="22px" />
+						</west>
+
+						<center border="none">
+							<!-- The StatusBar. Comps are created in the Controller -->
+							<window id="winStatusBar" apply="${statusBarCtrl}" border="none" width="100%" height="22px" />
+						</center>
+
+					</borderlayout>
+
+				</div>
+
+			</south>
+		</borderlayout>
+
+
+	</window>
+</zk>
+
+
+<!-- old Top Background-color style="background-color:#4944F9" -->
+<!-- 	<image src="/images/zkoss3.gif" /> -->
+
+<!-- 	<style>.z-groupbox-cnt {border: 0px;}</style> -->
+<!--  <style>.z-tabs-scroll {border: 0px;}</style> -->
+<!-- 
+	<label id="lbl2" width="33%" />
+	<timer id="timer2" delay="1000" repeats="true">
+	<attribute name="onTimer">
+	Locale locale = org.zkoss.util.Locales.getCurrent();
+	java.text.DateFormat dateFormat = java.text.DateFormat.getDateTimeInstance(java.text.DateFormat.MEDIUM, java.text.DateFormat.MEDIUM, locale);
+	String strTime = dateFormat.format(java.util.Calendar.getInstance(locale).getTime());
+	colDate.setLabel(strTime);
+	</attribute>
+	</timer>
+-->

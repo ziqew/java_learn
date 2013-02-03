@@ -1,0 +1,120 @@
+<zk>
+	<window width="400px" height="100%">
+		<tree>
+
+
+			<!-- Root level -->
+			<treechildren>
+
+				<!-- Root child node -->
+				<treeitem open="false">
+					<treerow>
+						<treecell label="Debitoren" onClick="">
+						</treecell>
+					</treerow>
+
+					<!-- 1. level -->
+					<treechildren>
+
+						<!-- 1. level child node -->
+						<treeitem>
+							<treerow>
+								<treecell label="sonstige"></treecell>
+							</treerow>
+						</treeitem>
+					</treechildren>
+				</treeitem>
+
+				<!-- Root child node -->
+				<treeitem>
+					<treerow>
+						<treecell label="Kreditoren"></treecell>
+					</treerow>
+
+					<!-- 1. level -->
+					<treechildren>
+
+						<!-- 1. level child node -->
+						<treeitem>
+							<treerow>
+								<treecell label="sonstige"></treecell>
+							</treerow>
+						</treeitem>
+					</treechildren>
+				</treeitem>
+
+				<!-- Root child node -->
+				<treeitem>
+					<treerow>
+						<treecell label="Sachkonten"></treecell>
+					</treerow>
+
+					<!-- 1. level -->
+					<treechildren>
+
+						<!-- 1. level child node -->
+						<treeitem>
+							<treerow>
+								<treecell label="Abschreibungen"></treecell>
+							</treerow>
+
+							<!-- 2. level -->
+							<treechildren>
+
+								<!-- 2. level child node -->
+								<treeitem>
+									<treerow>
+										<treecell
+											label="Finanzanlagen">
+										</treecell>
+									</treerow>
+								</treeitem>
+								<!-- 2. level child node -->
+								<treeitem>
+									<treerow>
+										<treecell
+											label="Geringwertige WG">
+										</treecell>
+									</treerow>
+								</treeitem>
+								<!-- 2. level child node -->
+								<treeitem>
+									<treerow>
+										<treecell label="Sachanlagen"></treecell>
+									</treerow>
+								</treeitem>
+								<!-- 2. level child node -->
+								<treeitem>
+									<treerow>
+										<treecell label="sonstige"></treecell>
+									</treerow>
+								</treeitem>
+							</treechildren>
+						</treeitem>
+
+						<!-- 1. level child node -->
+						<treeitem open="true">
+							<treerow>
+								<treecell
+									label="Aktive Rechnungsabgrenzung">
+								</treecell>
+							</treerow>
+							<treechildren>
+
+								<!-- 2. level child node -->
+								<treeitem>
+									<treerow>
+										<treecell label="sonstige"></treecell>
+									</treerow>
+								</treeitem>
+
+							</treechildren>
+						</treeitem>
+					</treechildren>
+				</treeitem>
+
+			</treechildren>
+
+		</tree>
+	</window>
+</zk>

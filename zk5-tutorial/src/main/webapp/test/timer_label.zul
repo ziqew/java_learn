@@ -1,0 +1,15 @@
+<zk>
+	<window width="200px" height="400px">
+
+		<label id="lbl2" width="33%" />
+		<timer id="timer2" delay="1000" repeats="true">
+			<attribute name="onTimer">
+	Locale locale = org.zkoss.util.Locales.getCurrent();
+	java.text.DateFormat dateFormat = java.text.DateFormat.getDateTimeInstance(java.text.DateFormat.MEDIUM, java.text.DateFormat.MEDIUM, locale);
+	String strTime = dateFormat.format(java.util.Calendar.getInstance(locale).getTime());
+	lbl2.setValue(strTime);
+</attribute>
+		</timer>
+
+	</window>
+</zk>

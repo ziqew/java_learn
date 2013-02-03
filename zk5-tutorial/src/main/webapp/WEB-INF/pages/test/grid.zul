@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?page id="secRightListPage" title="Rights List" cacheable="false"  
+	language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<zk>
+	<window id="secGroupRightWindow" border="normal"
+		use="de.forsthaus.webui.security.groupright.SecGrouprightCtrl"
+		width="100%" height="400px">
+
+		<panel title="G r o u p   R i g h t s" border="none" />
+
+		<borderlayout id="borderlayoutSecGroupRight" height="100%">
+
+			<center border="none" margins="0,0,0,0">
+				<div>
+
+
+
+					<panel title="Groups" style="margin-bottom:10px"
+						border="normal" collapsible="true">
+						<panelchildren>
+							<listbox id="listBoxSecGroup" width="100%"
+								height="100%" pagingPosition="top" mold="paging" pageSize="15"
+								multiple="false">
+								<listhead sizable="true">
+									<listheader
+										id="lh_SecGroupRight_Groupname"
+										image="/images/icons/create_doc.gif" label="Group Name"
+										sort="auto" width="100%" />
+								</listhead>
+							</listbox>
+						</panelchildren>
+					</panel>
+
+
+					<panel title="Granted Rights"
+						style="margin-bottom:10px" border="normal" collapsible="true">
+						<panelchildren>
+
+							<hbox>
+								<label value="Type Filter" />
+								<space />
+								<space />
+
+								<checkbox id="cb_SecGroupRight_All"
+									label="All" height="25px">
+								</checkbox>
+								<checkbox id="cb_SecGroupRight_Pages"
+									label="Pages">
+								</checkbox>
+								<checkbox id="cb_SecGroupRight_Tabs"
+									label="Tabs">
+								</checkbox>
+								<checkbox id="cb_SecGroupRight_MenuCat"
+									label="Menu Categories">
+								</checkbox>
+								<checkbox
+									id="cb_SecGroupRight_MenuItems" label="Menu Items">
+								</checkbox>
+								<checkbox id="cb_SecGroupRight_Methods"
+									label="Methods">
+								</checkbox>
+								<checkbox id="cb_SecGroupRight_Domain"
+									label="Domain/Property">
+								</checkbox>
+							</hbox>
+
+							<borderlayout id="borderLayout_Test1">
+								<center autoscroll="true"
+									border="none">
+									<div>
+										<listbox
+											id="listBoxSecGroupRight" width="99.5%" height="100%"
+											pagingPosition="top" mold="paging" pageSize="15"
+											multiple="false">
+											<listhead sizable="true">
+												<listheader
+													id="lh_SecGroupRight_GrantedRight"
+													image="/images/icons/exdDialogAction1.gif" label="Granted"
+													sort="none" width="20%" />
+												<listheader
+													id="lh_SecGroupRight_RightName"
+													image="/images/icons/create_doc.gif" label="Right-Name"
+													sort="auto" width="60%" />
+												<listheader
+													id="lh_SecGroupRight_Type"
+													image="/images/icons/exdDataPerspective.gif"
+													label="Right-Type" sort="auto" width="20%" />
+											</listhead>
+										</listbox>
+									</div>
+								</center>
+							</borderlayout>
+
+
+						</panelchildren>
+					</panel>
+
+
+
+				</div>
+			</center>
+
+			<south border="none" margins="0,0,0,0" size="26px">
+				<div id="divSouthSecGroupRight" align="right">
+					<grid>
+						<rows>
+							<row valign="middle">
+								<hbox align="end">
+
+									<button id="btnSave" height="20"
+										label="save">
+									</button>
+									<button id="btnClose" height="20"
+										label="close">
+									</button>
+								</hbox>
+							</row>
+						</rows>
+					</grid>
+				</div>
+
+
+			</south>
+		</borderlayout>
+
+
+	</window>
+</zk>
+
+
+
+
+
+

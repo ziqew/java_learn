@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowAboutZksample2" border="none" width="500px" mode="modal" height="385px">
+
+		<zscript language="Java"><![CDATA[
+	{
+		lf = "\n";
+		s = "";
+		s = s + "This product has been created by Zksample2 community " + lf;
+		s = s + "and is distributed under the General Public License ( GPL )" + lf;
+		s = s + "see (http://www.gnu.org/licenses/gpl.html)." + lf;
+		s = s + "" + lf;
+		s = s + "Everyone is permitted to copy and distribute verbatim copies" + lf;
+		s = s + "of this license document, but changing it is not allowed." + lf;
+		s = s + "" + lf;
+
+		t = "";
+		t = t + "Thanks to www.zeroturnaraound.com for a free JRebel licence." + lf;
+		t = t + "" + lf;
+		t = t + "Zksample2 incorporates software created by third parties " + lf;
+		t = t + "and distributed under free software licenses, including:" + lf;
+		t = t + "" + lf;
+
+	}
+]]></zscript>
+
+		<borderlayout>
+			<center border="none" flex="true" style="padding:0px;">
+				<div>
+
+					<!-- Zksample2 LOGO -->
+					<separator orient="horizontal"></separator>
+					<div align="center"
+						style="padding: 0px; background-image:url(${c:encodeURL('/images/ZKHeader_2x38.png')});  background-repeat: repeat-x; border: 'none';">
+						<image src="/images/ZKHeader2_176x38.jpg" />
+					</div>
+
+					<separator bar="true" orient="horizontal" />
+
+
+					<div align="center">Copyright © (2009 - 2012) the original author or authors.</div>
+
+					<h:br />
+
+					<div align="center">
+						<label value="${s}" multiline="true" />
+					</div>
+
+					<separator bar="true" orient="horizontal" />
+
+					<!-- framework/used libs icons -->
+					<div align="center">
+						<label value="${t}" multiline="true" />
+						<hbox align="start">
+							<image src="/images/framework_icons/zkpowered_34x34.png" tooltiptext="zk framework" />
+							<image src="/images/framework_icons/apache_113x34.gif" tooltiptext="Apache Foundation" />
+							<image src="/images/framework_icons/spring_source_119x34.gif"
+								tooltiptext="spring framework" />
+							<image src="/images/framework_icons/hibernate_34x34.gif"
+								tooltiptext="hibernate (object relational mapper)" />
+							<image src="/images/framework_icons/jasperReport_32x34.gif" tooltiptext="JasperReport" />
+							<hbox align="start">
+								<image src="/images/framework_icons/jrebel_120x34.gif" tooltiptext="JRebel" />
+							</hbox>
+						</hbox>
+						<separator orient="horizontal" />
+						<hbox align="start">
+							<image src="/images/framework_icons/dynamicJasper_153x34.gif" tooltiptext="DynamicJasper" />
+							<image src="/images/framework_icons/jfree_chart_128x34.gif" tooltiptext="JFreeChart" />
+							<image src="/images/framework_icons/postgresql_98x34.gif" tooltiptext="PostgreSQL" />
+						</hbox>
+						<separator orient="horizontal" />
+
+					</div>
+
+				</div>
+			</center>
+
+			<south border="none" height="30px">
+				<div>
+
+					<separator bar="true" orient="horizontal" />
+
+					<div id="divNo" align="left" style="padding: 2px; ">
+						<button id="btnOKAbout" label="OK" onClick="windowAboutZksample2.onClose()" />
+					</div>
+				</div>
+			</south>
+
+
+		</borderlayout>
+
+
+	</window>
+</zk>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+
+	<window id="win" title="testWindow">
+
+		<zscript><![CDATA[
+	public void sayHello() {
+		label1.setValue("hhhhhhh");
+		alert("hello");
+	}
+]]>
+    </zscript>
+
+		<borderlayout height="600px">
+			<center border="0">
+
+				<div>
+					<listbox vflex="true" width="500px">
+						<listhead sizable="true">
+							<listheader label="listheader1" />
+							<listheader label="listheader2" />
+						</listhead>
+						<listitem>
+							<listcell>
+								<label value="item1.1" />
+							</listcell>
+							<listcell>
+								<label value="item1.2" />
+							</listcell>
+						</listitem>
+
+						<listitem>
+							<listcell>
+								<label value="item2.1" />
+							</listcell>
+							<listcell>
+								<label value="item2.2" />
+							</listcell>
+						</listitem>
+
+						<listitem>
+							<listcell>
+								<label value="item3.1" />
+							</listcell>
+							<listcell>
+								<label value="item3.2" />
+							</listcell>
+						</listitem>
+
+						<listitem>
+							<listcell>
+								<label value="item4.1" />
+							</listcell>
+							<listcell>
+								<a href="http://www.zkoss.org"
+									label="The Link" style="color: blue;" />
+							</listcell>
+						</listitem>
+
+
+						<listitem label="item5.1">
+							<listcell>
+								<button label="Show"
+									onClick="sayHello()" />
+							</listcell>
+						</listitem>
+					</listbox>
+					<label id="label1" value="test" />
+				</div>
+			</center>
+		</borderlayout>
+
+
+	</window>
+
+</zk>

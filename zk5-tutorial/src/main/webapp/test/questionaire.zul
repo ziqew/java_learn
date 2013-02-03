@@ -1,0 +1,190 @@
+<?page title="Questionnaire" contentType="text/html;charset=UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit"?>
+
+<zk>
+	<window id="qWin" title="BIFOCAL" border="normal" width="80%"
+		height="100%" apply="de.forsthaus.example.QuestionnaireController">
+		<tabbox mold="accordion" id="tBox">
+			<tabs>
+				<tab label="Personal Details"></tab>
+				<tab label="Questionnaire: Part I"></tab>
+				<tab label="Questionnaire: Part II"></tab>
+			</tabs>
+			<tabpanels>
+				<tabpanel id="personal">
+					<grid width="400px">
+						<columns>
+							<column label="" hflex="20" />
+							<column label="" hflex="26" />
+						</columns>
+						<rows>
+							<row>
+								User Name
+								<textbox id="pUserName" cols="30"
+									disabled="true" />
+							</row>
+							<row>
+								Organizational Unit
+								<combobox readonly="true" id="pOrgU"
+									cols="15" model="@{qWin$composer.allOrgUnits.name}">
+									<comboitem self="@{each='orgu'}"
+										value="@{orgu.id}" label="@{orgu.name}" />
+								</combobox>
+							</row>
+							<row>
+								Gender
+								<combobox readonly="true" id="pGender"
+									cols="10">
+									<comboitem label="Female"
+										value="1">
+									</comboitem>
+									<comboitem label="Male" value="2"></comboitem>
+								</combobox>
+							</row>
+							<row>
+								Age
+								<textbox id="pAge" cols="3" />
+							</row>
+							<row>
+								Professional Seniority
+								<textbox id="pProfSenior" cols="3" />
+							</row>
+							<row>
+								Workplace Seniority
+								<textbox id="pWorkSenior" cols="3" />
+							</row>
+							<row>
+								Managerial Status
+								<combobox readonly="true"
+									id="pManStatus" cols="30">
+									<comboitem label="Not a Manager"
+										value="1">
+									</comboitem>
+									<comboitem label="Team Leader"
+										value="2">
+									</comboitem>
+									<comboitem
+										label="Intermediate Level Manager" value="3">
+									</comboitem>
+									<comboitem
+										label="Senior Level Manager" value="4">
+									</comboitem>
+								</combobox>
+							</row>
+							<row>
+								Education
+								<combobox readonly="true"
+									id="pEducation" cols="30">
+									<comboitem label="High School"
+										value="1">
+									</comboitem>
+									<comboitem
+										label="Secondary/Professional" value="2">
+									</comboitem>
+									<comboitem label="B.A/B.Sc"
+										value="3">
+									</comboitem>
+									<comboitem
+										label="M.A/M.Sc or Higher" value="4">
+									</comboitem>
+								</combobox>
+							</row>
+							<row>
+								Business Area
+								<combobox readonly="true" id="pBArea"
+									cols="30">
+									<comboitem label="Technological"
+										value="1">
+									</comboitem>
+									<comboitem
+										label="Production & Services" value="2">
+									</comboitem>
+									<comboitem
+										label="Management & Administration" value="3">
+									</comboitem>
+									<comboitem label="Logistics"
+										value="4">
+									</comboitem>
+								</combobox>
+							</row>
+						</rows>
+					</grid>
+					<separator />
+					<button id="btnRegister" label="Register" />
+				</tabpanel>
+				<tabpanel id="quest1">
+					<label id="lblId" style="color:red"
+						value="You must complete registration before you start filling the questionnaire" />
+					<separator />
+					<listbox id="lBox" multiple="true" rows="6"
+						model="@{qWin$composer.allQuestions1}"
+						selectedItem="@{qWin$composer.currentQ}">
+						<listhead>
+							<listheader label="#" width="4%" />
+							<listheader label="Topic" width="45%" />
+							<zscript><![CDATA[
+	String head = new String("Doesn't reflect at all 1 --- > 7 Reflects very much");
+]]></zscript>
+							<listheader label="${head}" width="51%" />
+						</listhead>
+						<listitem self="@{each='question'}"
+							value="@{question}">
+							<listcell label="@{question.order}"
+								value="@{question.id}" />
+							<listcell label="@{question.description}" />
+							<listcell>
+								<radiogroup name="@{question.order}">
+									<radio
+										onCheck="orderId.value = self.getRadiogroup().getName()"
+										id="ans1_1" label="1" />
+									<space />
+									<space />
+									<radio
+										onCheck="orderId.value = self.getRadiogroup().getName()"
+										id="ans1_2" label="2" />
+									<space />
+									<space />
+									<radio
+										onCheck="orderId.value = self.getRadiogroup().getName()"
+										id="ans1_3" label="3" />
+									<space />
+									<space />
+									<radio
+										onCheck="orderId.value = self.getRadiogroup().getName()"
+										id="ans1_4" label="4" />
+									<space />
+									<space />
+									<radio
+										onCheck="orderId.value = self.getRadiogroup().getName()"
+										id="ans1_5" label="5" />
+									<space />
+									<space />
+									<radio
+										onCheck="orderId.value = self.getRadiogroup().getName()"
+										id="ans1_6" label="6" />
+									<space />
+									<space />
+									<radio
+										onCheck="orderId.value = self.getRadiogroup().getName()"
+										id="ans1_7" label="7" />
+									<space />
+									<space />
+								</radiogroup>
+								<space />
+								<space />
+								<label style="color:red" value="*" />
+							</listcell>
+						</listitem>
+					</listbox>
+					<separator />
+					<button id="btnProceed" label="Proceed"
+						width="100px" height="24px" />
+					<separator />
+					<label id="orderId" value="none" visible="false"></label>
+					<separator />
+					<label id="system" style="color:red" value="none" />
+				</tabpanel>
+			</tabpanels>
+		</tabbox>
+	</window>
+</zk>

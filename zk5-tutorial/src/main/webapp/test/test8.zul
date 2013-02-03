@@ -1,0 +1,59 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+
+
+	<window width="100%" height="100%">
+		<borderlayout>
+			<north>
+				<menubar>
+					<menuitem label="test" />
+					<menuitem label="test2" />
+				</menubar>
+			</north>
+			<west width="100px">
+
+				<box orient="vertical" width="100px" height="150px">
+					<panel width="100%" height="100%">
+						<panelchildren>
+						
+								<button label="Button1" />
+										<separator />
+										<button label="Button2" />
+										<separator />
+										<button label="Button3" />
+										<separator />
+										<button label="Button4" />
+										<separator />
+										<button label="Button5" />
+										<separator />
+										<button label="Button6" />
+										<separator />
+										<button label="Button7" />
+										<separator />
+										<button label="Button8" />
+										<separator />
+										<button label="Button9" />
+										<separator />
+										<button label="Button10" />
+										<separator />
+										<button label="Button11" />
+										<separator />
+
+
+						</panelchildren>
+					</panel>
+				</box>
+
+			</west>
+			<center flex="true">
+				<panel height="200px">
+					<panelchildren>
+
+					</panelchildren>
+				</panel>
+
+			</center>
+			<south>Sout</south>
+		</borderlayout>
+	</window>
+</zk>

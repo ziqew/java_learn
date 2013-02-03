@@ -1,0 +1,24 @@
+<!-- 
+http://www.zkoss.org/forum/listComment/18466-Wanted-Sliding-container
+ -->
+ 
+<?page title="Auto Generated index.zul"?>
+<window title="Hello World!!" border="normal" width="1024" height="768px">
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		function slide(){
+			$(".box1").hide("slide", { direction: "left" }, 500);
+			$(".box2").show("slide", { direction: "right" }, 500);
+		}
+	</script>
+
+	<hbox>
+		<div id="box3" class="box3" width="250px" height="200px" style="background-color: orange;" visible="true" />
+		<div>
+			<div id="box1" class="box1" width="250px" height="200px" style="position: absolute; background-color: red;" visible="true" />
+			<div id="box2" class="box2" width="250px" height="200px" style="position: absolute; background-color: green" visible="true" />
+		</div>
+	</hbox>
+	<button label="slide" xmlns:w="http://www.zkoss.org/2005/zk/client" w:onClick="slide()" />
+</window>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="orderDialogWindow"
+		title="${c:l('orderDialogWindow.title')}" border="none" sizable="true"
+		apply="${orderDialogCtrl}" closable="true" width="700px"
+		height="500px">
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+				</toolbar>
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px"></hbox>
+				</toolbar>
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					<button id="button_OrderDialog_PrintOrder"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_print2_16x16.gif"
+						tooltiptext="${c:l('button_OrderDialog_PrintOrder.tooltiptext')}" />
+					<separator bar="true" orient="vertical" />
+					<button id="btnNew" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnNew.tooltiptext')}" />
+					<button id="btnEdit" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnEdit.tooltiptext')}" />
+					<button id="btnDelete" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnDelete.tooltiptext')}" />
+					<button id="btnSave" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnSave.tooltiptext')}" />
+					<button id="btnCancel" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnCancel.tooltiptext')}" />
+					<button id="btnClose" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnClose.tooltiptext')}" />
+				</toolbar>
+			</hbox>
+		</div>
+
+		<borderlayout id="borderlayoutOrderDialog">
+
+			<north border="none">
+				<panel id="panel_OrderDialog" style="margin-bottom:10px"
+					border="none">
+					<panelchildren>
+
+						<style>.z-groupbox-cnt {border: 0}</style>
+
+						<groupbox mold="3d" closable="false">
+							<caption image="/images/icons/view.gif"
+								label="${c:l('panel_OrderDialog.title')}" />
+
+							<grid sclass="GridLayoutNoBorder"
+								fixedLayout="true"
+								style="border:0px; padding-left:5px; padding-right:5px;">
+								<columns>
+									<column width="150px" />
+									<column width="100%" />
+								</columns>
+								<rows>
+									<row>
+										<label
+											id="label_OrderDialog_kunNr"
+											value="${c:l('label_OrderDialog_kunNr.value')}" />
+										<hbox>
+											<textbox id="kunNr"
+												value="" />
+
+											<bandbox
+												id="bandbox_OrderDialog_CustomerSearch" sclass="mybandbox"
+												width="0px"
+												tooltiptext="${c:l('bandbox_OrderDialog_CustomerSearch.tooltiptext')}">
+												<bandpopup
+													id="bpop_Orders_CustomerSearch" width="540px"
+													height="490px">
+													<panel
+														id="panel_bboxCustomerSearch2"
+														title="${c:l('label_bboxCustomerSearch2_CustNo.title')}" />
+
+													<vbox>
+														<hbox
+															width="100%">
+
+															<grid
+																fixedLayout="true" style="border:0px" width="100%">
+																<columns>
+																	<column
+																		width="150px" />
+																	<column
+																		width="250px" />
+																	<column
+																		width="100px" />
+																	<column
+																		width="40px" />
+																</columns>
+																<rows>
+																	<row>
+																		<label
+																			id="label_bboxCustomerSearch2_CustNo"
+																			value="${c:l('label_bboxCustomerSearch2_CustNo.value')}" />
+																		<textbox
+																			id="tb_Orders_SearchCustNo" width="99%" />
+																		<button
+																			id="button_bbox_CustomerSearch_Search"
+																			image="/images/icons/search.gif"
+																			label="${c:l('button_bbox_CustomerSearch_Search.label')}"
+																			tooltiptext="${c:l('button_bbox_CustomerSearch_Search.tooltiptext')}" />
+																		<button
+																			id="button_bbox_CustomerSearch_Close"
+																			image="/images/icons/stop.gif"
+																			tooltiptext="${c:l('button_bbox_CustomerSearch_Close.tooltiptext')}" />
+																	</row>
+																	<row>
+																		<label
+																			id="label_bboxCustomerSearch2_CustMatchcode"
+																			value="${c:l('label_bboxCustomerSearch2_CustMatchcode.value')}" />
+																		<textbox
+																			id="tb_Orders_CustSearchMatchcode" width="99%" />
+																	</row>
+																	<row>
+																		<label
+																			id="label_bboxCustomerSearch2_CustName1"
+																			value="${c:l('label_bboxCustomerSearch2_CustName1.value')}" />
+																		<textbox
+																			id="tb_Orders_SearchCustName1" width="99%" />
+																	</row>
+																	<row>
+																		<label
+																			id="label_bboxCustomerSearch2_CustCity"
+																			value="${c:l('label_bboxCustomerSearch2_CustCity.value')}" />
+																		<textbox
+																			id="tb_Orders_SearchCustCity" width="99%" />
+																		<button
+																			id="button_bbox_CustomerSearch_NewCustomer"
+																			image="/images/icons/edit_table_data.gif"
+																			label="${c:l('button_bbox_CustomerSearch_NewCustomer.label')}"
+																			tooltiptext="${c:l('button_bbox_CustomerSearch_NewCustomer.tooltiptext')}" />
+																	</row>
+
+																	<row
+																		spans="4">
+																		<vbox
+																			width="100%">
+																			<paging
+																				id="paging_OrderDialog_CustomerSearchList"
+																				pageSize="20" />
+																			<listbox
+																				id="listBoxCustomerSearch" width="100%"
+																				height="100%" multiple="false">
+																				<listhead
+																					sizable="true">
+																					<listheader
+																						id="listheader_CustNo_2" sort="auto" width="15%"
+																						label="${c:l('label_OrderDialog_kunName1.label')}" />
+																					<listheader
+																						id="listheader_CustMatchcode_2" sort="auto"
+																						width="25%"
+																						label="${c:l('listheader_CustMatchcode_2.label')}" />
+																					<listheader
+																						id="listheader_CustName1_2" sort="auto"
+																						width="30%"
+																						label="${c:l('listheader_CustName1_2.label')}" />
+																					<listheader
+																						id="listheader_CustCity_2" sort="auto" width="30%"
+																						label="${c:l('listheader_CustCity_2.label')}" />
+																				</listhead>
+																			</listbox>
+																		</vbox>
+																	</row>
+
+																</rows>
+															</grid>
+
+														</hbox>
+													</vbox>
+												</bandpopup>
+											</bandbox>
+										</hbox>
+
+
+									</row>
+									<row>
+										<label
+											id="label_OrderDialog_kunName1"
+											value="${c:l('label_OrderDialog_kunName.value')}" />
+										<textbox id="kunName1"
+											hflex="1" />
+									</row>
+									<row>
+										<separator bar="true"></separator>
+										<separator bar="true"></separator>
+									</row>
+									<row>
+										<label
+											id="label_OrderDialog_aufNr"
+											value="${c:l('label_OrderDialog_aufNr.value')}" />
+										<textbox id="aufNr"
+											width="180px" />
+									</row>
+									<row>
+										<label
+											id="label_OrderDialog_aufBezeichnung"
+											value="${c:l('label_OrderDialog_aufBezeichnung.value')}" />
+										<textbox id="aufBezeichnung"
+											hflex="1" />
+									</row>
+								</rows>
+							</grid>
+						</groupbox>
+					</panelchildren>
+				</panel>
+			</north>
+
+
+			<center border="none" flex="true" margins="0,0,0,0">
+				<div id="divCenterOffice">
+
+					<panel id="panel_OrderDialog_OrderPositions"
+						width="100%"
+						title="${c:l('panel_OrderDialog_OrderPositions.title')}"
+						border="none" />
+
+					<div sclass="z-toolbar" style="padding:0">
+						<hbox pack="stretch"
+							sclass="hboxRemoveWhiteStrips" width="100%">
+
+							<!-- COMMON BUTTONS -->
+							<toolbar align="start"
+								style="float:left; border-style: none;" height="28px">
+								<button
+									id="button_OrderDialog_NewOrderPosition" height="24px"
+									image="/images/icons/btn_new2_16x16.gif"
+									label="${c:l('button_OrderDialog_NewOrderPosition.label')}"
+									tooltiptext="${c:l('button_OrderDialog_NewOrderPosition.tooltiptext')}" />
+							</toolbar>
+							<!-- SEARCH AREA -->
+							<toolbar align="center"
+								style="float:left; border-style: none;" height="28px">
+								<hbox align="center"
+									style="padding: 2px">
+								</hbox>
+							</toolbar>
+
+							<!-- CRUD BUTTONS -->
+							<toolbar align="end"
+								style="float:right; border-style: none;" height="28px">
+							</toolbar>
+						</hbox>
+					</div>
+
+					<borderlayout>
+
+						<!-- PAGING COMPONENT -->
+						<north border="none" height="26px">
+							<paging
+								id="paging_ListBoxOrderOrderPositions" pageSize="20" />
+						</north>
+
+						<center border="none">
+							<listbox id="listBoxOrderOrderPositions"
+								tooltiptext="${c:l('listbox.tooltiptext')}" width="100%"
+								height="100%" multiple="false">
+								<listhead sizable="true">
+									<listheader
+										id="listheader_OrderPosList2_Orderpos_No"
+										image="/images/icons/builder.gif" sort="auto" width="10%"
+										label="${c:l('listheader_OrderPosList2_Orderpos_No.label')}" />
+									<listheader
+										id="listheader_OrderPosList2_Shorttext"
+										image="/images/icons/create_doc.gif" sort="auto" width="40%"
+										label="${c:l('listheader_OrderPosList2_Shorttext.label')}" />
+									<listheader
+										id="listheader_OrderPosList2_Count"
+										image="/images/icons/builder.gif" sort="auto" width="10%"
+										label="${c:l('listheader_OrderPosList_Count.label')}" />
+									<listheader
+										id="listheader_OrderPosList2_SinglePrice"
+										image="/images/icons/builder.gif" sort="auto" width="20%"
+										label="${c:l('listheader_OrderPosList_SinglePrice.label')}" />
+									<listheader
+										id="listheader_OrderPosList2_WholePrice"
+										image="/images/icons/builder.gif" sort="auto" width="20%"
+										label="${c:l('listheader_OrderPosList_WholePrice.label')}" />
+								</listhead>
+							</listbox>
+
+						</center>
+					</borderlayout>
+
+				</div>
+			</center>
+		</borderlayout>
+
+	</window>
+</zk>
+

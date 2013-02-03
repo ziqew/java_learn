@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ca="http://www.zkoss.org/2005/zk/client/attribute"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowDocumentation" apply="${documentationCtrl}"
+		border="none" width="100%">
+
+		<label id="l1" visible="false"
+			value="${c:l('message.Information.LoadingDocumentPleaseWait')}" />
+
+		<zscript>
+	String message = l1.getValue();
+</zscript>
+
+
+		<script type="text/javascript">
+
+
+
+
+
+
+			
+			<![CDATA[ function documentLoaded(obj) { zAu.send(new
+			zk.Event(zk.Widget.$(obj), "onDocumentationLoaded")); }
+
+
+			]]>
+			
+			
+			
+			
+			
+			
+       </script>
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnRefresh"
+						image="/images/icons/refresh2_yellow_16x16.gif"
+						tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px"></hbox>
+				</toolbar>
+
+				<!-- 
+					if="${sec:isAllGranted('ROLE_SUPERVISOR')}"
+				-->
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					Please wait... Downloading of the pdf-file takes a
+					while.
+				</toolbar>
+
+			</hbox>
+		</div>
+
+
+		<borderlayout id="borderLayout_documentation">
+			<center border="none">
+
+
+				<iframe id="iFrameDocumentation" width="100%"
+					height="100%" ca:onload="documentLoaded(this)">
+					<attribute name="onCreate">
+	Clients.showBusy(self, message);
+</attribute>
+					<attribute name="onDocumentationLoaded">
+	Clients.clearBusy(self);
+</attribute>
+
+				</iframe>
+
+			</center>
+		</borderlayout>
+	</window>
+</zk>
+
+
+

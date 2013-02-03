@@ -1,0 +1,47 @@
+<?page title="Test Index File" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window id="winIndex" title="Welcome To Asset Manager" border="normal" width="100%" height="100%"> 
+	    <image src="Images/logo.png" width="89%" />
+		<image src="Images/logo2.png" width="10%" />
+
+						<tabbox id="tabbox1">
+							<tabs id="tabs1" >							
+								<tab label="Home"/>
+								<tab label="Contribute" />
+								<tab label="Search" />	
+								<tab label=" Asset details" id="AssetDetailsTab" />							
+								<tab label="Dashboard"  />
+								<tab label="KCP" />
+								<tab label="Asset Usage" />
+								<tab label="Administration" id="admin" visible="false" />
+							</tabs>
+													
+							<tabpanels >
+								<tabpanel  style="overflow:auto">
+									<include src="home.zul"></include>
+								</tabpanel>
+								<tabpanel style="overflow:auto">
+									<include src="AMContributionForm.zul" ></include>
+								</tabpanel>
+								<tabpanel  >
+									<include src=""></include>
+								</tabpanel>	
+								<tabpanel  >
+									<include src=""></include>
+								</tabpanel>								
+								<tabpanel >
+									<include src=""></include>
+								</tabpanel>
+								<tabpanel >
+									<include src=""></include>
+								</tabpanel>
+								<tabpanel >
+									<include src=""></include>
+								</tabpanel>
+								<tabpanel >
+									<include src=""></include>
+								</tabpanel>
+							</tabpanels>
+						</tabbox>	
+	</window>
+	</zk>

@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="addGrouprightDialogWindow" closable="true"
+		title="${c:l('addGrouprightDialogWindow.title')}" border="none"
+		apply="${addGrouprightDialogCtrl}" width="450px" height="160px">
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0
+			padding on right and left */ }
+		</style>
+
+		<!-- set the Button of the bandbox, because missing in grayTheme -->
+		<style dynamic="true">
+			.mybandbox .z-bandbox-img { background: transparent
+			url(${c:encodeURL('~./zul/img/button/bandbtn.gif')})
+			no-repeat 0 0; border: 1px solid #C0C0C0 ; vertical-align:
+			top: cursor: pointer: width: 19px; height: 19px ;}
+		</style>
+
+		<borderlayout id="borderlayoutAddGrouprightDialog">
+			<north border="none" margins="0,0,0,0">
+				<div id="divNorthAddGrouprightDialog">
+					<toolbar>
+						<toolbarbutton id="btnHelp"
+							image="/images/icons/light_16x16.gif"
+							tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					</toolbar>
+
+
+					<grid fixedLayout="true" style="border:0px">
+						<columns>
+							<column width="150px" />
+							<column width="100%" />
+						</columns>
+						<rows>
+							<row>
+								<label
+									id="label_AddGroupRightDialog_GroupName"
+									value="${c:l('label_AddGroupRightDialog_GroupName.value')}" />
+								<textbox
+									id="textbox_AddGroupRightDialog_GroupName" readonly="true"
+									hflex="1" />
+							</row>
+							<row>
+								<separator bar="true"></separator>
+								<separator bar="true"></separator>
+							</row>
+							<row>
+								<label
+									id="label_AddGroupRightDialog_RightName"
+									value="${c:l('label_AddGroupRightDialog_RightName.value')}" />
+
+								<hbox width="100%">
+
+									<vbox align="start">
+
+										<!-- Bandbox for searching rights -->
+										<bandbox
+											id="bandbox_AddGroupRightDialog_SearchRight"
+											sclass="mybandbox" width="1px"
+											tooltiptext="${c:l('bandbox_AddGroupRightDialog_SearchRight.tooltiptext')}">
+											<bandpopup
+												id="bpop_AddGroupRightDialog_SearchRight" width="500px"
+												height="520px">
+												<panel
+													id="panel_AddGroupRightDialog_SearchRight"
+													title="${c:l('panel_AddGroupRightDialog_SearchRight.title')}" />
+
+												<vbox>
+													<hbox
+														width="100%">
+
+														<grid
+															fixedLayout="true" style="border:0px" width="100%">
+															<columns>
+																<column
+																	width="150px" />
+																<column
+																	width="200px" />
+																<column
+																	width="100px" />
+																<column
+																	width="49px" />
+															</columns>
+															<rows>
+																<row>
+																	<label
+																		id="label_bboxAddGroupRightDialog_rightName"
+																		value="${c:l('label_bboxAddGroupRightDialog_rightName.value')}" />
+																	<textbox
+																		id="textbox_bboxAddGroupRightDialog_rightName"
+																		width="99%" />
+																	<button
+																		id="button_bbox_AddGroupRightDialog_Search"
+																		sclass="oT_ButtonWithIcon"
+																		image="/images/icons/search.gif"
+																		tooltiptext="${c:l('button_bbox_AddGroupRightDialog_Search.tooltiptext')}" />
+																	<button
+																		id="button_bbox_AddGroupRightDialog_Close"
+																		sclass="oT_ButtonWithIcon"
+																		image="/images/icons/stop.gif"
+																		tooltiptext="${c:l('button_bbox_AddGroupRightDialog_Close.tooltiptext')}" />
+																</row>
+																<row>
+																	<separator
+																		bar="true" />
+																	<separator
+																		bar="true" />
+																	<separator
+																		bar="true" />
+																	<separator
+																		bar="true" />
+																</row>
+
+																<row
+																	spans="4">
+																	<grid
+																		fixedLayout="true" style="border:0px" width="100%">
+																		<columns>
+																			<column
+																				width="150px" />
+																			<column />
+																			<column
+																				width="150px" />
+																			<column />
+																		</columns>
+																		<rows>
+																			<row>
+																				<label
+																					id="label_bbox_AddGroupRightDialog_All"
+																					value="${c:l('label_bbox_AddGroupRightDialog_All.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_All" />
+																			</row>
+																			<row>
+																				<label
+																					id="label_bbox_AddGroupRightDialog_Pages"
+																					value="${c:l('label_bbox_AddGroupRightDialog_Pages.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_Pages" />
+																				<label
+																					id="label_bbox_AddGroupRightDialog_Tabs"
+																					value="${c:l('label_bbox_AddGroupRightDialog_Tabs.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_Tabs" />
+																			</row>
+																			<row>
+																				<label
+																					id="label_bbox_AddGroupRightDialog_MenuCat"
+																					value="${c:l('label_bbox_AddGroupRightDialog_MenuCat.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_MenuCat" />
+																				<label
+																					id="label_bbox_AddGroupRightDialog_MenuItems"
+																					value="${c:l('label_bbox_AddGroupRightDialog_MenuItems.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_MenuItems" />
+																			</row>
+																			<row>
+																				<label
+																					id="label_bbox_AddGroupRightDialog_Methods"
+																					value="${c:l('label_bbox_AddGroupRightDialog_Methods.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_Methods" />
+																				<label
+																					id="label_bbox_AddGroupRightDialog_DomainObject"
+																					value="${c:l('label_bbox_AddGroupRightDialog_DomainObject.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_Domain" />
+																			</row>
+																			<row>
+																				<label
+																					id="label_bbox_AddGroupRightDialog_Components"
+																					value="${c:l('label_bbox_AddGroupRightDialog_Components.value')}" />
+																				<checkbox
+																					id="checkbox_bbox_AddGroupRightDialog_Components" />
+																			</row>
+																		</rows>
+																	</grid>
+																</row>
+
+
+																<!-- Listbox -->
+																<row
+																	spans="4">
+																	<borderlayout
+																		id="borderLayout_bbox_Listbox" height="310px"
+																		width="99%">
+																		<center
+																			autoscroll="true" border="none">
+
+																			<div>
+																				<paging
+																					id="paging_ListBoxSingleRightSearch" pageSize="20" />
+																				<listbox
+																					id="listBoxSingleRightSearch" width="99.5%"
+																					height="100%" multiple="false">
+																					<listhead
+																						sizable="true">
+																						<listheader
+																							id="listheader_bbox_AddGroupRightDialog_RightName"
+																							sort="auto" width="70%"
+																							label="${c:l('listheader_bbox_AddGroupRightDialog_RightName.label')}" />
+																						<listheader
+																							id="listheader_bbox_AddGroupRightDialog_RightType"
+																							sort="auto" width="30%"
+																							label="${c:l('listheader_bbox_AddGroupRightDialog_RightType.label')}" />
+																					</listhead>
+																				</listbox>
+																			</div>
+
+																		</center>
+																	</borderlayout>
+
+																</row>
+															</rows>
+														</grid>
+
+													</hbox>
+												</vbox>
+											</bandpopup>
+										</bandbox>
+									</vbox>
+
+									<vbox width="100%" align="center">
+										<textbox
+											id="textbox_AddGroupRightDialog_RightName" readonly="true"
+											hflex="1" />
+									</vbox>
+
+								</hbox>
+
+
+							</row>
+						</rows>
+					</grid>
+
+				</div>
+			</north>
+
+
+
+			<east border="none"></east>
+			<center border="none"></center>
+			<west border="none"></west>
+
+			<south border="none" margins="1,0,0,0" size="26px">
+				<div id="divSouth" align="right">
+					<hbox spacing="3px" style="padding:3px"
+						align="end">
+						<button id="btnNew" sclass="oT_ButtonWithIcon"
+							tooltiptext="${c:l('btnNew.tooltiptext')}" />
+						<button id="btnEdit" sclass="oT_ButtonWithIcon"
+							tooltiptext="${c:l('btnEdit.tooltiptext')}" />
+						<button id="btnDelete"
+							sclass="oT_ButtonWithIcon"
+							tooltiptext="${c:l('btnDelete.tooltiptext')}" />
+						<button id="btnSave" sclass="oT_ButtonWithIcon"
+							tooltiptext="${c:l('btnSave.tooltiptext')}" />
+						<button id="btnCancel"
+							sclass="oT_ButtonWithIcon"
+							tooltiptext="${c:l('btnCancel.tooltiptext')}" />
+						<button id="btnClose" sclass="oT_ButtonWithIcon"
+							tooltiptext="${c:l('btnClose.tooltiptext')}" />
+					</hbox>
+				</div>
+			</south>
+
+		</borderlayout>
+
+	</window>
+</zk>

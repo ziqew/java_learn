@@ -1,0 +1,32 @@
+<?page id="loginPage" title="Digital medical sheet - Login page" onLoad="win.doOverlapped();"?>
+<window id="win" title="LOGIN" border="normal" width="300px" position="center">
+
+    <!-- this form-login-page form is also used as the
+         form-error-page to ask for a login again. -->
+    <html style="color:red" if="${not empty param.login_error}">
+      <![CDATA[
+        Your login attempt was not successful, try again.<br/><br/>
+        Reason: ${SPRING_SECURITY_LAST_EXCEPTION.message}
+       ]]>
+    </html>
+
+
+
+    <h:form id="f" name="f" action="j_spring_security_check" method="POST"
+    xmlns:h="http://www.w3.org/1999/xhtml">
+    	<grid>
+    		<columns sizable="false">
+			<column width="50%"/>
+			<column width="50%"/>
+		</columns>
+
+                <rows>
+    			<row><label value="User:"/> <textbox id="u" name="j_username"/></row>
+    			<row><label value="Password:"/> <textbox id="p" type="password" name="j_password"/></row>
+                        <row spans="2"><div align="center"><h:input type="submit" value="Accedi"/><h:input type="reset" value="Cancella"/></div></row>
+                </rows>
+    	</grid>
+
+    </h:form>
+
+</window>

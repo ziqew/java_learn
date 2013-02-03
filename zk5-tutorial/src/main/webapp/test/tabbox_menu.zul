@@ -1,0 +1,23 @@
+<!-- http://www.zkoss.org/forum/listComment/18566-Tabbox-with-menu  -->
+<zk>
+	<window>
+		<tabbox>
+			<tabs>
+				<tab label="Tab1"></tab>
+				<tab id="tab2" label="Tab2" tooltip="pop1"></tab>
+			</tabs>
+			<tabpanels>
+				<tabpanel>Panel 1</tabpanel>
+				<tabpanel>Panel 2</tabpanel>
+			</tabpanels>
+		</tabbox>
+		<popup id="pop1">
+			<listbox
+				onSelect="tab2.setLabel(self.getSelectedItem().getLabel());pop1.close()"
+				width="200px">
+				<listitem label="Tab2-1" />
+				<listitem label="Tab2-2" />
+			</listbox>
+		</popup>
+	</window>
+</zk>

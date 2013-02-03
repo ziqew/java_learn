@@ -1,0 +1,29 @@
+
+<!-- http://www.zkoss.org/forum/listComment/15007  -->
+
+<zk>
+	<window height="150px" width="280px" border="none"
+		contentStyle="padding:0px;"
+		use="de.forsthaus.example.AlarmMsgNotifyPanel">
+		<panel>
+			<toolbar id="titlePanel">
+				<hbox width="100%" align="center">
+					<div width="260px">
+						<label id="titleLabel" value=""
+							style="color:white;font-weight:bold;" />
+					</div>
+					<div>
+						<image src="/buttons/close.gif"
+							hover="/buttons/close-over.gif" />
+					</div>
+				</hbox>
+			</toolbar>
+			<panelchildren>
+				<space spacing="10px" />
+				<label id="msgLabel"
+					style="font-weight:bold;color:black;" />
+				<space spacing="10px" />
+			</panelchildren>
+		</panel>
+	</window>
+</zk>

@@ -1,0 +1,30 @@
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="startWindow" border="none" width="800px"
+		height="500px">
+
+
+		<!-- Google Translate Element -->
+		<h:div id="google_translate_element" style="display:block">
+		</h:div>
+		<h:script>
+			function googleTranslateElementInit() { new
+			google.translate.TranslateElement({pageLanguage: "af"},
+			"google_translate_element"); };
+		</h:script>
+		<h:script
+			src="http://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+		</h:script>
+
+		<separator height="50px" />
+
+		<label value="This is a test string for translating."
+			style="color: blue; font-weight: bold;" />
+
+
+	</window>
+</zk>

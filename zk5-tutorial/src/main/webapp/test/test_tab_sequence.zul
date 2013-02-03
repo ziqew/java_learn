@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<zk xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://www.zkoss.org/2005/zul'
+	xmlns:h='http://www.w3.org/1999/xhtml'
+	xsi:schemaLocation='http://www.zkoss.org/2005/zul WEB-INF/xsd/zul.xsd'>
+
+
+	<window id='testWin' apply='de.forsthaus.example.ControllerTestWin'
+		border='normal' title='A Test Page'>
+
+		<!-- This listbox display the movies names  -->
+		<listbox id='detailLstBox' width='200px' checkmark='true'>
+			<listhead sizable='true'>
+				<listheader label='Name' />
+			</listhead>
+			<listitem label='Tom And Jerry' value='Tom And Jerry' />
+			<listitem label='Tweety and Sylvester'
+				value='Tweety and Sylvester' />
+			<listitem label='Bugs Bunny' value='Bugs Bunny' />
+		</listbox>
+
+		<space spacing='1px' />
+
+		<!-- Edit button to edit the selected row -->
+		<button id='editBtn' label='Edit Record' autodisable='self' />
+
+	</window>
+</zk>

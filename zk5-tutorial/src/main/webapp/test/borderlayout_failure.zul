@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="windowWelcome" apply="${welcomeCtrl}" border="none"
+		width="100%" height="100%">
+
+
+		<zscript language="Java"><![CDATA[
+	{
+		lf = "\n";
+		s = "";
+		s = s + "- 17.11.2010 / BlahBlahBlah" + lf;
+		s = s + "- 08.11.2010 / BlahBlahBlah" + lf;
+		s = s + "- 15.10.2010 / BlahBlahBlah" + lf;
+
+	}
+]]></zscript>
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0
+			padding on right and left */ }
+
+			<!-- Title in bold letters -->
+			.z-groupbox-hl, .z-groupbox-header { color: #000000;
+			font-weight: bold; }
+
+			.GridLayoutSmartBorderDashed tr.z-row
+			td.z-row-inner,tr.z-row,div.z-grid-body
+			div.z-cell,div.z-grid { border: none; zoom: 1; overflow:
+			hidden; background: white; border-top: none; border-left:
+			none; border-right: none; border-bottom: 1px solid;
+			border-bottom-color: silver; border-bottom-style: dashed;
+			padding: 1px; }
+
+		</style>
+
+
+
+		<borderlayout id="borderLayout_Welcome" height="1024px"
+			width="100%">
+
+			<!-- MODULE CONTENT AREA -->
+			<center id="center" border="none" margins="0,0,0,0"
+				flex="true" autoscroll="false" style=" padding: 5px">
+
+				<vbox>
+					<groupbox mold="3d" closable="false" width="100%">
+						<caption
+							style="color: #000000; font-weight:bold;"
+							image="/images/icons/new_icons_10.gif" label="BlahBlahBlah" />
+
+						<textbox height="100%" width="99.5%"
+							multiline="true" rows="10" readonly="true"
+							style="font-family: verdana; border: none; background-color: white;"
+							value="${s}" />
+					</groupbox>
+
+					<groupbox id="gb_TableStatistic" mold="3d"
+						closable="false">
+						<caption
+							style="color: #000000; font-weight:bold;"
+							image="/images/icons/database_blue_16x16.gif"
+							label="BlahBlahBlah" />
+
+						<borderlayout height="300px">
+							<center flex="true">
+								<grid id="grid_TableRecordsInfo"
+									sclass="GridLayoutSmartBorderDashed" fixedLayout="true">
+								</grid>
+							</center>
+						</borderlayout>
+
+					</groupbox>
+
+				</vbox>
+
+			</center>
+
+			<!-- EAST AREA -->
+			<east border="none" margins="0,0,0,0" width="260px"
+				collapsible="false" style=" padding: 5px" flex="false"
+				splittable="false" autoscroll="false">
+				<div id="divEAST">
+
+					<vbox>
+						<groupbox mold="3d" closable="false"
+							width="260px">
+							<caption
+								style="color: #000000; font-weight:bold;"
+								image="/images/icons/calendar1_16x16.gif" label="BlahBlahBlah" />
+
+							<calendar id="cal" width="98%" />
+						</groupbox>
+
+						<groupbox mold="3d" closable="false">
+							<caption
+								style="color: #000000; font-weight:bold;"
+								image="/images/icons/daysort_16x16.gif" label="BlahBlahBlah" />
+
+							<borderlayout height="43px">
+								<center flex="true">
+									<grid id="grid_DatesInfo"
+										sclass="GridLayoutSmartBorderDashed" fixedLayout="true">
+									</grid>
+								</center>
+							</borderlayout>
+						</groupbox>
+
+						<groupbox mold="3d" closable="false">
+							<caption
+								style="color: #000000; font-weight:bold;"
+								image="/images/icons/money_16x16.png" label="BlahBlahBlah" />
+
+							<borderlayout height="95px">
+								<center flex="true">
+									<grid id="grid_FinancialInfo"
+										sclass="GridLayoutSmartBorderDashed" fixedLayout="true">
+									</grid>
+								</center>
+							</borderlayout>
+						</groupbox>
+
+						<groupbox mold="3d" closable="false">
+							<caption
+								style="color: #000000; font-weight:bold;"
+								image="/images/icons/calculator_16x16.gif" label="BlahBlahBlah" />
+
+							<borderlayout height="85px">
+								<center flex="true">
+									<grid id="grid_OrdersInfo"
+										sclass="GridLayoutSmartBorderDashed" fixedLayout="true">
+									</grid>
+								</center>
+							</borderlayout>
+
+						</groupbox>
+
+						<groupbox mold="3d" closable="false">
+							<caption
+								style="color: #000000; font-weight:bold;"
+								image="/images/icons/message1_16x16.gif" label="BlahBlahBlah" />
+
+							<borderlayout height="28px">
+								<center flex="true">
+									<grid id="grid_MessageInfo"
+										sclass="GridLayoutSmartBorderDashed" fixedLayout="true">
+									</grid>
+								</center>
+							</borderlayout>
+
+						</groupbox>
+
+
+					</vbox>
+				</div>
+
+			</east>
+		</borderlayout>
+
+
+	</window>
+</zk>

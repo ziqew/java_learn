@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+	<window title="My window" width="100%" height="100%">
+		<borderlayout>
+			<north border="normal" height="10%">the North</north>
+			<center border="normal">the Center</center>
+			<south border="normal" height="50%">the South</south>
+		</borderlayout>
+	</window>
+	<button label="the End" />
+
+	<decimalbox format="0.##" value="1234568.582" />
+	
+	<window title="Modal Dialog" border="normal">
+<button label="Hello.doModal">
+<attribute name="onClick">{
+final Window win = (Window) Executions.createComponents("/hello-template.zul", null, null);
+win.setMaximizable(true);
+win.addEventListener("onClose", new EventListener() {
+public void onEvent(Event event) throws Exception {
+Messagebox.show("Window has been closed", "Information", Messagebox.OK, Messagebox.INFORMATION);
+}
+});
+win.doModal();
+}</attribute>
+</button>
+</window>
+</zk>

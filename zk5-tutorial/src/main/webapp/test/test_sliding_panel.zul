@@ -1,0 +1,45 @@
+<!-- http://www.zkoss.org/forum/listComment/16983-hide-a-panel -->
+<?page title="sliding panel"?>
+<window title="Wizard Test" border="normal" width="830px"
+	height="400px">
+	<zscript><![CDATA[
+	int current = 0;
+	void showOne(int theVisible) {
+		if (theVisible == current)
+			return;
+
+		List items = stackOfPanels.getChildren();
+		Component c = items.get(current);
+
+		String jqCommand = "jq(\"$gb" + current + "\").fadeOut(1500)";
+		Clients.evalJavaScript(jqCommand);
+		c.setVisible(false);
+
+		c = items.get(theVisible);
+		jqCommand = "jq(\"$gb" + theVisible + "\").fadeIn(1500)";
+		Clients.evalJavaScript(jqCommand);
+		c.setVisible(true);
+
+		current = theVisible;
+	}
+]]></zscript>
+	<div id="stackOfPanels">
+		<groupbox id="gb0" mold="3d">
+			<caption>ONE</caption>
+			one
+		</groupbox>
+		<groupbox id="gb1" mold="3d" visible="false">
+			<caption>TWO</caption>
+			two
+		</groupbox>
+		<groupbox id="gb2" mold="3d" visible="false">
+			<caption>THREE</caption>
+			three
+		</groupbox>
+	</div>
+	<hlayout>
+		<button label="ONE" onClick="showOne(0)" />
+		<button label="TWO" onClick="showOne(1)" />
+		<button label="THREE" onClick="showOne(2)" />
+	</hlayout>
+</window>

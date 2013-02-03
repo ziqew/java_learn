@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+	xmlns='http://www.zkoss.org/2005/zul'
+	xmlns:h='http://www.w3.org/1999/xhtml'
+	xsi:schemaLocation='http://www.zkoss.org/2005/zul WEB-INF/xsd/zul.xsd'>
+
+	<!-- 
+		http://www.zkoss.org/forum/listComment/13874
+	-->
+
+	<window id='testWin' apply='de.forsthaus.example.ControllerTestWin2'
+		border='normal' title='A Test Page'>
+		<label
+			value='Just a quick test on the order of method execution...' />
+		<h:br />
+		<label id='currDateLabel' value="Label_currDateLabel"
+			forward='onCreate=onCreateDateLabel' />
+
+	</window>
+</zk>

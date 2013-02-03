@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+
+<!-- 
+	<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
+-->
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowSpreadsheet" apply="${spreadsheetMainCtrl}"
+		border="none" width="100%">
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<button id="btnHelp" height="24px"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					<button id="btnRefresh" height="24px"
+						image="/images/icons/refresh2_yellow_16x16.gif"
+						tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+					<button id="btn_PrintSpreadsheet" height="24px"
+						image="/images/icons/btn_print2_16x16.gif"
+						tooltiptext="${c:l('btnPrint.tooltiptext')}" />
+					<button id="btnFullScreen" height="24px"
+						image="/images/icons/console_view.gif"
+						tooltiptext="${c:l('btnFullScreen.tooltiptext')}" />
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px">
+
+						<separator bar="true" />
+
+						<button id="btn_Show1Day" height="24px"
+							label="${c:l('Test')}" tooltiptext="${c:l('Test')}" />
+
+					</hbox>
+				</toolbar>
+
+				<!-- 
+					if="${sec:isAllGranted('ROLE_SUPERVISOR')}"
+				-->
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					under work ...
+				</toolbar>
+
+			</hbox>
+		</div>
+
+		<borderlayout id="borderLayout_Spreadsheet">
+
+			<center border="none" flex="true">
+
+				<spreadsheet id="mySpreadsheet"
+					src="/spreadsheet/Pacific_Guitar_Sales.xls" maxrows="200"
+					maxcolumns="40" hflex="1" vflex="1">
+				</spreadsheet>
+
+			</center>
+
+		</borderlayout>
+
+	</window>
+</zk>

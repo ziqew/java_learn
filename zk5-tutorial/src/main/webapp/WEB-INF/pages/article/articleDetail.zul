@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<!-- Namespace dependent DataBinding Initiator.          -->
+<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./windowArticleDetail" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xmlns:h="http://www.w3.org/1999/xhtml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="windowArticleDetail" apply="${articleDetailCtrl}" border="none" width="100%">
+
+		<borderlayout id="borderLayout_articleDetail">
+			<center border="none" autoscroll="true">
+
+				<hbox align="stretch" pack="stretch" sclass="FDCenterNoBorder" width="100%">
+
+					<!-- Left CONTENT AREA -->
+					<!-- simulates a columnLayout -->
+					<cell width="100%">
+						<vbox align="stretch" pack="stretch" width="100%">
+							<div>
+
+								<panel border="none">
+									<panelchildren>
+
+										<groupbox mold="3d" closable="false">
+											<caption image="/images/icons/view.gif" label="${c:l('common.Details')}" />
+
+											<grid sclass="GridLayoutNoBorder" fixedLayout="true"
+												style="border:0px; padding-left:5px; padding-right:5px;">
+												<columns>
+													<column width="150px" />
+													<column />
+												</columns>
+												<rows>
+													<row>
+														<hbox>
+															<label value="${c:l('label_ArticleDialog_artNr.value')}" />
+															<label value="*" style="color:red;font-size:10px" />
+														</hbox>
+														<textbox id="txtb_artNr" stubonly="true"
+															value="@{controller.article.artNr}" readonly="true" constraint="no empty" maxlength="20" hflex="1" />
+													</row>
+													<row>
+														<separator bar="true"></separator>
+														<separator bar="true"></separator>
+													</row>
+													<row>
+														<hbox>
+															<label
+																value="${c:l('label_ArticleDialog_artKurzbezeichnung.value')}" />
+															<label value="*" style="color:red;font-size:10px" />
+														</hbox>
+														<textbox id="txtb_artKurzbezeichnung"
+															value="@{controller.article.artKurzbezeichnung}" readonly="true" constraint="no empty" maxlength="50"
+															hflex="1" />
+													</row>
+													<row>
+														<label
+															value="${c:l('label_ArticleDialog_artLangbezeichnung.value')}" />
+														<textbox id="txtb_artLangbezeichnung"
+															value="@{controller.article.artLangbezeichnung}" readonly="true" multiline="true" rows="10" vflex="1"
+															hflex="1" />
+													</row>
+													<row>
+														<hbox>
+															<label value="${c:l('label_ArticleDialog_artPreis.value')}" />
+															<label value="*" style="color:red;font-size:10px" />
+														</hbox>
+														<decimalbox id="decb_artPreis"
+															value="@{controller.article.artPreis}" readonly="true" format="#,##0.00" constraint="no empty"
+															style="text-align: right" width="100px" />
+													</row>
+												</rows>
+											</grid>
+										</groupbox>
+									</panelchildren>
+								</panel>
+
+							</div>
+						</vbox>
+					</cell>
+				</hbox>
+
+
+			</center>
+		</borderlayout>
+
+	</window>
+</zk>
+
+

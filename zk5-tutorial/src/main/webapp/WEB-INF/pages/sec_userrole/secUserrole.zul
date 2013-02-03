@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="secUserroleWindow" apply="${secUserroleCtrl}"
+		border="none" width="100%" height="100%">
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0
+			padding on right and left */ }
+		</style>
+
+		<panel id="panel_SecUserRole"
+			title="${c:l('panel_SecUserRole.title')}" border="none" />
+
+		<borderlayout id="borderlayoutSecUserrole" height="100%">
+
+			<north border="none" margins="0,0,0,0">
+
+				<div sclass="z-toolbar" style="padding:0">
+					<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+						width="100%">
+
+						<!-- COMMON BUTTONS -->
+						<toolbar align="start"
+							style="float:left; border-style: none;">
+							<toolbarbutton id="btnHelp"
+								image="/images/icons/light_16x16.gif"
+								tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+							<toolbarbutton id="btnRefresh"
+								image="/images/icons/refresh2_yellow_16x16.gif"
+								tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+							<separator orient="vertical" />
+						</toolbar>
+
+						<!-- SEARCH AREA -->
+						<toolbar align="center"
+							style="float:left; border-style: none;">
+							<hbox align="center" style="padding: 2px">
+
+							</hbox>
+						</toolbar>
+
+						<!-- CRUD BUTTONS -->
+						<toolbar align="end"
+							style="float:right; border-style: none;">
+							<button id="btnSave"
+								sclass="oT_ButtonWithIcon"
+								image="/images/icons/btn_save2_16x16.gif"
+								tooltiptext="${c:l('btnSave.tooltiptext')}" />
+						</toolbar>
+					</hbox>
+				</div>
+
+			</north>
+
+
+			<center border="none" margins="0,0,0,0">
+				<div id="divCenterSecUserrole">
+
+					<tabbox id="tabBoxUserRoles" width="100%">
+						<tabs>
+							<tab id="tab_SecUserRole_Details"
+								label="${c:l('tab_SecUserRole_Details.label')}" />
+						</tabs>
+
+						<tabpanels>
+
+							<!-- Tab Details -->
+							<tabpanel
+								style="border: 0px; padding: 0px">
+
+								<hbox align="stretch" pack="stretch"
+									width="100%">
+
+									<cell width="30%">
+
+										<panel
+											id="panel_SecUserRole_User"
+											title="${c:l('panel_SecUserRole_User.title')}"
+											style="margin-bottom:5px" border="none">
+											<panelchildren>
+
+												<borderlayout
+													id="borderLayout_Users">
+													<center
+														autoscroll="true" border="none">
+														<div>
+
+															<paging
+																id="paging_ListBoxSecUser" />
+															<listbox
+																id="listBoxSecUser" multiple="false" hflex="1"
+																vflex="1">
+																<listhead
+																	sizable="true">
+																	<listheader
+																		id="listheader_SecUserRole_usrLoginname"
+																		sclass="FDListBoxHeader1"
+																		image="/images/icons/create_doc.gif" sort="auto"
+																		width="100%"
+																		label="${c:l('listheader_SecUserRole_usrLoginname.label')}" />
+																</listhead>
+															</listbox>
+														</div>
+													</center>
+												</borderlayout>
+
+											</panelchildren>
+										</panel>
+									</cell>
+
+									<cell width="70%">
+										<panel
+											id="panel_SecUserRole_GrantedRoles"
+											title="${c:l('panel_SecUserRole_GrantedRoles.title')}"
+											style="margin-bottom:5px" border="none">
+											<panelchildren>
+
+												<borderlayout
+													id="borderLayout_Roles">
+													<center
+														autoscroll="true" border="none">
+														<div>
+
+															<paging
+																id="paging_ListBoxSecRoles" />
+															<listbox
+																id="listBoxSecRoles" multiple="false" hflex="1"
+																vflex="1">
+																<listhead
+																	sizable="true">
+																	<listheader
+																		id="listheader_SecUserRole_GrantedRight"
+																		sclass="FDListBoxHeader1"
+																		image="/images/icons/exdDialogAction1.gif" sort="none"
+																		width="20%"
+																		label="${c:l('listheader_SecUserRole_GrantedRight.label')}" />
+																	<listheader
+																		id="listheader_SecUserRole_RoleName"
+																		sclass="FDListBoxHeader1"
+																		image="/images/icons/create_doc.gif" sort="auto"
+																		width="80%"
+																		label="${c:l('listheader_SecUserRole_RoleName.label')}" />
+																</listhead>
+															</listbox>
+														</div>
+													</center>
+												</borderlayout>
+
+											</panelchildren>
+										</panel>
+									</cell>
+								</hbox>
+
+							</tabpanel>
+						</tabpanels>
+					</tabbox>
+
+				</div>
+			</center>
+
+		</borderlayout>
+
+
+	</window>
+</zk>
+

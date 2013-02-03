@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="orderListWindow" apply="${orderListCtrl}" border="none"
+		width="100%">
+
+		<panel id="panelOrderList"
+			title="${c:l('panelOrderList.title')}" border="none">
+			<panelchildren>
+
+				<div sclass="z-toolbar" style="padding:0">
+					<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+						width="100%">
+
+						<!-- COMMON BUTTONS -->
+						<toolbar align="start"
+							style="float:left; border-style: none;">
+							<toolbarbutton id="btnHelp"
+								image="/images/icons/light_16x16.gif"
+								tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+							<toolbarbutton id="btnRefresh"
+								image="/images/icons/refresh2_yellow_16x16.gif"
+								tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+							<separator orient="vertical" />
+						</toolbar>
+
+
+						<!-- SEARCH AREA -->
+						<toolbar align="center"
+							style="float:left; border-style: none;">
+							<hbox id="hBoxCustomerSearch" align="center"
+								style="padding: 2px">
+
+								<!-- 
+									<hbox id="hBoxCustomerSearch">
+								-->
+								<label id="label_OrderList_Customer"
+									value="${c:l('label_OrderList_Customer.value')}" />
+
+
+								<bandbox
+									id="bandbox_OrderList_CustomerSearch" width="250px"
+									tooltiptext="${c:l('bandbox_OrderList_CustomerSearch.tooltiptext')}">
+									<bandpopup
+										id="bpop_Orders_CustomerSearch" width="540px"
+										height="455px">
+										<panel
+											id="panel_bboxCustomerSearch"
+											title="${c:l('panel_bboxCustomerSearch.title')}" />
+
+										<vbox>
+											<hbox width="100%">
+
+												<grid fixedLayout="true"
+													style="border:0px" width="100%">
+													<columns>
+														<column
+															width="150px" />
+														<column
+															width="250px" />
+														<column
+															width="100px" />
+														<column
+															width="40px" />
+													</columns>
+													<rows>
+														<row>
+															<label
+																id="label_bboxCustomerSearch_CustNo"
+																value="${c:l('label_bboxCustomerSearch_CustNo.value')}" />
+															<textbox
+																id="tb_Orders_SearchCustNo" width="99%" />
+															<button
+																id="button_bbox_CustomerSearch_Search"
+																image="/images/icons/search.gif"
+																label="${c:l('button_bbox_CustomerSearch_Search.label')}"
+																tooltiptext="${c:l('button_bbox_CustomerSearch_Search.tooltiptext')}" />
+															<button
+																id="button_bbox_CustomerSearch_Close"
+																image="/images/icons/stop.gif"
+																tooltiptext="${c:l('button_bbox_CustomerSearch_Close.tooltiptext')}" />
+														</row>
+														<row>
+															<label
+																id="label_bboxCustomerSearch_CustMatchcode"
+																value="${c:l('label_bboxCustomerSearch_CustMatchcode.value')}" />
+															<textbox
+																id="tb_Orders_CustSearchMatchcode" width="99%" />
+														</row>
+														<row>
+															<label
+																id="label_bboxCustomerSearch_CustName1"
+																value="${c:l('label_bboxCustomerSearch_CustName1.value')}" />
+															<textbox
+																id="tb_Orders_SearchCustName1" width="99%" />
+														</row>
+														<row>
+															<label
+																id="label_bboxCustomerSearch_CustCity"
+																value="${c:l('label_bboxCustomerSearch_CustCity.value')}" />
+															<textbox
+																id="tb_Orders_SearchCustCity" width="99%" />
+														</row>
+
+														<row
+															spans="4">
+															<vbox
+																width="100%">
+																<paging
+																	id="paging_OrderList_CustomerSearchList" pageSize="20" />
+																<listbox
+																	id="listBoxCustomerSearch"
+																	style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+																	width="100%" height="100%" multiple="false">
+																	<listhead
+																		sizable="true">
+																		<listheader
+																			id="listheader_CustNo" sclass="FDListBoxHeader1"
+																			image="/images/icons/builder.gif" sort="auto"
+																			width="15%"
+																			label="${c:l('listheader_CustNo.label')}" />
+																		<listheader
+																			id="listheader_CustMatchcode"
+																			sclass="FDListBoxHeader1"
+																			image="/images/icons/create_doc.gif" sort="auto"
+																			width="25%"
+																			label="${c:l('listheader_CustMatchcode.label')}" />
+																		<listheader
+																			id="listheader_CustName1" sclass="FDListBoxHeader1"
+																			image="/images/icons/create_doc.gif" sort="auto"
+																			width="30%"
+																			label="${c:l('listheader_CustName1.label')}" />
+																		<listheader
+																			id="listheader_CustCity" sclass="FDListBoxHeader1"
+																			image="/images/icons/home_blue16x16.gif" sort="auto"
+																			width="30%"
+																			label="${c:l('listheader_CustCity.label')}" />
+																	</listhead>
+																</listbox>
+															</vbox>
+														</row>
+
+													</rows>
+												</grid>
+
+											</hbox>
+										</vbox>
+									</bandpopup>
+								</bandbox>
+
+								<separator bar="true" orient="vertical" />
+
+								<label
+									id="label_OrderList_SearchOrderName"
+									value="${c:l('label_OrderList_SearchOrderName.value')}" />
+								<textbox id="tb_Orders_Order"
+									width="120px" />
+								<button
+									id="button_OrderList_OrderNameSearch"
+									sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+									label="${c:l('button_OrderList_OrderNameSearch.label')}"
+									tooltiptext="${c:l('button_OrderList_OrderNameSearch.tooltiptext')}" />
+								<separator bar="true" orient="vertical" />
+							</hbox>
+						</toolbar>
+
+
+						<!-- CRUD BUTTONS -->
+						<toolbar align="end"
+							style="float:right; border-style: none;">
+							<button id="button_OrderList_NewOrder"
+								sclass="oT_ButtonWithIcon"
+								image="/images/icons/btn_new2_16x16.gif"
+								tooltiptext="${c:l('button_OrderList_NewOrder.tooltiptext')}" />
+						</toolbar>
+
+					</hbox>
+				</div>
+
+				<paging id="paging_OrderList" />
+				<listbox id="listBoxOrder"
+					style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+					tooltiptext="${c:l('listbox.tooltiptext')}" width="100%"
+					multiple="false">
+					<listhead sizable="true">
+						<listheader id="listheader_OrderList_OrderNo"
+							sclass="FDListBoxHeader1" image="/images/icons/builder.gif"
+							sort="auto" width="40%"
+							label="${c:l('listheader_OrderList_OrderNo.label')}" />
+						<listheader id="listheader_OrderList_OderDescr"
+							sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+							sort="auto" width="60%"
+							label="${c:l('listheader_OrderList_OderDescr.label')}" />
+					</listhead>
+				</listbox>
+
+			</panelchildren>
+		</panel>
+
+		<separator />
+
+		<panel id="panel_OrderList_OrderPositions"
+			title="${c:l('panel_OrderList_OrderPositions.title')}"
+			border="none">
+			<panelchildren>
+
+				<borderlayout id="borderLayout_ListBoxOrderArticle"
+					height="250px">
+
+					<north border="none" height="26px">
+						<paging id="paging_OrderArticleList" />
+					</north>
+
+					<center border="none">
+
+						<listbox id="listBoxOrderArticle"
+							style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+							vflex="true" height="100%" width="100%" multiple="false">
+							<listhead sizable="true">
+								<listheader
+									id="listheader_OrderPosList_Orderpos_No"
+									sclass="FDListBoxHeader1" image="/images/icons/builder.gif"
+									sort="auto" width="10%"
+									label="${c:l('listheader_OrderPosList_Orderpos_No.label')}" />
+								<listheader
+									id="listheader_OrderPosList_Shorttext"
+									sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+									sort="auto" width="40%"
+									label="${c:l('listheader_OrderPosList_Shorttext.label')}" />
+								<listheader
+									id="listheader_OrderPosList_Count" sclass="FDListBoxHeader1"
+									image="/images/icons/builder.gif" sort="auto" width="10%"
+									label="${c:l('listheader_OrderPosList_Count.label')}" />
+								<listheader
+									id="listheader_OrderPosList_SinglePrice"
+									sclass="FDListBoxHeader1" image="/images/icons/builder.gif"
+									sort="auto" width="20%"
+									label="${c:l('listheader_OrderPosList_SinglePrice.label')}" />
+								<listheader
+									id="listheader_OrderPosList_WholePrice"
+									sclass="FDListBoxHeader1" image="/images/icons/builder.gif"
+									sort="auto" width="20%"
+									label="${c:l('listheader_OrderPosList_WholePrice.label')}" />
+							</listhead>
+							<listfoot>
+								<listfooter
+									id="listfooter_OrderPosList_Orderpos_No" width="10%"
+									label="${c:l('message_Sum')}" style="font-weight:bold" />
+								<listfooter
+									id="listfooter_OrderPosList_Shorttext" width="40%" label="" />
+								<listfooter
+									id="listfooter_OrderPosList_Count" width="10%" label=""
+									style="text-align: right" />
+								<listfooter
+									id="listfooter_OrderPosList_SinglePrice" width="20%" label=""
+									style="text-align: right" />
+								<listfooter
+									id="listfooter_OrderPosList_WholePrice" width="20%"
+									height="20px" label="test5" style="text-align: right" />
+
+							</listfoot>
+						</listbox>
+
+					</center>
+
+					<south border="none">
+						<separator />
+					</south>
+
+				</borderlayout>
+
+			</panelchildren>
+		</panel>
+
+
+
+	</window>
+</zk>
+
+
+<!-- 
+	<style dynamic="true">
+	.mybandbox .z-bandbox-img { background: transparent
+	url(${c:encodeURL('~./zul/img/button/bandbtn.gif')})
+	no-repeat 0 0; border: 1px solid #C0C0C0 ;
+	vertical-align: top: cursor: pointer: width: 19px;
+	height: 19px ;}
+	</style>
+-->

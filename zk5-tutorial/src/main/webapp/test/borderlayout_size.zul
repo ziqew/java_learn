@@ -1,0 +1,388 @@
+<zk>
+	<window id="dashBoardWindow" apply="${dashboardComposer}"
+		border="none" height="100%" width="100%" sizable="true" >
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0
+			padding on right and left */ }
+		</style>
+		<panel id="dashBoardPanel"/>
+		<borderlayout id="borderLayout_dashBoard" height="1000px">
+
+			<center border="0">
+				<borderlayout>
+					<west size="60%" flex="true"
+						border="none">
+						<div align="center" height="650px">
+							<grid fixedLayout="true" height="650px">
+								<columns>
+									<column label="Type" width="150px" />
+									<column label="Content" />
+								</columns>
+								<rows>
+									<row>
+										<label value="Outlet Name"
+											width="150px" />
+										<textbox id="paramOutletName"
+											value="" width="150px" />
+									</row>
+									<row>
+										<label value="Outlet ID"
+											width="150px" />
+										<textbox id="paramOutletId"
+											value="" width="150px" />
+									</row>
+									<row>
+										<label value="Location"
+											width="150px" />
+										<textbox id="paramLocation"
+											value="" width="150px" />
+									</row>
+									<row>
+										<label value="Canvasser"
+											width="150px" />
+										<textbox id="paramCanvasser"
+											value="" width="150px" />
+									</row>
+									<row>
+										<label value="MSISDN"
+											width="150px" />
+										<textbox id="paramMsisdn"
+											value="" width="150px" />
+									</row>
+									<row>
+										<label value="" width="150px" />
+										<button id="btnSearch"
+											label="Search" width="125px" />
+									</row>
+									<row spans="2">
+										<separator bar="true" />
+									</row>
+									<row spans="2">
+										<iframe id="iframe"
+											src="@{urlMap}" width="100%" height="400px"
+											style="border: 1px solid gray" align="center" />
+
+									</row>
+								</rows>
+							</grid>
+						</div>
+					</west>
+					<east size="40%" flex="true"
+						border="none" >
+						<div align="center" height="650px">
+							<tabbox>
+								<tabs>
+									<tab label="Sales" />
+									<tab label="Stocks" />
+									<tab label="Canvasser KPI" />
+								</tabs>
+								<tabpanels>
+									<tabpanel height="650px">
+										<chart id="piechart3d"
+											title="Monthly Sales" width="420px" type="pie" threeD="true"
+											fgAlpha="128" model="@{MonthlyPiemodel}" />
+										<separator bar="true" />
+										<chart id="barchart3d2"
+											title="Weekly Sales" width="420px" type="bar" threeD="false"
+											fgAlpha="128" model="@{catmodel2}" />
+										<separator bar="true" />
+									</tabpanel>
+									<tabpanel>
+										<flashchart id="spflashChart"
+											width="420px" height="250" type="pie" model="@{SPPiemodel}" />
+										<flashchart id="pvflashChart"
+											width="420px" height="250" type="pie" model="@{PVPieModel}" />
+									</tabpanel>
+									<tabpanel>
+										<groupbox id="gbVisitMont"
+											mold="3d">
+											<caption
+												label="KPI of Cavasser Visit(Monthly)" />
+											<chart
+												id="barChartVisitMontStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartVisitMontVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+										</groupbox>
+										<groupbox id="gbVisitWeek"
+											mold="3d">
+											<caption
+												label="KPI of Cavasser Visit(Weekly)" />
+											<chart
+												id="barChartVisitWeekStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartVisitWeekSVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+										</groupbox>
+										<groupbox id="gbSalesMont"
+											mold="3d">
+											<caption
+												label="KPI of Canvasser Sales(Monthly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackSalesMont"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVouchersalesMont"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartSalesMonStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartSalesMonVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+										</groupbox>
+										<groupbox id="gbSalesWeek"
+											mold="3d">
+											<caption
+												label="KPI of Canvasser Sales(Weekly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPacksalesWeek"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherSalesWeek"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartSalesWeekStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartSalesWeekVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+										</groupbox>
+										<groupbox id="gbDealerMont"
+											mold="3d">
+											<caption
+												label="KPI of Dealer Sales(Monthly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackDelaerMont"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherDelaerMont"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartDlrMontStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartDlrMontVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+										</groupbox>
+										<groupbox id="gbDealerWeek"
+											mold="3d">
+											<caption
+												label="KPI of Dealer Sales(Weekly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackDelaerWeek"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherDelaerWeek"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartDlrWeekStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartDlrWeekVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbDepoMont"
+											mold="3d">
+											<caption
+												label="KPI of Depo Sales(Monthly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackDepoMont"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherDepoMont"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartDepoMontStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartDepoMontVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbDepoWeek"
+											mold="3d">
+											<caption
+												label="KPI of Depo Sales(Weekly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackDepoWeek"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherDepoWeek"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartDepoWeekStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartDepoWeekVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbSubRegMont"
+											mold="3d">
+											<caption
+												label="KPI of Sub-Region Sales(Monthly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackSubRegMont"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherSubRegMont"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartSubRegMontStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartSubRegMontVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbSubRegWeek"
+											mold="3d">
+											<caption
+												label="KPI of Sub-Region Sales(Weekly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackSubRegWeek"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherSubRegMontweek"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartSubRegWeekStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartSubRegWeekVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbRegMont"
+											mold="3d">
+											<caption
+												label="KPI of Region Sales(Monthly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackRegMont"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherRegMont"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartRegMontStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartRegMontVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbRegWeek"
+											mold="3d">
+											<caption
+												label="KPI of Region Sales(Weekly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackRegWeek"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherRegWeek"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartRegWeekStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartRegWeekVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbTeritoryMont"
+											mold="3d">
+											<caption
+												label="KPI of Teritory Sales(Monthly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackTeritoryMont"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherTeritoryMont"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartTrtMontStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartTrtMontVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+										<groupbox id="gbTeritoryWeek"
+											mold="3d">
+											<caption
+												label="KPI of Teritory Sales(Weekly)" />
+											<hbox>
+												<checkbox
+													id="cbStarterPackTeritoryWeek"
+													label="${c:l('checkBoxStarterPack.label')}" checked="true" />
+												<checkbox
+													id="cbVoucherTeritoryWeek"
+													label="${c:l('checkBoxVoucher.label')}" checked="true" />
+											</hbox>
+											<chart
+												id="barChartTrtWeekStp" style="font-size:10px"
+												title="Starter Pack Unit" width="350" height="200"
+												type="bar" orient="horizontal" fgAlpha="128" />
+											<chart
+												id="barChartTrtWeekVcr" title="Voucher(Rp)" width="350"
+												height="200" type="bar" orient="horizontal" fgAlpha="128" />
+
+										</groupbox>
+									</tabpanel>
+								</tabpanels>
+							</tabbox>
+						</div>
+					</east>
+				</borderlayout>
+			</center>
+			<south size="40%" flex="true" splittable="true"
+				collapsible="true">
+				<div align="center">
+					<chart id="barchart3d" title="Top 10 Sales (Rp)"
+						width="1000px" height="350px" type="bar" threeD="true"
+						fgAlpha="128" model="@{catmodel}" />
+				</div>
+			</south>
+		</borderlayout>
+	</window>
+</zk>

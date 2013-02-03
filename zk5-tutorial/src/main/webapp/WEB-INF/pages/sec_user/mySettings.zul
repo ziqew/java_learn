@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<!-- DataBinding Initiator.                              -->
+	<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+	<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="./windowMyUserSettings" ?>
+
+	<window id="windowMyUserSettings" apply="${myUserSettingsCtrl}"
+		title="${c:l('common.MySettings')}" border="none" width="800px">
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+				</toolbar>
+
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+				</toolbar>
+
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					<button id="btnNew" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnNew.tooltiptext')}" />
+					<button id="btnEdit" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnEdit.tooltiptext')}" />
+					<button id="btnDelete" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnDelete.tooltiptext')}" />
+					<button id="btnSave" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnSave.tooltiptext')}" />
+					<button id="btnCancel" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnCancel.tooltiptext')}" />
+					<button id="btnClose" sclass="oT_ButtonWithIcon"
+						tooltiptext="${c:l('btnClose.tooltiptext')}" />
+				</toolbar>
+			</hbox>
+		</div>
+
+		<hbox align="stretch" pack="stretch" sclass="FDCenterNoBorder"
+			width="100%" style="background-color: white;">
+
+			<cell width="50%">
+				<grid sclass="GridPlain" fixedLayout="true">
+					<columns>
+						<column align="right" width="150px" />
+						<column />
+					</columns>
+					<rows>
+						<!-- Login name / Login Name -->
+						<row>
+							<hbox>
+								<label
+									value="${c:l('common.Loginname')}" />
+								<label value="*"
+									style="color:red;font-size:10px" />
+							</hbox>
+							<textbox id="txtb_User_Loginname"
+								value="@{controller.user.usrLoginname}" constraint="no empty"
+								readonly="true" maxlength="50" hflex="1" />
+						</row>
+
+						<row>
+							<separator bar="true" />
+							<separator bar="true" />
+						</row>
+
+						<!-- Password / Passwort -->
+						<row>
+							<hbox>
+								<label
+									value="${c:l('common.Password')}" />
+								<label value="*"
+									style="color:red;font-size:10px" />
+							</hbox>
+							<textbox id="txtb_User_Password"
+								value="@{controller.user.usrPassword}" constraint="no empty"
+								type="password" readonly="true" maxlength="50" hflex="1" />
+						</row>
+
+						<!-- Password re-Typed / Passwort Wiederholung -->
+						<row>
+							<hbox>
+								<label
+									value="${c:l('common.Password.ReType')}" />
+								<label value="*"
+									style="color:red;font-size:10px" />
+							</hbox>
+							<textbox id="txtb_User_Password_Retype"
+								value="@{controller.pwd.retypePassword}" constraint="no empty"
+								type="password" readonly="true" maxlength="50" hflex="1" />
+						</row>
+
+						<row>
+							<separator bar="true" />
+							<separator bar="true" />
+						</row>
+
+						<!-- Last name / Nachname -->
+						<row>
+							<label value="${c:l('common.Lastname')}" />
+
+							<textbox id="txtb_User_Lastname"
+								value="@{controller.user.usrLastname}" readonly="true"
+								maxlength="50" hflex="1" />
+						</row>
+
+						<!-- First name / Vorname -->
+						<row>
+							<label value="${c:l('common.Firstname')}" />
+
+							<textbox id="txtb_User_Firstname"
+								value="@{controller.user.usrFirstname}" readonly="true"
+								maxlength="50" hflex="1" />
+						</row>
+
+					</rows>
+				</grid>
+			</cell>
+
+			<cell width="50%">
+				<grid sclass="GridPlain" fixedLayout="true">
+					<columns>
+						<column align="right" width="150px" />
+						<column />
+					</columns>
+					<rows>
+						<!-- Email / Email -->
+						<row>
+							<hbox>
+								<label value="${c:l('common.Email')}" />
+								<label value="*"
+									style="color:red;font-size:10px" />
+							</hbox>
+
+							<textbox id="txtb_User_Email"
+								value="@{controller.user.usrEmail}" constraint="no empty"
+								readonly="true" maxlength="200" hflex="1" />
+						</row>
+
+					</rows>
+				</grid>
+
+			</cell>
+		</hbox>
+
+	</window>
+</zk>
+

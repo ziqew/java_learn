@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+
+	<!-- ====================================================== -->
+	<!-- Define the beans for the gui services -->
+	<!-- Set the creation scope for the beans -->
+	<!-- for scalable working -->
+	<!-- ====================================================== -->
+
+	<!-- bean for getting access to the spring applicationContext -->
+	<bean id="applicationContextProvider" class="de.forsthaus.util.ApplicationContextProvider"></bean>
+
+
+
+	<!-- Index-Page -->
+	<bean id="indexCtrl" class="de.forsthaus.webui.index.IndexCtrl" parent="basisCtrl" scope="prototype">
+		<property name="officeService" ref="officeService" />
+	</bean>
+
+	<!-- TestController for playing -->
+	<bean id="testCtrl" class="de.forsthaus.example.TestCtrl" scope="prototype">
+		<property name="officeService" ref="officeService" />
+		<property name="pagedListWrapperBranche" ref="pagedListWrapper" />
+		<property name="pagedListWrapperCustomer" ref="pagedListWrapper" />
+	</bean>
+
+	<!-- Dashboard -->
+	<bean id="dashboardMainCtrl" class="de.forsthaus.webui.dashboard.DashboardMainCtrl" parent="basisCtrl" scope="prototype">
+	</bean>
+
+
+	<!-- Articles / Artikelstammdaten -->
+	<bean id="articleMainCtrl" class="de.forsthaus.webui.article.ArticleMainCtrl" parent="basisCtrl" scope="prototype">
+		<!-- <property name="articleService" ref="articleService" /> -->
+		<property name="articleListCtrl" ref="articleListCtrl" />
+		<property name="articleDetailCtrl" ref="articleDetailCtrl" />
+	</bean>
+	<bean id="articleListCtrl" class="de.forsthaus.webui.article.ArticleListCtrl" parent="basisListCtrl" scope="prototype">
+		<!-- <property name="articleService" ref="articleService" /> -->
+	</bean>
+	<bean id="articleDetailCtrl" class="de.forsthaus.webui.article.ArticleDetailCtrl" parent="basisCtrl" scope="prototype">
+		<!-- <property name="articleService" ref="articleService" /> -->
+	</bean>
+
+	<!-- Branch / Branchenstammdaten -->
+	<bean id="branchMainCtrl" class="de.forsthaus.webui.branch.BranchMainCtrl" parent="basisCtrl" scope="prototype">
+		<property name="brancheService" ref="brancheService" />
+		<property name="branchListCtrl" ref="branchListCtrl" />
+		<property name="branchDetailCtrl" ref="branchDetailCtrl" />
+	</bean>
+	<!-- BranchList / BranchenListe -->
+	<bean id="branchListCtrl" class="de.forsthaus.webui.branch.BranchListCtrl" parent="basisListCtrl" scope="prototype">
+		<property name="brancheService" ref="brancheService" />
+	</bean>
+	<!-- BranchDetails / Branchen-Details -->
+	<bean id="branchDetailCtrl" class="de.forsthaus.webui.branch.BranchDetailCtrl" parent="basisCtrl" scope="prototype">
+		<property name="brancheService" ref="brancheService" />
+	</bean>
+
+	<!-- Customers -->
+	<bean id="customerListCtrl" class="de.forsthaus.webui.customer.CustomerListCtrl" parent="basisListCtrl" scope="prototype">
+		<property name="brancheService" ref="brancheService" />
+		<property name="customerService" ref="customerService" />
+	</bean>
+	<bean id="customerDialogCtrl" class="de.forsthaus.webui.customer.CustomerDialogCtrl" parent="basisCtrl" scope="prototype">
+		<property name="brancheService" ref="brancheService" />
+		<property name="customerService" ref="customerService" />
+		<property name="chartService" ref="chartService" />
+		<!-- <property name="plwBranche" ref="pagedListWrapper" /> -->
+	</bean>
+	<bean id="customerChartCtrl" class="de.forsthaus.webui.customer.CustomerChartCtrl" parent="basisCtrl" scope="prototype">
+		<property name="chartService" ref="chartService" />
+	</bean>
+	<bean id="customerSearchCtrl" class="de.forsthaus.webui.customer.CustomerSearchCtrl" parent="basisCtrl" scope="prototype">
+		<property name="brancheService" ref="brancheService" />
+		<property name="customerService" ref="customerService" />
+	</bean>
+
+	<!-- Guestbook -->
+	<bean id="guestBookListCtrl" class="de.forsthaus.webui.guestbook.GuestBookListCtrl" parent="basisCtrl" scope="prototype">
+		<property name="guestBookService" ref="guestBookService" />
+	</bean>
+	<bean id="guestBookDialogCtrl" class="de.forsthaus.webui.guestbook.GuestBookDialogCtrl" parent="basisCtrl" scope="prototype">
+		<property name="guestBookService" ref="guestBookService" />
+	</bean>
+
+	<!-- Calendar / Kalender -->
+	<bean id="calendarMainCtrl" class="de.forsthaus.webui.calendar.CalendarMainCtrl" parent="basisCtrl" scope="prototype">
+		<property name="calendarEventService" ref="calendarEventService" />
+	</bean>
+	<!-- create event / Termin anlegen -->
+	<bean id="createEventCtrl" class="de.forsthaus.webui.calendar.CalendarCreateEventCtrl" parent="basisCtrl" scope="prototype">
+		<property name="calendarEventService" ref="calendarEventService" />
+	</bean>
+	<!-- edit event / Termin aendern -->
+	<bean id="editEventCtrl" class="de.forsthaus.webui.calendar.CalendarEditEventCtrl" parent="basisCtrl" scope="prototype">
+		<property name="calendarEventService" ref="calendarEventService" />
+	</bean>
+
+
+	<!-- Documentation / Dokumentation -->
+	<bean id="documentationCtrl" class="de.forsthaus.webui.documentation.DocumentationCtrl" parent="basisCtrl" scope="prototype">
+	</bean>
+	<!-- Blog / Blog -->
+	<bean id="blogCtrl" class="de.forsthaus.webui.blog.BlogCtrl" parent="basisCtrl" scope="prototype">
+	</bean>
+	<!-- SourceForge.net-Codes / Codes -->
+	<bean id="codesCtrl" class="de.forsthaus.webui.codes.CodesCtrl" parent="basisCtrl" scope="prototype">
+	</bean>
+
+	<!-- Offices / Filialstammdaten -->
+	<bean id="officeMainCtrl" class="de.forsthaus.webui.office.OfficeMainCtrl" parent="basisCtrl" scope="prototype">
+		<property name="officeService" ref="officeService" />
+		<property name="officeListCtrl" ref="officeListCtrl" />
+		<property name="officeDetailCtrl" ref="officeDetailCtrl" />
+	</bean>
+	<bean id="officeListCtrl" class="de.forsthaus.webui.office.OfficeListCtrl" parent="basisCtrl" scope="prototype">
+		<property name="officeService" ref="officeService" />
+	</bean>
+	<bean id="officeDetailCtrl" class="de.forsthaus.webui.office.OfficeDetailCtrl" parent="basisCtrl" scope="prototype">
+		<property name="officeService" ref="officeService" />
+	</bean>
+
+	<!-- Orders -->
+	<bean id="orderListCtrl" class="de.forsthaus.webui.order.OrderListCtrl" parent="basisCtrl" scope="prototype">
+		<property name="orderService" ref="orderService" />
+		<property name="customerService" ref="customerService" />
+		<property name="brancheService" ref="brancheService" />
+		<property name="plwOrders" ref="pagedListWrapper" />
+		<property name="plwOrderpositions" ref="pagedListWrapper" />
+		<property name="plwCustomers" ref="pagedListWrapper" />
+	</bean>
+	<bean id="orderDialogCtrl" class="de.forsthaus.webui.order.OrderDialogCtrl" parent="basisCtrl" scope="prototype">
+		<property name="orderService" ref="orderService" />
+		<property name="customerService" ref="customerService" />
+		<property name="brancheService" ref="brancheService" />
+		<property name="plwOrderpositions" ref="pagedListWrapper" />
+		<property name="plwCustomers" ref="pagedListWrapper" />
+	</bean>
+	<bean id="orderPositionDialogCtrl" class="de.forsthaus.webui.order.OrderPositionDialogCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="orderService" ref="orderService" />
+		<property name="customerService" ref="customerService" />
+		<property name="brancheService" ref="brancheService" />
+		<property name="plwOrderpositions" ref="pagedListWrapper" />
+		<property name="plwArticles" ref="pagedListWrapper" />
+	</bean>
+
+	<!-- Users -->
+	<bean id="userListCtrl" class="de.forsthaus.webui.security.user.UserListCtrl" parent="basisCtrl" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="userDialogCtrl" class="de.forsthaus.webui.security.user.UserDialogCtrl" parent="basisCtrl" scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+	<bean id="myUserSettingsCtrl" class="de.forsthaus.webui.security.user.MyUserSettingsCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="userService" ref="userService" />
+	</bean>
+
+
+	<!-- Login-Logs -->
+	<bean id="secLoginlogMainCtrl" class="de.forsthaus.webui.logging.loginlog.SecLoginlogMainCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="loginLoggingService" ref="loginLoggingService" />
+	</bean>
+	<bean id="secLoginlogListCtrl" class="de.forsthaus.webui.logging.loginlog.SecLoginlogListCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="loginLoggingService" ref="loginLoggingService" />
+		<property name="guiLoginLoggingService" ref="guiLoginLoggingService" />
+	</bean>
+	<bean id="secLoginlogStatisticCtrl" class="de.forsthaus.webui.logging.loginlog.SecLoginlogStatisticCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="loginLoggingService" ref="loginLoggingService" />
+	</bean>
+
+
+	<!-- +++++ SECURITY +++++ -->
+	<!-- Groups -->
+	<bean id="secGroupListCtrl" class="de.forsthaus.webui.security.group.SecGroupListCtrl" parent="basisListCtrl"
+		scope="prototype">
+		<property name="securityService" ref="securityService" />
+	</bean>
+	<bean id="secGroupDialogCtrl" class="de.forsthaus.webui.security.group.SecGroupDialogCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="securityService" ref="securityService" />
+	</bean>
+	<!-- Group-Rights -->
+	<bean id="secGrouprightCtrl" class="de.forsthaus.webui.security.groupright.SecGrouprightCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="securityService" ref="securityService" />
+		<property name="plwSecGroups" ref="pagedListWrapper" />
+		<property name="plwSecRights" ref="pagedListWrapper" />
+	</bean>
+	<bean id="addGrouprightDialogCtrl" class="de.forsthaus.webui.security.groupright.AddGrouprightDialogCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="securityService" ref="securityService" />
+		<property name="plwSecRights" ref="pagedListWrapper" />
+	</bean>
+	<!-- Rights -->
+	<bean id="secRightListCtrl" class="de.forsthaus.webui.security.right.SecRightListCtrl" parent="basisCtrl" scope="prototype">
+		<property name="securityService" ref="securityService" />
+	</bean>
+	<bean id="secRightDialogCtrl" class="de.forsthaus.webui.security.right.SecRightDialogCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="securityService" ref="securityService" />
+	</bean>
+	<!-- Roles -->
+	<bean id="secRoleListCtrl" class="de.forsthaus.webui.security.role.SecRoleListCtrl" parent="basisCtrl" scope="prototype">
+		<property name="securityService" ref="securityService" />
+	</bean>
+	<bean id="secRoleDialogCtrl" class="de.forsthaus.webui.security.role.SecRoleDialogCtrl" parent="basisCtrl" scope="prototype">
+		<property name="securityService" ref="securityService" />
+	</bean>
+	<!-- Role-Groups -->
+	<bean id="secRolegroupCtrl" class="de.forsthaus.webui.security.rolegroup.SecRolegroupCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="securityService" ref="securityService" />
+		<property name="plwSecRoles" ref="pagedListWrapper" />
+		<property name="plwSecGroups" ref="pagedListWrapper" />
+	</bean>
+	<!-- User-Roles -->
+	<bean id="secUserroleCtrl" class="de.forsthaus.webui.security.userrole.SecUserroleCtrl" parent="basisCtrl" scope="prototype">
+		<property name="securityService" ref="securityService" />
+		<property name="userService" ref="userService" />
+		<property name="plwSecUsers" ref="pagedListWrapper" />
+		<property name="plwSecRoles" ref="pagedListWrapper" />
+	</bean>
+
+	<bean name="reportService" class="de.forsthaus.services.report.service.impl.ReportServiceImpl" scope="prototype">
+		<property name="orderDAO" ref="orderDAO" />
+		<property name="orderpositionDAO" ref="orderpositionDAO" />
+		<property name="customerDAO" ref="customerDAO" />
+		<property name="officeDAO" ref="officeDAO" />
+		<property name="brancheDAO" ref="brancheDAO" />
+		<property name="orderService" ref="orderService" />
+		<property name="customerService" ref="customerService" />
+	</bean>
+
+	<bean id="hibernateStatisticsCtrl" class="de.forsthaus.webui.debug.HibernateStatisticsCtrl" parent="basisCtrl"
+		scope="prototype">
+		<property name="guiHibernateStatisticsService" ref="guiHibernateStatisticsService" />
+		<property name="gridPagedListWrapper" ref="pagedGridWrapper" />
+	</bean>
+	<bean id="hibernateStatisticsDetailCtrl" class="de.forsthaus.webui.debug.HibernateStatisticsDetailCtrl" scope="prototype">
+		<property name="guiHibernateStatisticsService" ref="guiHibernateStatisticsService" />
+	</bean>
+
+	<bean id="userWorkspace" class="de.forsthaus.UserWorkspace" scope="session" />
+
+	<bean id="basisCtrl" abstract="true" scope="prototype" class="de.forsthaus.webui.util.GFCBaseCtrl">
+		<property name="userWorkspace" ref="userWorkspace" />
+	</bean>
+
+	<bean id="basisListCtrl" abstract="true" scope="prototype" class="de.forsthaus.webui.util.GFCBaseListCtrl" parent="basisCtrl"
+		p:pagedListWrapper-ref="pagedListWrapper">
+	</bean>
+
+	<bean name="pagedListWrapper" class="de.forsthaus.webui.util.pagging.PagedListWrapper" p:pagedListService-ref="pagedListService"
+		scope="prototype">
+	</bean>
+
+	<bean name="pagedBindingListWrapper" class="de.forsthaus.webui.util.pagging.PagedBindingListWrapper"
+		p:pagedListService-ref="pagedListService" scope="prototype">
+	</bean>
+
+	<bean name="pagedGridWrapper" class="de.forsthaus.webui.util.pagging.PagedGridWrapper" p:pagedListService-ref="pagedListService"
+		scope="prototype">
+	</bean>
+
+	<!-- MessageBarController -->
+	<bean id="messageBarCtrl" class="de.forsthaus.webui.util.MessageBarCtrl" scope="prototype">
+	</bean>
+	<!-- StatusBarController -->
+	<bean id="statusBarCtrl" class="de.forsthaus.webui.util.StatusBarCtrl" scope="prototype">
+	</bean>
+	<!-- UserBarController -->
+	<bean id="userBarCtrl" class="de.forsthaus.webui.util.UserBarCtrl" scope="prototype">
+	</bean>
+	<!-- HelpPopupController -->
+	<bean id="helpWindowCtrl" class="de.forsthaus.webui.util.HelpWindowCtrl" scope="prototype">
+	</bean>
+
+
+	<!-- ReportStyles -->
+	<bean id="djReportStyles" class="de.forsthaus.webui.reports.template.DJReportStyles" scope="prototype">
+	</bean>
+
+	<!-- <bean id="bBruhnsTestBean" class="de.forsthaus.bbruhns.BBruhnsTestBean" -->
+	<!-- scope="session"> -->
+	<!-- <aop:scoped-proxy /> -->
+	<!-- </bean> -->
+
+	<!-- <context:annotation-config /> -->
+	<!-- <context:component-scan base-package="de.forsthaus.bbruhns" /> -->
+	<!-- <aop:aspectj-autoproxy /> -->
+
+	<!-- Init Application <bean id="initApplication" class="de.forsthaus.webui.InitApplication" parent="basisCtrl" scope="prototype"> 
+		<property name="customerService" ref="customerService" /> <property name="filialeService" ref="filialeService" /> <property 
+		name="brancheService" ref="brancheService" /> <property name="ipToCountryService" ref="ipToCountryService" /> </bean> -->
+
+	<!-- Login Dialog <bean id="zkLoginDialogCtrl" class="de.forsthaus.webui.login.ZkLoginDialogCtrl" parent="basisCtrl" scope="prototype"> 
+		</bean> -->
+
+	<!-- Spreadsheet / Tabellenkalkulation -->
+	<!-- <bean id="spreadsheetMainCtrl" class="de.forsthaus.webui.spreadsheet.SpreadsheetMainCtrl" parent="basisCtrl" scope="prototype"> 
+		</bean> -->
+
+
+</beans>
+
+
+	

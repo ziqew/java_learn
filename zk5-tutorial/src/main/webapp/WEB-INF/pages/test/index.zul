@@ -1,0 +1,78 @@
+<window width="95%" height="95%" position="center">
+<borderlayout>
+	
+        <north size="20%">
+		<borderlayout>
+			<west border="none" size="25%" flex="true" maxsize="250">
+			  <image src="/imgs/logo_ich.gif"/>
+			</west>
+			
+                        <center border="none" flex="true">
+                          <div align="center"><label id="userData">Here will go the logged user info: loginname, lastlogin, photo</label></div>
+                        </center>
+
+                        <east border="none" flex="true">
+				<vbox>
+                                      <div align="center">
+                                           <label id="now" style="font-weight:bold;font-size:12pt;color:blue;"/>
+                                      </div>
+                                      <zscript language="java">
+                                      import java.text.SimpleDateFormat;
+                                      public void updateClock(){
+                                             SimpleDateFormat df = new SimpleDateFormat("HH.mm.ss");
+                                             Date d=new Date();
+                                             now.setValue(df.format(d));
+                                             }
+	                              </zscript>
+                                      <timer id="timer" delay="1000" repeats="true" onTimer="updateClock();" />
+                                      <calendar id="cal" compact="true"/>
+                                </vbox>
+                        </east>
+		</borderlayout>
+	</north>
+	
+        <center>
+		<borderlayout>
+			<west title="Paziente" border="none" size="30%" flex="true" collapsible="true" open="false">
+
+			</west>
+			
+                        <center flex="true">
+				<tabbox width="100%" height="100%">
+                                        <tabs>
+                                              <tab label="Tab 1"/>
+                                              <tab label="Tab 2"/>
+                                              <tab label="Tab 3"/>
+                                              <tab label="Tab 4"/>
+                                              <tab label="Tab 5"/>
+                                        </tabs>
+                                        <tabpanels>
+                                                   <tabpanel>This is panel 1</tabpanel>
+                                                   <tabpanel>
+                                                             <tabbox width="100%" height="100%">
+                                                                     <tabs>
+                                                                           <tab label="Tab 1"/>
+                                                                           <tab label="Tab 2"/>
+                                                                           <tab label="Tab 3"/>
+                                                                           <tab label="Tab 4"/>
+                                                                           <tab label="Tab 5"/>
+                                                                     </tabs>
+                                                                     <tabpanels>
+                                                                                <tabpanel>This is panel 1</tabpanel>
+                                                                                <tabpanel> </tabpanel>
+                                                                                <tabpanel>This is panel 3</tabpanel>
+                                                                                <tabpanel>This is panel 4</tabpanel>
+                                                                                <tabpanel>This is panel 5</tabpanel>
+                                                                     </tabpanels>
+                                                             </tabbox>
+                                                   </tabpanel>
+                                                   <tabpanel>This is panel 3</tabpanel>
+                                                   <tabpanel>This is panel 4</tabpanel>
+                                                   <tabpanel>This is panel 5</tabpanel>
+                                        </tabpanels>
+                                </tabbox>
+			</center>
+		</borderlayout>
+	</center>
+</borderlayout>
+</window>

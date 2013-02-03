@@ -1,0 +1,41 @@
+<zk>
+	<window>
+
+		<tree>
+			<treechildren>
+				<treeitem>
+					<treerow>
+						<treecell>
+							<label value="test1"></label>
+						</treecell>
+					</treerow>
+				</treeitem>
+				<treeitem>
+					<treerow>
+						<treecell>
+							<label value="test2"></label>
+						</treecell>
+					</treerow>
+				</treeitem>
+				<treeitem>
+					<treerow>
+						<treecell>
+							<separator bar="true"></separator>
+						</treecell>
+					</treerow>
+				</treeitem>
+				<treeitem>
+					<treerow>
+						<treecell>
+							<label value="test3"></label>
+						</treecell>
+					</treerow>
+				</treeitem>
+			</treechildren>
+		</tree>
+
+
+
+
+	</window>
+</zk>

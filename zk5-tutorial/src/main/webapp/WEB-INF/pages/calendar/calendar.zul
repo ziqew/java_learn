@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+
+<!-- 
+	<?taglib uri="http://www.zkoss.org/zkspring/security" prefix="sec"?>
+-->
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:w="http://www.zkoss.org/2005/zk/client"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<style src="/css/zul/calendar.css" />
+
+	<window id="windowCalendar" apply="${calendarMainCtrl}"
+		border="none" width="100%">
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					<toolbarbutton id="btnRefresh"
+						image="/images/icons/refresh2_yellow_16x16.gif"
+						tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+					<button id="btn_Calendar_PrintCalendar"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_print2_16x16.gif"
+						tooltiptext="${c:l('btnPrint.tooltiptext')}" />
+					<button id="btnFullScreen"
+						sclass="oT_ButtonWithIcon" image="/images/icons/console_view.gif"
+						tooltiptext="${c:l('btnFullScreen.tooltiptext')}" />
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px">
+
+						<button id="btn_Previous" height="24px"
+							image="/images/icons/arrow_blue_left_16x16.gif"
+							tooltiptext="${c:l('common.Previous')}" />
+						<button id="btn_Next" height="24px"
+							image="/images/icons/arrow_blue_right_16x16.gif"
+							tooltiptext="${c:l('common.Next')}" />
+						<separator bar="true" />
+
+						<button id="btn_Show1Day" height="24px"
+							label="${c:l('common.Day')}"
+							tooltiptext="${c:l('common.Day.View')}" />
+						<button id="btn_Show5Days" height="24px"
+							label="${c:l('common.Day.5')}"
+							tooltiptext="${c:l('common.Day.5.View')}" />
+						<button id="btn_ShowWeek" height="24px"
+							label="${c:l('common.Week')}"
+							tooltiptext="${c:l('common.Week.View')}" />
+						<button id="btn_Show2Weeks" height="24px"
+							label="${c:l('common.Week.2')}"
+							tooltiptext="${c:l('common.Week.2.View')}" />
+						<button id="btn_ShowMonth" height="24px"
+							label="${c:l('common.Month')}"
+							tooltiptext="${c:l('common.Month.View')}" />
+
+					</hbox>
+				</toolbar>
+
+				<!-- 
+					if="${sec:isAllGranted('ROLE_SUPERVISOR')}"
+				-->
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					under work ...
+				</toolbar>
+
+			</hbox>
+		</div>
+
+		<borderlayout id="borderLayout_calendar">
+
+			<center border="none" flex="true">
+
+				<calendars id="cal" model="${calModel}" />
+
+			</center>
+
+		</borderlayout>
+
+	</window>
+</zk>

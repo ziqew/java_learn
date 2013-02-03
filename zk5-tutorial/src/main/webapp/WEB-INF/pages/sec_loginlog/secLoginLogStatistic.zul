@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="windowTabPanelLoginStatistic"
+		apply="${secLoginlogStatisticCtrl}" border="none" width="100%">
+
+		<style>div.z-list-footer-cnt { font-weight: bold;}</style>
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					<button id="button_SecLoginlogList_PrintLoginList"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_print2_16x16.gif"
+						hoverImage="/images/icons/print.gif"
+						tooltiptext="${c:l('button_SecLoginlogList_PrintLoginList.tooltiptext')}" />
+
+					<separator bar="true" orient="vertical"
+						spacing="10px" />
+
+					<button
+						id="buttonSecLoginListStatisticTotalCountByCountries"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/chart_line_16x16.gif"
+						tooltiptext="${c:l('LoginLog.TabLoginStatistic.buttonRefreshTotalCountByCountries.tooltiptext')}" />
+					<button
+						id="buttonSecLoginListStatisticMonthlyCountByCountries"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/chart_stacked_bar_16x16.gif"
+						tooltiptext="${c:l('LoginLog.TabLoginStatistic.buttonRefreshMonthlyCountByCountries.tooltiptext')}" />
+					<button
+						id="buttonSecLoginListStatisticDailyCountByCountries"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/chart_ring_16x16.gif"
+						tooltiptext="${c:l('LoginLog.TabLoginStatistic.buttonRefreshDailyCountByCountries.tooltiptext')}" />
+
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px">
+
+					</hbox>
+				</toolbar>
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+				</toolbar>
+			</hbox>
+		</div>
+
+		<panel id="panelSecLoginLogStatistikCenter" width="100%"
+			height="100%" border="none">
+			<panelchildren
+				id="panelchildrenSecLoginLogStatistikCenter">
+				<!-- 
+					<box id="boxSecLoginLogStatistikCenter" align="start"
+					height="100%" width="100%" orient="horizontal" />
+				-->
+				<hbox id="boxSecLoginLogStatistikCenter" align="stretch"
+					pack="stretch" sclass="FDCenterNoBorder" width="100%"
+					height="100%" />
+
+			</panelchildren>
+		</panel>
+
+	</window>
+
+</zk>

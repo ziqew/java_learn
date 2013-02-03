@@ -1,0 +1,100 @@
+<!-- 
+	http://www.zkoss.org/forum/listComment/14164
+	Setting focus after re-binding grid
+-->
+
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+<zk>
+	<zscript>
+	import org.zkoss.zk.ui.util.GenericForwardComposer;
+	public class Car {
+		private String owner;
+		private String mileage;
+		private String color;
+		private String brand;
+
+		public Car(String o, String m, String c, String b) {
+			setOwner(o);
+			setMileage(m);
+			setColor(c);
+			setBrand(b);
+		}
+
+		public String getOwner() {
+			return owner;
+		}
+
+		public void setOwner(String o) {
+			owner = o;
+		}
+
+		public String getMileage() {
+			return mileage;
+		}
+
+		public void setMileage(String m) {
+			mileage = m;
+		}
+
+		public String getColor() {
+			return color;
+		}
+
+		public void setColor(String c) {
+			color = c;
+		}
+
+		public String getBrand() {
+			return brand;
+		}
+
+		public void setBrand(String b) {
+			brand = b;
+		}
+
+	}
+	List Cars = new ArrayList();
+	Cars.add(new Car("Smith", "8776", "Red", "Ferrari"));
+	Cars.add(new Car("Jones", "1250", "Blue", "Maserati"));
+	Cars.add(new Car("Williams", "2270", "White", "Aston Martin"));
+	public class myController extends GenericForwardComposer {
+		public Grid myGrid;
+
+		public void onClickAdd(Event event) {
+			Cars.add(new Car("", "", "", ""));
+			binder.loadAll();
+			myGrid.getRows().getLastChild().setFocus(true);
+		}
+	}
+</zscript>
+	<window id="main" apply="myController" style="padding: 25px;">
+		<grid id="myGrid" fixedLayout="false" model="@{Cars}"
+			hflex="min">
+			<columns>
+				<column label="Owner" width="150px"
+					style="font-weight: bold; color: black;" />
+				<column label="Details" width="100px"
+					style="font-weight: bold; color: black;" />
+			</columns>
+			<rows>
+				<row self="@{each=Car}">
+					<cell>
+						<textbox value="@{Car.Owner}"
+							style="font-weight: bold; color: #003E7E; font-family: 'Trebuchet MS';" />
+					</cell>
+					<cell>
+						<vlayout>
+							<textbox value="@{Car.Mileage}"
+								style="font-weight: bold; color: #003E7E; font-family: 'Trebuchet MS';" />
+							<textbox value="@{Car.Color}"
+								style="font-weight: bold; color: #003E7E; font-family: 'Trebuchet MS';" />
+							<textbox value="@{Car.Brand}"
+								style="font-weight: bold; color: #003E7E; font-family: 'Trebuchet MS';" />
+						</vlayout>
+					</cell>
+				</row>
+			</rows>
+		</grid>
+		<button label="Add Car" forward="onClick=onClickAdd()" />
+	</window>
+</zk>

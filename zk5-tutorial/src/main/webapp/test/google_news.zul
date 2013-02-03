@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:n="native"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<hbox>
+		<window title="Stock" border="normal" width="300px"
+			height="400px">
+			<iframe height="100%" width="100%" scrolling="false"
+				src="http://www.gmodules.com/ig/ifr?url=http://hosting.gmodules.com/ig/gadgets/file/109974367101812108674/Stock-Advisor-Search.xml">
+			</iframe>
+		</window>
+
+		<window title="German Soccer" border="normal" width="300px"
+			height="460px">
+			<div>
+				<iframe height="100%" width="100%" scrolling="false"
+					src="http://www.gmodules.com/ig/ifr?url=http://gadgets-apps-widgets.com/bundesliga-fussball-cl-el-pokal.xml&amp;synd=open&amp;w=300;&amp;h=400">
+				</iframe>
+			</div>
+		</window>
+
+		<window title="Google News" border="normal" width="300px"
+			height="460px">
+			<div>
+				<iframe height="100%" width="100%" scrolling="false"
+					src="http://www.gmodules.com/ig/ifr?url=http://igwidgets.com/lig/gw/f/islk/89/slkm/ik/s/1329844/87/charles447/google-news.xml&amp;up_subject=Google%20News&amp;up_entries=5&amp;up_summaries=100&amp;up_selectedTab=&amp;synd=open&amp;w=300&amp;h=400&amp;title=__UP_subject__&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;">
+				</iframe>
+			</div>
+		</window>
+
+	</hbox>
+
+</zk>

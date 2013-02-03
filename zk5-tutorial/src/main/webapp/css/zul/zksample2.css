@@ -1,0 +1,253 @@
+<?
+taglib uri  ="http: //www.zkoss.org /dsp/web/core" prefix  ="c "?> <style type
+	 ="text /css"> /* body Bereich */ body {
+	padding: 0 0;
+	/* 0 padding on top and bottom and 0 padding on right and left */
+}
+
+/* --------------------- Dashboard WINDOW embedded -------------------- */
+/* Dashboard modules */
+.OT-DashboardWindow {
+	overflow: hidden;
+	padding-top: 5px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	zoom: 1;
+}
+
+/* Dashboard modules */
+.OT-DashboardWindow2 {
+	overflow: hidden;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	zoom: 1;
+}
+
+/* Make Plain Grid + smaller comps + Padding */
+/* "overflow:hidden ;" not working in Chrome/Safari */
+.GridPlain tr.z-row td.z-row-inner,.GridPlain tr.z-row .z-cell,div.z-grid.GridPlain,.GridPlain tr.z-grid-odd td.z-row-inner,.GridPlain tr.z-grid-odd .z-cell,.GridPlain tr.z-grid-odd,.GridPlain tr.z-row-over>td.z-row-inner
+	{
+	border: none;
+	overflow: hidden;
+	zoom: 1;
+	background: white none repeat scroll 0 0;
+	border-top: none;
+	border-top-style: none;
+	border-top-width: 0px;
+	padding-top: 1px;
+	padding-left: 3px;
+	padding-right: 3px;
+	padding-bottom: 1px;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	border-bottom-style: none;
+	border-bottom-width: 0px;
+}
+
+/************************** G R I D ************************/
+/* Make Plain Grid + smaller comps + Padding */
+/* "overflow:hidden ;" not working in Chrome/Safari */
+.GridLayoutSmartBorderDashed tr.z-row td.z-row-inner,.GridLayoutSmartBorderDashed tr.z-row,div.z-grid-body.GridLayoutSmartBorderDashed,div.z-cell.GridLayoutSmartBorderDashed,div.z-grid.GridLayoutSmartBorderDashed
+	{
+	zoom: 1;
+	overflow: hidden;
+	background: white;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid;
+	border-bottom-color: silver;
+	border-bottom-style: dashed;
+	padding: 1px;
+}
+
+/*********************** L I S T B O X *********************/
+/* Listbox Header 1 */
+.FDListBoxHeader1 {
+	background-color: #E6B9CD;
+}
+
+/* no border on top,left,right */
+.FDListBoxNoBorders {
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 1px;
+}
+
+/* Even rows in a listbox */
+tr.z-listitem,tr.z-row td.z-row-inner,tr.z-row td.z-group-inner,tr.z-row td.z-group-foot-inner,tr.z-row
+	{
+	background: #EEEEEE none repeat scroll 0 0;
+}
+
+/* Odd rows in a listbox */
+tr.odd td.gc,tr.odd,tr.z-listbox-odd,tr.z-grid-odd td.z-row-inner,tr.z-grid-odd
+	{
+	background: #FFFFFF none repeat scroll 0 0;
+}
+
+/* Unselected rows with the mouse hovering over them */
+tr.overd,td.overd,tr.z-listitem-over {
+	background: #D3DBFC none repeat scroll 0 0;
+}
+
+/* Selected rows in a listbox */
+tr.seld,td.seld,tr.z-listitem-seld {
+	background: #B8BFDC none repeat scroll 0 0;
+}
+
+/* Selected rows with the mouse hovering over them */
+tr.overseld,td.overseld,tr.z-listitem-over-seld {
+	background: #D3DBFC none repeat scroll 0 0;
+}
+
+/* Workaround for Bug: not the expected Font-Family. will be fixed in 5.0.x */
+div.z-listfooter {
+	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+/* ------------------- TOOLBAR -------------------- */
+/* remove white strips between the toolbars */
+.hboxRemoveWhiteStrips td.z-hbox-sep {
+	width: 0;
+	padding: 0;
+}
+
+/* ------------------- TEXTBOX -------------------- */
+/* Textbox: Disabled / readonly background color */
+.z-textbox-readonly,.z-textbox-text-disd {
+	background: #ECEAE4;
+}
+
+/* ------------------- DECIMALBOX -------------------- */
+/* Decimalbox: Disabled / readonly background color */
+.z-decimalbox-readonly,.z-decimalbox-text-disd {
+	background: #ECEAE4;
+}
+
+/* ------------------- DATEBOX -------------------- */
+/* Disabled datebox should have black font */
+.z-datebox {
+	font: #000000;
+}
+
+/* ------------------- GRID -------------------- */
+/* cut the vertical borders in the rows of the GRID */
+tr.z-row td.z-row-inner {
+	border-right: 0px #CCC;
+}
+
+/* Make Plain Grid+smaller comps Padding + white background */
+/* "overflow:hidden ;" not working in Chrome/Safari */
+.GridLayoutNoBorder tr.z-row td.z-row-inner,tr.z-row,div.z-grid-body div.z-cell,div.z-grid
+	{
+	border: none;
+	zoom: 1;
+	background: white;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+	padding: 1px;
+}
+
+/* ------------------- GROUPBOX -------------------- */
+/* Title in bold letters */
+.z-groupbox-hl .z-groupbox-header {
+	color: #000000;
+	font-weight: bold;
+}
+
+/* -------------------- Button ------------------- */
+/* padding left and right next the icon */
+.oT_ButtonWithIcon {
+	width: 32px;
+	height: 24px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.oT_ButtonWithText {
+	height: 24px;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.oT_ButtonForPanelWithIcon {
+	width: 24px;
+	height: 22px;
+	padding-top: 1px;
+	padding-left: 1px;
+	padding-bottom: 1px;
+	padding-right: 1px;
+}
+
+/* -------------------- BorderLayout ------------------- */
+/* Center no border ; background-color: #D6DCDE;    */
+.FDCenterNoBorder {
+	border: none;
+	background-color: #F9F9F8;
+}
+
+.FDCenterNoBorderBackgroundWhite {
+	border: none;
+	background-color: white;
+}
+
+/* East no border */
+.FDEastNoBorder {
+	border: none;
+	background-color: #D6DCDE;
+}
+
+.OT_Background {
+	background-color: #F9F9F8;
+}
+
+/* --------------------- TABS ---------------------- */ /* no border */
+.z-tabs-scroll {
+	border: 0px;
+}
+
+/* -------------------- TabPanel ------------------- */ /* no border */
+.z-tabpanel,.z-tabbox-ver .z-tabpanels-ver {
+	border-style: none;
+}
+
+/* --------------------- Popup in Customerlist --------------------- */
+.myPopup .z-popup .z-popup-cm {
+	padding: 0px 0px;
+}
+
+.z-slider-sphere-hor,.z-slider-scale,.z-slider-hor,.z-slider-sphere-hor-center,.z-slider-scale-center,.z-slider-hor-center
+	{
+	background: transparent no-repeat 0 top;
+	background-image: url(${  
+		                                                                  
+		   c :     
+		
+		  
+		         
+		                             
+		                       encodeURL('~./zul/img/slider/slider-bg.png')
+}
+
+.z-tabs-header {
+	width: 100%;
+}
+</
+style
+>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c" ?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul" xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul
+	http://www.zkoss.org/2005/zul/zul.xsd">
+
+
+	<window id="enterTabWindow" apply="de.forsthaus.webui.util.test.EnterTabCtrl" title="change textbox focus on ENTER"
+		border="none" closable="true" mode="modal" width="500px" height="400px">
+
+		<grid>
+			<rows>
+				<row>
+					<label id="labela" value="Value A" tooltip="help" />
+				</row>
+				<row>
+					TextA
+					<textbox id="textboxa" forward="onOK=onOKTextbox" />
+				</row>
+				<row>
+					TextB
+					<textbox id="textboxb" forward="onOK=onOKTextbox" />
+				</row>
+				<row>
+					TextC
+					<textbox id="textboxc" forward="onOK=onOKTextbox" />
+
+				</row>
+			</rows>
+		</grid>
+
+
+	</window>
+</zk>

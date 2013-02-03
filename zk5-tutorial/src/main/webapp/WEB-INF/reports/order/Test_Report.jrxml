@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Test_Report" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="Title" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="id" class="java.lang.Long">
+		<fieldDescription><![CDATA[id]]></fieldDescription>
+	</field>
+	<field name="kunMahnsperre" class="java.lang.Boolean">
+		<fieldDescription><![CDATA[kunMahnsperre]]></fieldDescription>
+	</field>
+	<field name="kunMatchcode" class="java.lang.String">
+		<fieldDescription><![CDATA[kunMatchcode]]></fieldDescription>
+	</field>
+	<field name="kunName1" class="java.lang.String">
+		<fieldDescription><![CDATA[kunName1]]></fieldDescription>
+	</field>
+	<field name="kunName2" class="java.lang.String">
+		<fieldDescription><![CDATA[kunName2]]></fieldDescription>
+	</field>
+	<field name="kunNr" class="java.lang.String">
+		<fieldDescription><![CDATA[kunNr]]></fieldDescription>
+	</field>
+	<field name="kunOrt" class="java.lang.String">
+		<fieldDescription><![CDATA[kunOrt]]></fieldDescription>
+	</field>
+	<field name="orders" class="java.util.Set">
+		<fieldDescription><![CDATA[orders]]></fieldDescription>
+	</field>
+	<field name="branche" class="de.forsthaus.backend.model.Branche">
+		<fieldDescription><![CDATA[branche]]></fieldDescription>
+	</field>
+	<field name="office" class="de.forsthaus.backend.model.Office">
+		<fieldDescription><![CDATA[office]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="79">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="212" y="30" width="100" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{Title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61"/>
+	</columnHeader>
+	<detail>
+		<band height="125">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{kunNr}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="114" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{kunName1}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="114" y="20" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{kunName2}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="235" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{kunOrt}]]></textFieldExpression>
+			</textField>
+			<subreport isUsingCache="true">
+				<reportElement key="subreport-1" x="0" y="55" width="555" height="32"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new JRBeanCollectionDataSource($F{orders})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "Test_Report_subreportAuftrag.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54"/>
+	</pageFooter>
+	<summary>
+		<band height="42"/>
+	</summary>
+</jasperReport>

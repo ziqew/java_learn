@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="secRightListWindow" apply="${secRightListCtrl}"
+		border="none" width="100%">
+
+		<panel id="panel_SecRightList"
+			title="${c:l('panel_SecRightList.title')}" border="none" />
+
+		<div sclass="z-toolbar" style="padding:0">
+			<hbox pack="stretch" sclass="hboxRemoveWhiteStrips"
+				width="100%">
+
+				<!-- COMMON BUTTONS -->
+				<toolbar align="start"
+					style="float:left; border-style: none;">
+					<toolbarbutton id="btnHelp"
+						image="/images/icons/light_16x16.gif"
+						tooltiptext="${c:l('btnHelp.tooltiptext')}" />
+					<toolbarbutton id="btnRefresh"
+						image="/images/icons/refresh2_yellow_16x16.gif"
+						tooltiptext="${c:l('btnRefresh.tooltiptext')}" />
+				</toolbar>
+
+				<!-- SEARCH AREA -->
+				<toolbar align="center"
+					style="float:left; border-style: none;">
+					<hbox align="center" style="padding: 2px">
+
+						<space />
+						<checkbox id="checkbox_SecRightList_ShowAll"
+							label="${c:l('common.Show.All')}" />
+						<separator bar="true" orient="vertical" />
+
+						<label id="label_SecRightList_rigName"
+							value="${c:l('label_SecRightList_rigName.value')}" />
+						<textbox id="tb_SecRightList_rigName"
+							width="120px" />
+						<button id="button_SecRightList_SearchRightName"
+							sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+							tooltiptext="${c:l('button_SecRightList_SearchRightName.tooltiptext')}" />
+						<separator bar="true" orient="vertical" />
+
+						<label id="label_SecRightList_rigType"
+							value="${c:l('label_SecRightList_rigType.value')}" />
+						<listbox id="lb_secRight_RightType"
+							width="120px" mold="select" rows="1" />
+						<button id="button_SecRightList_SearchRightType"
+							sclass="oT_ButtonWithIcon" image="/images/icons/search.gif"
+							tooltiptext="${c:l('button_SecRightList_SearchRightType.tooltiptext')}" />
+
+					</hbox>
+				</toolbar>
+
+				<!-- CRUD BUTTONS -->
+				<toolbar align="end"
+					style="float:right; border-style: none;">
+					<button id="button_SecRightList_PrintRightList"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_print2_16x16.gif"
+						tooltiptext="${c:l('button_SecRightList_PrintRightList.tooltiptext')}" />
+					<separator bar="true" orient="vertical" />
+					<button id="button_SecRightList_NewRight"
+						sclass="oT_ButtonWithIcon"
+						image="/images/icons/btn_new2_16x16.gif"
+						tooltiptext="${c:l('button_SecRightList_NewRight.tooltiptext')}" />
+				</toolbar>
+			</hbox>
+		</div>
+
+		<borderlayout id="borderLayout_secRightsList">
+
+			<north border="none" height="26px">
+				<paging id="paging_SecRightList" />
+			</north>
+
+			<center border="none">
+
+				<listbox id="listBoxSecRights"
+					style="border-top-width: 0px; border-left-width: 0px; border-right-width: 0px; border-bottom-width: 1px;"
+					vflex="true" tooltiptext="${c:l('listbox.tooltiptext')}"
+					width="100%" height="100%" multiple="false">
+					<listhead sizable="true">
+						<listheader id="listheader_SecRightList_rigName"
+							sclass="FDListBoxHeader1" image="/images/icons/create_doc.gif"
+							label="${c:l('listheader_SecRightList_rigName.label')}"
+							sort="auto" width="70%" />
+						<listheader id="listheader_SecRightList_rigType"
+							sclass="FDListBoxHeader1"
+							image="/images/icons/exdDataPerspective.gif"
+							label="${c:l('listheader_SecRightList_rigType.label')}"
+							sort="auto" width="30%" />
+					</listhead>
+				</listbox>
+
+			</center>
+			<south border="none" />
+
+		</borderlayout>
+
+	</window>
+</zk>

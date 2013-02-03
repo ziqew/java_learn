@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<?taglib uri="http://www.zkoss.org/dsp/web/core" prefix="c"?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+	xmlns:h="http://www.w3.org/1999/xhtml"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+	<window id="secLoginlogMainWindow" apply="${secLoginlogMainCtrl}"
+		border="none" width="100%">
+
+		<style>
+			body { padding: 0 0; /* 0 padding on top and bottom and 0
+			padding on right and left */ }
+		</style>
+
+		<panel id="panel_SecLoginlogList"
+			title="${c:l('panel_SecLoginlogList.title')}" border="none" />
+
+
+		<tabbox>
+			<tabs>
+				<tab id="tabLoginList"
+					label="${c:l('LoginLog.TabLoginList.Label')}" />
+				<tab id="tabLoginStatistic"
+					label="${c:l('LoginLog.TabLoginStatistic.Label')}" />
+			</tabs>
+
+			<tabpanels>
+
+				<!-- TabPanel L I S T -->
+				<tabpanel id="tabPanelLoginList" height="100%"
+					style="border: none; padding: 0px" />
+
+				<!-- TabPanel S T A T I S T I C -->
+				<tabpanel id="tabPanelLoginStatistic" height="100%"
+					style="border: none; padding: 0px" />
+
+			</tabpanels>
+		</tabbox>
+
+
+	</window>
+</zk>
+<!-- 					url(${c:encodeURL('~./zul/img/button/bandbtn.gif')})
+-->

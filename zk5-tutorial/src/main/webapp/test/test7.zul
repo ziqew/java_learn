@@ -1,0 +1,175 @@
+<?page title="new page title" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window title="new page title" border="normal"
+		style="text-align:center">
+
+
+		<hbox>
+
+			<tabbox id="tb2" orient="vertical">
+				<tabs>
+					<tab label="A" />
+					<tab label="B" />
+					<tab label="C" />
+					<tab label="D" />
+					<tab label="E" />
+				</tabs>
+				<tabpanels width="500px">
+					<tabpanel>
+
+						<borderlayout
+							style="overflow:auto; height:100%; position:absolute; width: 100%;">
+							<center>
+
+
+								<grid>
+									<columns>
+										<column label="" width="30%" />
+										<column label="" />
+									</columns>
+									<rows>
+										<row>
+											<label value="A" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="B" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="C" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="D" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="E" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="F" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="G" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="H" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="I" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="J" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="K" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="L" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="M" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="N" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="O" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="P" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="Q" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="R" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="S" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="T" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="U" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+										<row>
+											<label value="V" />
+											<textbox multiline="true"
+												maxlength="500" rows="5" width="99%" />
+										</row>
+									</rows>
+								</grid>
+
+							</center>
+						</borderlayout>
+
+					</tabpanel>
+					<tabpanel>This is panel B</tabpanel>
+					<tabpanel>This is panel C</tabpanel>
+					<tabpanel>This is panel D</tabpanel>
+					<tabpanel>This is panel E</tabpanel>
+				</tabpanels>
+			</tabbox>
+		</hbox>
+
+		<window title="test" border="normal">
+			<borderlayout width="400px">
+				<west title="Filter" width="150px" flex="true"
+					collapsible="true">
+					<vbox>
+						region:
+						<combobox width="100px">
+							<comboitem label="test" />
+						</combobox>
+						land:
+						<combobox width="100px">
+							<comboitem label="test" />
+						</combobox>
+					</vbox>
+				</west>
+			</borderlayout>
+		</window>
+
+	</window>
+</zk>
