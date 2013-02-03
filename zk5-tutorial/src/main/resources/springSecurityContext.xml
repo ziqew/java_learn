@@ -80,9 +80,9 @@
 		<authentication-provider user-service-ref="myUserDetailsService">
 			<!--  The password encoder is additonally for     -->
 			<!--   simulating  a one-time-password mechanism  -->
-			<password-encoder ref="passwordEncoder">
+			<!--<password-encoder ref="passwordEncoder">
 				<salt-source user-property="token" />
-			</password-encoder>
+			</password-encoder>-->
 		</authentication-provider>
 	</authentication-manager>
 
@@ -99,8 +99,13 @@
 	<!--          The Password Encoder who works in the         -->
 	<!--             one-time-password mechanism.               -->
 	<!-- ====================================================== -->
-	<beans:bean id="passwordEncoder" class="de.forsthaus.policy.PasswordEncoderImpl">
-	</beans:bean>
+	<!--<beans:bean id="passwordEncoder" class="de.forsthaus.policy.PasswordEncoderImpl">
+	</beans:bean>-->
+
+    <!--<beans:bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+    </beans:bean>-->
+
+
 
 	<!-- ====================================================== -->
 	<!--         Here, only for showing in the console          -->
