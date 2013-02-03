@@ -11,7 +11,7 @@ public class Start {
 
             final Server server = new Server(port);
 
-            final String CONTEXTPATH = "/zk-tutorial";
+            final String CONTEXTPATH = "/zk5-tutorial";
 
             WebAppContext bb = new WebAppContext();
             bb.setServer(server);

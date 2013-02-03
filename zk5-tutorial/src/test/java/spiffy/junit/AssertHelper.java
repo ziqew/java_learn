@@ -1,8 +1,8 @@
 package spiffy.junit;
 
-import java.util.Collection;
-
 import junit.framework.Assert;
+
+import java.util.Collection;
 
 /**
  * This class provides essential assertions missing from JUnit in order to create clear JUnit test cases.
