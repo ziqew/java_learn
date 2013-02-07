@@ -253,14 +253,16 @@
                     <!-- http port -->
                     <port>9090</port>
                     <!-- application path always starts with /-->
-                    <path>/tulando-admin</path>
-                    <!-- optionnal path to a context file -->
-                    <contextFile>/opt/newrepo/tulando/trunk/conf/context.xml</contextFile>
+                    <path>/zk-tutorial</path>
+                    <!-- optionnal path to a context file 
+                    <contextFile>/opt/newrepo/tulando/trunk/conf/context.xml</contextFile>-->
                     <!-- optionnal system propoerties you want to add -->
                     <systemProperties>
-                        <catalina.home>/opt/newrepo/tulando/trunk</catalina.home>
+                        
 
-                        <!--<appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base>
+                        <!--
+                        <catalina.home>/opt/newrepo/tulando/trunk</catalina.home>
+                        <appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base>
                         <appserver.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-home</appserver.home>
                         <derby.system.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base/logs</derby.system.home>
                         <java.io.tmpdir>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target</java.io.tmpdir> -->
@@ -288,14 +290,16 @@
                     <!-- http port -->
                     <port>9090</port>
                     <!-- application path always starts with /-->
-                    <path>/tulando-admin</path>
-                    <!-- optionnal path to a context file -->
-                    <contextFile>/opt/newrepo/tulando/trunk/conf/context.xml</contextFile>
+                    <path>/zk-tutorial</path>
+                    <!-- optionnal path to a context file 
+                    <contextFile>/opt/newrepo/tulando/trunk/conf/context.xml</contextFile>-->
                     <!-- optionnal system propoerties you want to add -->
                     <systemProperties>
-                        <catalina.home>/opt/newrepo/tulando/trunk</catalina.home>
+                        
 
-                        <!--<appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base>
+                        <!--
+                        <catalina.home>/opt/newrepo/tulando/trunk</catalina.home>
+                        <appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base>
                         <appserver.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-home</appserver.home>
                         <derby.system.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base/logs</derby.system.home>
                         <java.io.tmpdir>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target</java.io.tmpdir> -->
