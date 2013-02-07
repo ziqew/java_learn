@@ -1,7 +1,7 @@
 package tutorial;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.webapp.WebAppContext;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.webapp.WebAppContext;
 public class Start {
 	public static void main(String[] args){
 		
@@ -17,7 +17,7 @@ public class Start {
             bb.setServer(server);
             bb.setContextPath(CONTEXTPATH);
             bb.setWar(WEBAPPDIR);
-            server.addHandler(bb);
+            server.setHandler(bb);
 
 
             server.start();
