@@ -31,7 +31,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -96,12 +96,57 @@
 		</dependency>
 		
 		<!-- jetty -->
-        <dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-server</artifactId>
+			<version>8.1.8.v20121106</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>8.1.8.v20121106</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>8.1.8.v20121106</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-util</artifactId>
+			<version>8.1.8.v20121106</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+				<groupId>org.eclipse.jetty</groupId>
+				<artifactId>jetty-security</artifactId>
+				<version>8.1.8.v20121106</version>
+				<scope>test</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-jsp</artifactId>
+			<version>8.1.8.v20121106</version>
+			<scope>test</scope>
+		</dependency>
+            
+            
+            
+            
+        <!-- <dependency>
             <groupId>org.mortbay.jetty</groupId>
             <artifactId>jetty</artifactId>
             <version>6.1.26</version>
             <scope>test</scope>
-        </dependency>
+        </dependency> x
 
         <dependency>
             <groupId>org.mortbay.jetty</groupId>
@@ -124,7 +169,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- tomcat -->
+        
         <dependency>
             <groupId>org.apache.tomcat</groupId>
             <artifactId>catalina</artifactId>
@@ -132,7 +177,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- EL Support -->
+       
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
@@ -151,8 +196,6 @@
             <groupId>org.glassfish.web</groupId>
             <artifactId>jstl-impl</artifactId>
             <version>1.2</version>
-            <!-- [INFO] | +- javax.servlet:servlet-api:jar:2.5:compile [INFO] | +-
-                javax.servlet.jsp:jsp-api:jar:2.1:compile [INFO] | \- javax.servlet.jsp.jstl:jstl-api:jar:1.2:compile -->
             <exclusions>
                 <exclusion>
                     <groupId>javax.servlet</groupId>
@@ -169,24 +212,24 @@
             </exclusions>
         </dependency>
 
-        <!-- JSTL Support -->
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.5.8</version>
+            <version>1.7.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>1.5.8</version>
-        </dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+            
 	</dependencies>
 	<build>
 		<finalName>zk-tutorial</finalName>
@@ -199,6 +242,75 @@
 			           <target>1.6</target>
 			        </configuration>
 			</plugin>
+			<plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <!-- or if you want to use tomcat 6.x
+                <artifactId>tomcat6-maven-plugin</artifactId>
+                -->
+                <version>2.0</version>
+                <configuration>
+                    <!-- http port -->
+                    <port>9090</port>
+                    <!-- application path always starts with /-->
+                    <path>/tulando-admin</path>
+                    <!-- optionnal path to a context file -->
+                    <contextFile>/opt/newrepo/tulando/trunk/conf/context.xml</contextFile>
+                    <!-- optionnal system propoerties you want to add -->
+                    <systemProperties>
+                        <catalina.home>/opt/newrepo/tulando/trunk</catalina.home>
+
+                        <!--<appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base>
+                        <appserver.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-home</appserver.home>
+                        <derby.system.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base/logs</derby.system.home>
+                        <java.io.tmpdir>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target</java.io.tmpdir> -->
+                    </systemProperties>
+                    <!-- if you want to use test dependencies rather than only runtime -->
+                    <useTestClasspath>false</useTestClasspath>
+                    <!-- optionnal if you want to add some extra directories in the class loader -->
+                    <additionalClasspathDirs>
+                        <additionalClasspathDir></additionalClasspathDir>
+                    </additionalClasspathDirs>
+                </configuration>
+                <!-- if you need some extra dependencies only for running the embeded tomcat add them in the plugin dependencies -->
+                <dependencies>
+                </dependencies>
+            </plugin>
+            
+			<plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat6-maven-plugin</artifactId>
+                <!-- or if you want to use tomcat 6.x
+                <artifactId>tomcat6-maven-plugin</artifactId>
+                -->
+                <version>2.0</version>
+                <configuration>
+                    <!-- http port -->
+                    <port>9090</port>
+                    <!-- application path always starts with /-->
+                    <path>/tulando-admin</path>
+                    <!-- optionnal path to a context file -->
+                    <contextFile>/opt/newrepo/tulando/trunk/conf/context.xml</contextFile>
+                    <!-- optionnal system propoerties you want to add -->
+                    <systemProperties>
+                        <catalina.home>/opt/newrepo/tulando/trunk</catalina.home>
+
+                        <!--<appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base>
+                        <appserver.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-home</appserver.home>
+                        <derby.system.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base/logs</derby.system.home>
+                        <java.io.tmpdir>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target</java.io.tmpdir> -->
+                    </systemProperties>
+                    <!-- if you want to use test dependencies rather than only runtime -->
+                    <useTestClasspath>false</useTestClasspath>
+                    <!-- optionnal if you want to add some extra directories in the class loader -->
+                    <additionalClasspathDirs>
+                        <additionalClasspathDir></additionalClasspathDir>
+                    </additionalClasspathDirs>
+                </configuration>
+                <!-- if you need some extra dependencies only for running the embeded tomcat add them in the plugin dependencies -->
+                <dependencies>
+                </dependencies>
+            </plugin>
 		</plugins>
 	</build>
 </project>
