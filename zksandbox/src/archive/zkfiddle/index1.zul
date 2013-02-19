@@ -1,0 +1,47 @@
+<zk xmlns:w="client">
+    <textbox id="Test">
+        <attribute w:name="doKeyPress_">
+            function(evt){
+            if (!this._shallIgnore(evt, "ABCDEFGHIJKLMNOPQRSTUVWXYZ"))
+            this.$doKeyPress_(evt);
+            }
+        </attribute>
+
+    </textbox>
+
+
+    <textbox id="telNo" xmlns:w="client">
+        <attribute w:name="doKeyPress_">
+            function(evt){
+                if(this.getValue().length > 0 ){
+                    if (!this._shallIgnore(evt, "0123456789"))
+                        this.$doKeyPress_(evt);
+                }else{
+                if (!this._shallIgnore(evt, "05"))
+                    this.$doKeyPress_(evt);
+                }
+            }
+        </attribute>
+    </textbox>
+
+    <textbox id="txt" onChange='alert("hi");'/>
+    <script>
+        zk.afterMount(function(){
+        jq("$txt").val("test");
+        zk.Widget.$("$txt").updateChange_();
+        });
+    </script>
+
+    <label id="tb" width="250px" value="hello" >
+        <custom-attributes org.zkoss.zk.ui.updateByClient="true"/>
+    </label>
+    <button label="chage at client-side">
+        <attribute w:name="onClick"><![CDATA[
+			var tb = zk.Widget.$(jq('$tb')),
+				val = 'world';
+			tb.setValue(val);
+                  	tb.smartUpdate('value', val);
+		]]></attribute>
+    </button>
+    <button label="get at server-side" onClick="alert(tb.value)"/>
+</zk>

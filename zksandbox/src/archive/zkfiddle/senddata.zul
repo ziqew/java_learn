@@ -1,0 +1,7 @@
+<window id="win" xmlns:n="native">
+    <attribute name="onValidate"><![CDATA[
+		alert(event.getData());
+	]]></attribute>
+    <n:button onclick="zAu.send(new zk.Event(zk.Widget.$('$win'), 'onValidate', 'my key'));">Sign</n:button>
+
+</window>

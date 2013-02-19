@@ -1,0 +1,4 @@
+<zk>
+    <include id="main" src="main_one.zul" width="300px" height="300px" />
+    <include id="footer" src="footer.zul" width="300px" height="100px" />
+</zk>

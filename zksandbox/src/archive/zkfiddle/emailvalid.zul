@@ -1,0 +1,13 @@
+<zk>
+    <window border="normal" title="hello" apply="org.zkoss.zksandbox.zkfiddle.TestComposer">
+        <script type="text/javascript"  src="test.js"/>
+        <textbox id="emails" value="mhj@gmail.com,mhj.hotmail.com"/>
+        <script src="test.js"/>
+        <button label="validate">
+            <attribute name="onClick">
+                Clients.evalJavaScript("checkMail(\"" + emails.getValue() + "\")");
+            </attribute>
+        </button>
+        <label id="lbl" value="" pre="true"/>
+    </window>
+</zk>

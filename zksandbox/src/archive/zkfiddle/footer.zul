@@ -1,0 +1,9 @@
+<zk>
+    <div id="divFooter" apply="org.zkoss.zksandbox.zkfiddle.FooterComposer">
+        <button id="footer_btn" label="show all popup" />
+        <label id="footer_lb" value="footer_lb" />
+    </div>
+    <popup id="footer_popup">
+        <label value="footer popup is opened" />
+    </popup>
+</zk>

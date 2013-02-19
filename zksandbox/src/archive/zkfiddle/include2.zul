@@ -1,0 +1,15 @@
+<?page title="Include talk by event queue sample - include2 " ?>
+<zk>
+
+    <div apply="org.zkoss.zksandbox.zkfiddle.Include2Composer">
+        <div>
+            <zscript>
+                Date d = new Date();
+            </zscript>
+            Last Invalidate:${d}
+        </div>
+        Received from Include.zul ：<label id="lbl" ></label>
+    </div>
+
+
+</zk>

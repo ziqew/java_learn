@@ -1,0 +1,17 @@
+<?page title="Include talk by event queue sample" ?>
+<zk>
+
+
+    <vlayout>
+        <groupbox >
+            <caption label="Include.zul" />
+            <include src="include.zul" />
+        </groupbox>
+
+        <groupbox >
+            <caption label="Include2.zul" />
+            <include src="include2.zul" />
+        </groupbox>
+    </vlayout>
+
+</zk>

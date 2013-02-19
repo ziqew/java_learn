@@ -1,0 +1,15 @@
+<?page title="Include talk by event queue sample - include1 " ?>
+<zk>
+
+    <div apply="org.zkoss.zksandbox.zkfiddle.Include1Composer">
+        <div>
+            <zscript>
+                Date d = new Date();
+            </zscript>
+            Last Invalidate:${d}
+        </div>
+        <textbox id="msg" value="test" ></textbox>
+        <button id="btn" label="Send message to Include2" ></button>
+
+    </div>
+</zk>

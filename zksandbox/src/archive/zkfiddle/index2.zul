@@ -1,0 +1,13 @@
+<zk xmlns:w="client" xmlns:n="native">
+    <button label="add">
+        <attribute w:name="onClick"><![CDATA[
+			zk.load("zul.wnd", function () {
+				jq('#cnt').append(
+						new zul.wnd.Window({
+							title:'client window',
+							border: 'normal'}).redrawHTML_());
+			});
+		]]></attribute>
+    </button>
+    <n:div id="cnt"></n:div>
+</zk>

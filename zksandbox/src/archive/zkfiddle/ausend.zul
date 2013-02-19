@@ -1,0 +1,14 @@
+<zk>
+    <button label="click me to send a AU" onClick="" />
+
+    <script>
+        var listenObj = {
+            onResponse:function(){
+                zk.log("hi");
+            }
+        };
+        zWatch.listen({
+            onResponse:listenObj
+        });
+    </script>
+</zk>

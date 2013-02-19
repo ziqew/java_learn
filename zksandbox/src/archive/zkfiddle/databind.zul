@@ -1,0 +1,62 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+<zk>
+    <window id="win" width="600px" height="800px" title="Databind example"
+            apply="org.zkoss.zksandbox.zkfiddle.DatabindComposer"
+            xmlns:c="http://www.zkoss.org/2005/zk/client"
+            contentStyle="overflow:auto"
+            sizable="true"
+            border="normal">
+        <listbox id="theList" model="@{persons}"
+                 selectedItem="@{selectedPerson}">
+            <listhead sizable="true">
+                <listheader label="Name" width="200px" />
+                <listheader label="Birth Date" sort="auto" />
+                <listheader width="80px"/>
+            </listhead>
+            <listitem self="@{each=person}">
+                <listcell>
+                    <textbox value="@{person.name}" inplace="true" />
+                </listcell>
+                <listcell>
+                    <datebox value="@{person.birthdate}" inplace="true" width="100px"/>
+                </listcell>
+                <listcell>
+                    <button label="Del">
+                        <attribute name="onClick"><![CDATA[
+						index = ((Listitem)self.getParent().getParent()).getIndex();
+						((ListModelList)theList.getModel()).remove(index);
+						]]>
+                        </attribute>
+                    </button>
+                </listcell>
+            </listitem>
+        </listbox>
+
+        <button id="createJohnny" label="createJohnny"/>
+
+        <separator orient="horizontal" height="30px" />
+        <label value="Updated by direct databind"  style="font-weight: bold"/>
+        <space/>
+        <hbox>
+            <label value="@{selectedPerson.name}" />
+            <label value="@{selectedPerson.birthdate}" />
+        </hbox>
+
+        <separator orient="horizontal" height="30px" />
+        <label value="Updated by javascript server-push on select event"  style="font-weight: bold"/>
+        <space/>
+        <hbox>
+            <label id="selectedName" />
+            <label id="selectedBirthdate" />
+        </hbox>
+
+        <separator orient="horizontal" height="30px" />
+        <label value="Updated through java on select event" style="font-weight: bold"/>
+        <space/>
+        <hbox>
+            <label id="selectedNameJ" />
+            <label id="selectedBirthdateJ" />
+        </hbox>
+
+    </window>
+</zk>

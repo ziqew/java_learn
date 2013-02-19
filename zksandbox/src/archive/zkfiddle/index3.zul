@@ -1,0 +1,8 @@
+<?page title="URL Parameters Test" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <window title="URL Parameters Test" border="normal">
+
+        <include src="header.zul?test=5" />
+
+    </window>
+</zk>

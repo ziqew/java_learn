@@ -1,0 +1,8 @@
+<zk>
+    <div id="divMainTwo" apply="org.zkoss.zksandbox.zkfiddle.MainTwoComposer">
+        <button id="main_two_btn" label="change to main one" />
+    </div>
+    <popup id="main_two_popup">
+        <label value="main two popup is opened" />
+    </popup>
+</zk>
