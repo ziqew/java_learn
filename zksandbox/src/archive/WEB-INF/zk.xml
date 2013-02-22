@@ -19,11 +19,11 @@ Copyright (C) 2006 Potix Corporation. All Rights Reserved.
 	</preference>
 
 	<!-- Turn on if you want to debug JavaScript.
-		Once turned on, the uncompressed JavaScript files will be loaded.
+		Once turned on, the uncompressed JavaScript files will be loaded.   -->
 	<client-config>
 		<debug-js>true</debug-js>
 	</client-config>
-	-->
+
 	<!-- Uncomment if you turn off the caching of resources loaded from
 		the class path (aka., class Web resources).
 		By default, class Web resources are cached by the browser until
@@ -69,11 +69,11 @@ Copyright (C) 2006 Potix Corporation. All Rights Reserved.
 		<repeat-uuid>true</repeat-uuid>
 	</desktop-config>
 	-->
-	<!-- Uncomment if you want to load conf/i3-log.conf for logging ZK core
+	<!-- Uncomment if you want to load conf/i3-log.conf for logging ZK core  -->
 	<log>
 		<log-base>org.zkoss</log-base>
 	</log>
-	-->
+
 
 	<!-- Turn on the following if you want to use the trendy mold as default
 		for all buttons.
