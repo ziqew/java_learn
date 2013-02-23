@@ -1,0 +1,42 @@
+<zk xmlns:c="client">
+    <style src="/widgets/grid/inline_editing/style.css" />
+    <div apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('demo.grid.inline_editing.InlineEditingViewModel')">
+        <grid width="700px" model="@load(vm.allBooks)">
+            <columns height="22px">
+                <column width="330px" label="Title">
+                    <image
+                            src="/widgets/grid/inline_editing/img/ui-text-field.png" />
+                </column>
+                <column width="120px" label="Publish Date"
+                        align="center">
+                    <image
+                            src="/widgets/grid/inline_editing/img/calendar-blue.png" />
+                </column>
+                <column width="150px" label="Hardcover" align="center" />
+                <column width="100px" label="Status" align="center">
+                    <image
+                            src="/widgets/grid/inline_editing/img/ui-combo-box-edit.png" />
+                </column>
+            </columns>
+            <template name="model">
+                <row>
+                    <textbox inplace="true"
+                             value="@bind(each.title)" width="99%" />
+                    <datebox inplace="true"
+                             value="@bind(each.publish)" width="99%" format="MM/dd/yyyy" />
+                    <div class='text-center'>
+                        <spinner inplace="true"
+                                 value="@bind(each.pages)" width="98%"/>
+                    </div>
+                    <combobox inplace="true"
+                              model="@load(vm.allStatuses)" selectedItem="@bind(each.status)" hflex="1" >
+                        <template name="model">
+                            <comboitem label="@load(each)" />
+                        </template>
+                    </combobox>
+                </row>
+            </template>
+        </grid>
+    </div>
+</zk>

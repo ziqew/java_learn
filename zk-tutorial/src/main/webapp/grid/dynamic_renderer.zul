@@ -1,0 +1,19 @@
+<zk>
+    <div apply="demo.grid.dynamic_renderer.DynamicRendererController">
+        <style src="/widgets/grid/dynamic_renderer/style.css" />
+        <grid model="${$composer.contributors}"
+              rowRenderer="demo.grid.dynamic_renderer.SimpleRenderer">
+            <auxhead>
+                <auxheader label="Contributor of ZK International Message(Part)" colspan="5" />
+            </auxhead>
+            <columns>
+                <column width="60px">Id</column>
+                <column hflex="4">Language</column>
+                <column hflex="5">Contributor</column>
+                <column hflex="2">Charset</column>
+                <column width="130px">Like</column>
+            </columns>
+            <rows sclass="narrow"/>
+        </grid>
+    </div>
+</zk>

@@ -1,0 +1,53 @@
+<zk>
+    <style src="/widgets/grid/inline_row_editing/style.css" />
+    <div apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('demo.grid.inline_row_editing.InplaceEditingViewModel')">
+        <grid id="demoGrid"
+              model="@load(vm.languageContributions) @template((vm.displayEdit and each.editingStatus) ? 'editable' : 'noneditable')">
+            <auxhead>
+                <auxheader colspan="4"
+                           label="Contributor of ZK International Message(Part)">
+                    <hlayout>
+                        <checkbox checked="@bind(vm.displayEdit)"
+                                  label="Enable Multiple Inline Row Editing">
+                        </checkbox>
+                    </hlayout>
+                </auxheader>
+            </auxhead>
+            <columns>
+                <column>Language</column>
+                <column width="250px">Contributor</column>
+                <column width="180px">Charset</column>
+                <column width="120px" visible="@load(vm.displayEdit)">Edit</column>
+            </columns>
+            <template name="editable">
+                <row>
+                    <textbox
+                            value="@load(each.languageContribution.language) @save(each.languageContribution.language, before='confirm')" />
+                    <textbox
+                            value="@load(each.languageContribution.name) @save(each.languageContribution.name, before='confirm')" />
+                    <textbox
+                            value="@load(each.languageContribution.charset) @save(each.languageContribution.charset, before='confirm')" />
+                    <div>
+                        <button
+                                image="/widgets/grid/inline_row_editing/img/tick-small.png"
+                                onClick="@command('confirm', languageContributionStatus=each)" />
+                        <button
+                                image="/widgets/grid/inline_row_editing/img/cross-small.png"
+                                onClick="@command('changeEditableStatus', languageContributionStatus=each)" />
+                    </div>
+                </row>
+            </template>
+            <template name="noneditable">
+                <row>
+                    <label value="@load(each.languageContribution.language)" />
+                    <label value="@load(each.languageContribution.name)" />
+                    <label value="@load(each.languageContribution.charset)" />
+                    <button
+                            image="/widgets/grid/inline_row_editing/img/pencil-small.png"
+                            onClick="@command('changeEditableStatus', languageContributionStatus=each)" />
+                </row>
+            </template>
+        </grid>
+    </div>
+</zk>
