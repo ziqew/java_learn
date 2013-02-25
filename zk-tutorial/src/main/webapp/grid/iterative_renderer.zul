@@ -1,0 +1,28 @@
+<zk>
+    <style src="/widgets/grid/iterative_renderer/style.css" />
+    <div apply="demo.grid.iterative_renderer.IterativeRendererController">
+        <grid id="demoGrid" model="${$composer.languageContributors}">
+            <auxhead>
+                <auxheader
+                        label="Contributor of ZK International Message(Part)" colspan="4" />
+            </auxhead>
+            <columns>
+                <column hflex="4">Language</column>
+                <column hflex="5">Contributor</column>
+                <column hflex="2">Charset</column>
+                <column hflex="3">Like</column>
+            </columns>
+            <rows sclass="narrow"/>
+            <template name="model">
+                <row>
+                    <label value="${each.language}" />
+                    <label value="${each.name}" />
+                    <label value="${each.charset}" />
+                    <div>
+                        <button image="/images/thumb-up.png"/>
+                    </div>
+                </row>
+            </template>
+        </grid>
+    </div>
+</zk>

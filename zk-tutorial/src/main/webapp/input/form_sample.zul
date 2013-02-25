@@ -1,0 +1,180 @@
+<zk>
+    <style src="/widgets/input/form_sample/style.css" />
+    <div apply="org.zkoss.bind.BindComposer"
+         viewModel="@id('vm') @init('demo.input.form_sample.FormViewModel')"
+         validationMessages="@id('vmsgs')"
+         form="@id('fx') @load(vm.user) @save(vm.user, before='submit') @validator('demo.input.form_sample.FormValidator', retypedPassword=vm.retypedPassword, captcha=vm.captcha, captchaInput=vm.captchaInput)">
+        <grid>
+            <columns>
+                <column label="Type" width="120px" />
+                <column label="Content" />
+                <column label="Component" width="200px" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="UserName" width="150px" />
+                    <hlayout>
+                        <textbox value="@bind(fx.userName)"
+                                 width="150px" tabindex="1" />
+                    </hlayout>
+                    <div>
+                        <label sclass="hightlight">Textbox</label>
+                    </div>
+                </row>
+                <row>
+                    Password
+                    <textbox type="password" value="@bind(fx.password)"
+                             width="150px" tabindex="2" />
+                    <div>
+                        <label sclass="hightlight">Textbox</label>
+                        type = "password"
+                    </div>
+                </row>
+                <row>
+                    Re-type Password
+                    <cell>
+                        <textbox type="password" value="@bind(vm.retypedPassword)"
+                                 width="150px"  tabindex="3" />
+                        <label class="error"
+                               value="@load(vmsgs['password'])" />
+                    </cell>
+                    <div>
+                        <label sclass="hightlight">Textbox</label>
+                        with value validate
+                    </div>
+                </row>
+                <row>
+                    Age:
+                    <cell>
+                        <intbox value="@bind(fx.age)" width="150px"  tabindex="4" />
+                        <label class="error"
+                               value="@load(vmsgs['age'])" />
+                    </cell>
+                    <div>
+                        <label sclass="hightlight">Intbox</label>
+                        with constraint
+                    </div>
+                </row>
+                <row>
+                    Phone:
+                    <textbox constraint="no empty" value="@bind(fx.telephone)"
+                             width="150px" maxlength="15" tabindex="5" />
+                    <div>
+                        <label sclass="hightlight">Textbox</label>
+                        with max length limit
+                    </div>
+                </row>
+                <row>
+                    Weight:
+                    <cell>
+                        <decimalbox format="###.##" value="@bind(fx.weight)"
+                                    width="150px"  tabindex="6" />
+                        <label class="error"
+                               value="@load(vmsgs['weight'])" />
+                    </cell>
+                    <div>
+                        <label sclass="hightlight">Decimalbox</label>
+                        with format
+                    </div>
+                </row>
+                <row>
+                    Birthday:
+                    <hbox align="center">
+                        <datebox value="@bind(fx.birthday)"
+                                 format="@load(vm.dateFormat)" width="150px"  tabindex="7"/>
+                        Format :
+                        <listbox selectedItem="@bind(vm.dateFormat)"
+                                 mold="select" tabindex="8">
+                            <listitem label="Default" value="" />
+                            <listitem label="yyyy/MM/dd hh:mm a"
+                                      value="yyyy/MM/dd hh:mm a" />
+                            <listitem label="yyyy/MM/dd"
+                                      value="yyyy/MM/dd" />
+                            <listitem label="MM-dd-yy" value="MM-dd-yy" />
+                        </listbox>
+                    </hbox>
+                    <div>
+                        <label sclass="hightlight">Datebox</label>
+                        and
+                        <label sclass="hightlight">Listbox</label>
+                        in select mold
+                    </div>
+                </row>
+                <row>
+                    E-mail:
+                    <cell>
+                        <textbox value="@bind(fx.email)" width="150px" tabindex="9" />
+                        <label class="error"
+                               value="@load(vmsgs['email'])" />
+                    </cell>
+                    <div>
+                        <label sclass="hightlight">Textbox</label>
+                        with regexp constraint
+                    </div>
+
+                </row>
+                <row>
+                    Memo:
+                    <vlayout>
+                        <div style="width:375px;text-align:right;padding:0;">
+                            Adjust Height:
+                            <spinner constraint="no negative,no zero"
+                                     value="@load(vm.memoHeight)"
+                                     onChanging="@command('changeMemoHeight')" tabindex="10" />
+                        </div>
+                        <textbox rows="@load(vm.memoHeight)" value="@bind(fx.memo)"
+                                 width="370px;" tabindex="11" />
+                    </vlayout>
+                    <div>
+                        <label sclass="hightlight">Textbox</label>
+                        with multiple rows and
+                        <label sclass="hightlight">Spinner</label>
+                    </div>
+                </row>
+                <row>
+                    Validation:
+                    <vlayout>
+                        <hlayout>
+                            <textbox value="@bind(vm.captchaInput)"
+                                     width="150px"  tabindex="12" />
+                            <label class="error"
+                                   value="@load(vmsgs['captcha'])" />
+                        </hlayout>
+                        <hlayout>
+                            <captcha value="@load(vm.captcha)"
+                                     bgColor="@load(vm.backgroundColour)"
+                                     fontColor="@load(vm.foregroundColour)"
+                                     width="150px" height="50px"
+                                     frame="true" />
+                            <vlayout>
+                                <button label="Regenerate"
+                                        onClick="@command('regenerate')" width="100px" />
+                                <hlayout>
+                                    <colorbox
+                                            value="@bind(vm.backgroundColour)" width="35px" />
+                                    <colorbox
+                                            value="@bind(vm.foregroundColour)" width="35px" />
+                                </hlayout>
+                            </vlayout>
+                        </hlayout>
+                    </vlayout>
+                    <div>
+                        <label sclass="hightlight">Captcha</label>
+                        and
+                        <label sclass="hightlight">Colorbox</label>
+                    </div>
+                </row>
+                <row>
+                    <cell colspan="3" style="text-align:center">
+                        <vlayout>
+                            <label visible="@load(empty vmsgs)"
+                                   value="@load(empty vmsgs ? 'Form successfully submitted!' : '', before='submit')" />
+                            <button label="Submit" onClick="@command('submit')"
+                                    width="100px" height="30px" />
+                        </vlayout>
+                    </cell>
+                </row>
+            </rows>
+        </grid>
+    </div>
+    </zk>

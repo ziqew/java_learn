@@ -1,0 +1,64 @@
+<window sclass="cardSys" border="none"
+        apply="org.zkoss.bind.BindComposer"
+        viewModel="@id('vm') @init('demo.grid.data_binding.ContributorViewModel')">
+    <style src="/widgets/grid/data_binding/style.css" />
+    <hlayout spacing="0" height="400px">
+        <listbox sclass="employee-list" vflex="true" hflex="1"
+                 model="@load(vm.contributorList)" selectedItem="@bind(vm.selectedContributor)" >
+            <auxhead>
+                <auxheader colspan="3" class="topic">Contributor List</auxheader>
+            </auxhead>
+            <listhead>
+                <listheader label="Title" width="80px" align="center" />
+                <listheader label="Full Name" align="center" />
+                <listheader label="Extension" width="80px" align="center" />
+            </listhead>
+            <template name="model" var="contributor">
+                <listitem>
+                    <listcell label="@load(contributor.title)" />
+                    <listcell label="@load(contributor.fullName)" />
+                    <listcell label="@load(contributor.extension)" />
+                </listitem>
+            </template>
+
+        </listbox>
+        <window sclass="card-pre" title="Name Card Preview" hflex="1" vflex="true" border="normal">
+            <div sclass="card">
+                <image sclass="logo" src="/images/ZK-Logo.gif" />
+                <vlayout sclass="title">
+                    <label sclass="name" value="@load(vm.selectedContributor.fullName)" />
+                    <hlayout sclass="dept">
+                        <label value="@load(vm.selectedContributor.title)" />
+                        Contributor
+                    </hlayout>
+                </vlayout>
+                <div sclass="number">
+                    Tel:+1-23-456-789 ext
+                    <label value="@load(vm.selectedContributor.extension)" />
+                </div>
+            </div>
+        </window>
+    </hlayout>
+    <grid>
+        <auxhead>
+            <auxheader colspan="5" class="topic">Edit Data</auxheader>
+        </auxhead>
+        <columns>
+            <column label="Title" align="center" />
+            <column label="First Name" align="center" />
+            <column label="Last Name" align="center" />
+            <column label="Extension" align="center" />
+            <column label="Full Name" align="center" />
+        </columns>
+        <rows>
+            <row>
+                <combobox model="@load(vm.contributorTitles)"
+                          selectedItem="@bind(vm.selectedContributor.title)" width="99%" />
+                <textbox value="@bind(vm.selectedContributor.firstName)" width="95%" />
+                <textbox value="@bind(vm.selectedContributor.lastName)" width="95%" />
+                <intbox value="@bind(vm.selectedContributor.extension)" width="95px" />
+                <label value="@load(vm.selectedContributor.fullName)" />
+            </row>
+        </rows>
+    </grid>
+</window>
