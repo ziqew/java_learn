@@ -1,0 +1,89 @@
+<zk>
+    <window apply="org.zkoss.zksandbox.zkfiddle.Validation2Composer">
+        <label id="errormsg" style="font-weight: bold; color: red;"></label>
+        <grid vflex="true" fixedLayout="true" mold="paging" id="newwl_Grid_ID">
+            <rows id="q">
+                <row>
+                    Textbox one*
+                    <textbox width="150px" id="one">
+                        <attribute name="onChange">
+                            self.setStyle("border:normal");
+                        </attribute>
+                    </textbox>
+                </row>
+                <row>
+                    Status*
+                    <combobox width="155px" id="two" >
+                        <attribute name="onSelect">
+                            self.setStyle("border:normal");
+                        </attribute>
+                        <comboitem label="Win" ></comboitem>
+                        <comboitem label="Loss" ></comboitem>
+                    </combobox>
+                </row>
+                <row>
+                    Customer Name*
+                    <combobox width="155px" id="three">
+                        <attribute name="onSelect">
+                            self.setStyle("border:normal");
+                        </attribute>
+                        <comboitem label="Customer1" ></comboitem>
+                        <comboitem label="Customer2" ></comboitem>
+                        <comboitem label="Customer3" ></comboitem>
+                        <comboitem label="Customer4" ></comboitem>
+                        <comboitem label="Customer5" ></comboitem>
+                        <comboitem label="Customer6" ></comboitem>
+                        <comboitem label="Customer7" ></comboitem>
+                        <comboitem label="Customer8" ></comboitem>
+                        <comboitem label="Customer9" ></comboitem>
+                    </combobox>
+                </row>
+                <row>
+                    Description*
+                    <textbox width="151px" rows="3" id="four">
+                        <attribute name="onChange">
+                            self.setStyle("border:normal");
+                        </attribute>
+                    </textbox>
+                </row>
+                <row>
+                    Textbox two
+                    <textbox width="155px" id="five">
+                        <attribute name="onChange">
+                            self.setStyle("border:normal");
+                        </attribute>
+                    </textbox>
+                </row>
+                <row>
+                    Contact*
+                    <intbox width="155px" id="six">
+                        <attribute name="onChange">
+                            self.setStyle("border:normal");
+                        </attribute>
+                    </intbox>
+                </row>
+                <row>
+                    Email*
+                    <textbox width="155px" id="seven">
+                        <attribute name="onChange">
+                            self.setStyle("border:normal");
+                        </attribute>
+                    </textbox>
+                </row>
+                <row>
+                    Role
+                    <textbox width="155px" id="eight">
+                        <attribute name="onChange">
+                            self.setStyle("border:normal");
+                        </attribute>
+                    </textbox>
+                </row>
+            </rows>
+        </grid>
+        <div align="center" >
+            <hbox style="background:#eee9e9;border:0;">
+                <button label="Save" mold="trendy" forward="onClick=onClickSaveButton()"></button>
+            </hbox>
+        </div>
+    </window>
+</zk>

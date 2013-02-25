@@ -1,0 +1,26 @@
+<zk>
+    <window border="normal" title="hello" apply="org.zkoss.zksandbox.zkfiddle.Validation1Composer">
+
+        <grid id="form" width="400px">
+            <columns>
+                <column label="Label" width="100px" />
+                <column label="Value" width="300px" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="Text" id="text" />
+                    <textbox constraint="no empty" />
+                </row>
+                <row>
+                    <label value="Date" id="date"  />
+                    <datebox constraint="no empty" />
+                </row>
+            </rows>
+        </grid>
+
+        <button label="Save" id="btn" />
+
+        <label value="" id="label" />
+
+    </window>
+</zk>

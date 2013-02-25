@@ -1,0 +1,9 @@
+<zk>
+    <window border="normal" title="hello" apply="org.zkoss.zksandbox.zkfiddle.Validation3Composer">
+
+        <div>developing, wait...</div>
+        <textbox tooltip="Text one" id="tb1"/>
+        <textbox tooltip="Text two" id="tb2"/>
+        <button id="btSave" label="save"/>
+    </window>
+</zk>

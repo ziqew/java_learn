@@ -1,0 +1,24 @@
+<zk>
+    <window title="new page title" border="normal"
+            apply="org.zkoss.zksandbox.zkfiddle.Validation4Composer">
+        <grid>
+            <columns>
+                <column width="150px" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="First textbox"></label>
+                    <textbox id="periodValue"></textbox>
+                </row>
+                <row>
+                    <label value="Second textbox"></label>
+                    <textbox id="periodValue1"></textbox>
+                </row>
+                <row>
+                    <button id="b" label="save" />
+                </row>
+            </rows>
+        </grid>
+    </window>
+</zk>
+
