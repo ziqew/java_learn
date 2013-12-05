@@ -3,6 +3,7 @@ package com.ziqewalex.client;
 import com.ziqewalex.shared.FieldVerifier;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -11,9 +12,13 @@ import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.LayoutPanel;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SplitLayoutPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -39,6 +44,23 @@ public class Za implements EntryPoint {
 	 * This is the entry point method.
 	 */
 	public void onModuleLoad() {
+		
+		DockLayoutPanel appPanel = new DockLayoutPanel(Unit.PX);
+		RootLayoutPanel.get().add(appPanel);
+		
+		SplitLayoutPanel p = new SplitLayoutPanel();
+		HTML navHtml=new HTML("navigation");
+		p.addWest(navHtml, 128);
+		HTML listHtml=new HTML("list(this is a list component)");
+		p.addNorth(listHtml, 200);
+		//HTML detailsHtml=new HTML("details");
+		VerticalPanel detailsPanel = new VerticalPanel();
+		detailsPanel.setSpacing(5);
+
+		p.add(detailsPanel);
+		appPanel.add(p);
+		
+		
 		final Button sendButton = new Button("Send");
 		final TextBox nameField = new TextBox();
 		nameField.setText("GWT User");
@@ -49,9 +71,9 @@ public class Za implements EntryPoint {
 
 		// Add the nameField and sendButton to the RootPanel
 		// Use RootPanel.get() to get the entire body element
-		RootPanel.get("nameFieldContainer").add(nameField);
-		RootPanel.get("sendButtonContainer").add(sendButton);
-		RootPanel.get("errorLabelContainer").add(errorLabel);
+		detailsPanel.add(nameField);
+		detailsPanel.add(sendButton);
+		detailsPanel.add(errorLabel);
 
 		// Focus the cursor on the name field when the app loads
 		nameField.setFocus(true);

@@ -19,6 +19,10 @@
             <param-name>widgetset</param-name>
             <param-value>com.mycompany.AppWidgetSet</param-value>
         </init-param>
+        <init-param>
+            <param-name>UIProvider</param-name>
+            <param-value>com.mycompany.DashboardUIProvider</param-value>
+        </init-param>
     </servlet>
     <servlet-mapping>
         <servlet-name>Vaadin Application Servlet</servlet-name>
