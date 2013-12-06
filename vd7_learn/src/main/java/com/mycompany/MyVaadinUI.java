@@ -50,6 +50,7 @@ import com.vaadin.ui.VerticalLayout;
 public class MyVaadinUI extends UI
 {
 
+    public static final String PERSISTENCE_UNIT = "pu";
     DataProvider dataProvider = new DataProvider();
 
     private static final long serialVersionUID = 1L;
@@ -71,6 +72,7 @@ public class MyVaadinUI extends UI
             put("/transactions", TransactionsView.class);
             put("/reports", ReportsView.class);
             put("/schedule", ScheduleView.class);
+            put("/users", UserListView.class);
         }
     };
 
@@ -313,7 +315,7 @@ public class MyVaadinUI extends UI
         menu.removeAllComponents();
 
         for (final String view : new String[] { "dashboard", "sales",
-                "transactions", "reports", "schedule" }) {
+                "transactions", "reports", "schedule","users" }) {
             Button b = new NativeButton(view.substring(0, 1).toUpperCase()
                     + view.substring(1).replace('-', ' '));
             b.addStyleName("icon-" + view);
